@@ -14,6 +14,7 @@
 		<typeAlias type="com.kh.mop.freeboard.domain.FreeBoardReply" alias="FreeBoardReply"/>
 		<typeAlias type="com.kh.mop.place.domain.Place" alias="Place"/>
 		<typeAlias type="com.kh.mop.review.domain.Review" alias="Review"/>
+		<typeAlias type="com.kh.mop.member.domain.Member" alias="Member"/>
 	</typeAliases>
 	
 	<mappers>
@@ -21,5 +22,6 @@
 		<mapper resource="mapper/freeboard-mapper.xml"></mapper>
 		<mapper resource="mapper/place-mapper.xml"></mapper>
 		<mapper resource="mapper/review-mapper.xml"></mapper>
+		<mapper resource="mapper/member-mapper.xml"></mapper>
 	</mappers>
 </configuration>
