@@ -13,11 +13,13 @@
 		<typeAlias type="com.kh.mop.freeboard.domain.FreeBoard" alias="FreeBoard"/>
 		<typeAlias type="com.kh.mop.freeboard.domain.FreeBoardReply" alias="FreeBoardReply"/>
 		<typeAlias type="com.kh.mop.place.domain.Place" alias="Place"/>
+		<typeAlias type="com.kh.mop.review.domain.Review" alias="Review"/>
 	</typeAliases>
 	
 	<mappers>
-	<mapper resource="mapper/scheduler-mapper.xml"></mapper>
-	<mapper resource="mapper/freeboard-mapper.xml"></mapper>
-	<mapper resource="mapper/place-mapper.xml"></mapper>
+		<mapper resource="mapper/scheduler-mapper.xml"></mapper>
+		<mapper resource="mapper/freeboard-mapper.xml"></mapper>
+		<mapper resource="mapper/place-mapper.xml"></mapper>
+		<mapper resource="mapper/review-mapper.xml"></mapper>
 	</mappers>
 </configuration>
