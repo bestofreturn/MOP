@@ -14,7 +14,7 @@ public interface FreeBoardService {
 	public int addReadCount(int fId);
 	public FreeBoard selectFreeBoard(int fId);
 	public int updateFreeBoard(FreeBoard freeBoard);
-	public int deleteFreeBoard(FreeBoard freeBoard);
+	public int deleteFreeBoard(int fId);
 	public int insertFreeBoard(FreeBoard freeBoard);
 	public ArrayList<FreeBoardReply> selectFreeBoardReplyList(int fId);
 	public int insertFreeBoardReply(FreeBoardReply freeBoardReply);
