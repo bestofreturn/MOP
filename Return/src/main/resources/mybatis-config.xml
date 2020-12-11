@@ -10,9 +10,12 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="com.kh.mop.scheduler.domain.Scheduler" alias="Scheduler"/>
-		
+		<typeAlias type="com.kh.mop.freeboard.domain.FreeBoard" alias="FreeBoard"/>
+		<typeAlias type="com.kh.mop.freeboard.domain.FreeBoardReply" alias="FreeBoardReply"/>
 	</typeAliases>
+	
 	<mappers>
 	<mapper resource="mapper/scheduler-mapper.xml"></mapper>
+	<mapper resource="mapper/freeboard-mapper.xml"></mapper>
 	</mappers>
 </configuration>

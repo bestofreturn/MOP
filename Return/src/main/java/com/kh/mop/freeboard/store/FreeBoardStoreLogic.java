@@ -1,54 +1,59 @@
-package com.kh.mop.freeboard.service;
+package com.kh.mop.freeboard.store;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.kh.mop.freeboard.domain.FreeBoard;
 import com.kh.mop.freeboard.domain.FreeBoardPageInfo;
 import com.kh.mop.freeboard.domain.FreeBoardReply;
-import com.kh.mop.freeboard.store.FreeBoardStore;
 
-@Service
-public class FreeBoardServiceImpl implements FreeBoardService{
+@Repository
+public class FreeBoardStoreLogic implements FreeBoardStore{
 
 	@Autowired
-	private FreeBoardStore fStore;
+	private SqlSessionTemplate sqlSession;
 	
 	@Override
 	public int getListCount() {
-		return fStore.getListCount();
+		return sqlSession.selectOne("FreeBoardMapper.getListCount");
 	}
 
 	@Override
 	public ArrayList<FreeBoard> selectList(FreeBoardPageInfo pi) {
-		return fStore.selectList(pi);
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("FreeBoardMapper.selectList",null,rowBounds);
 	}
+	
 
 	@Override
 	public int addReadCount(int fId) {
-		return fStore.addReadCount(fId);
+		return sqlSession.update("FreeBoardMapper.updateCount",fId);
 	}
 
 	@Override
 	public FreeBoard selectFreeBoard(int fId) {
-		return fStore.selectFreeBoard(fId);
+		FreeBoard fb = sqlSession.selectOne("FreeBoardMapper.selectOne",fId);
+		return sqlSession.selectOne("FreeBoardMapper.selectOne",fId);
 	}
 
 	@Override
 	public int updateFreeBoard(FreeBoard freeBoard) {
-		return fStore.updateFreeBoard(freeBoard);
+		return sqlSession.update("FreeBoardMapper.updateFreeBoard",freeBoard);
 	}
 
 	@Override
 	public int deleteFreeBoard(int fId) {
-		return fStore.deleteFreeBoard(fId);
+		return sqlSession.update("FreeBoardMapper.deleteFreeBoard",fId);
 	}
 
 	@Override
 	public int insertFreeBoard(FreeBoard freeBoard) {
-		return fStore.insertFreeBoard(freeBoard);
+		return sqlSession.insert("FreeBoardMapper.insertFreeBoard",freeBoard);
 	}
 
 	@Override
@@ -59,7 +64,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
 	@Override
 	public int insertFreeBoardReply(FreeBoardReply freeBoardReply) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
