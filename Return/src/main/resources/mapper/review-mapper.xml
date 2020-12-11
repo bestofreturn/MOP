@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reviewMapper">
+
+	<resultMap type="Review" id="reviewResultMap">
+		<result property="vCreateDate" column="V_CREATE_DATE"></result>
+		<result property="vModifyDate" column="V_MODIFY_DATE"></result>
+		<result property="vStatus" column="V_STATUS"></result>
+	</resultMap>
+	
+	<select id="selectList" resultMap="reviewResultMap">
+		SELECT * FROM REVIEW
+		WHERE V_STATUS = 'Y'
+		ORDER BY VID DESC
+	</select>
+</mapper>
