@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.mop.review.domain.PageInfo;
 import com.kh.mop.review.domain.Review;
+import com.kh.mop.review.domain.RvReply;
 
 @Repository
 public class ReviewStoreLogic implements ReviewStore{
@@ -23,30 +24,40 @@ public class ReviewStoreLogic implements ReviewStore{
 	}
 
 	@Override
-	public ArrayList<Review> selectList() {
-		/*
-		 * int offset = (pi.getCurrentPage() - 1) * pi.getReviewLimit(); RowBounds
-		 * rowBounds = new RowBounds(offset, pi.getReviewLimit());
-		 */
-		return (ArrayList)sqlSession.selectList("reviewMapper.selectList");
+	public ArrayList<Review> selectList(PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getReviewLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getReviewLimit());
+		return (ArrayList)sqlSession.selectList("reviewMapper.selectList", null, rowBounds);
+	}
+	
+	@Override
+	public Review selectReview(int vId) {
+		return sqlSession.selectOne("reviewMapper.selectOne", vId);
 	}
 
 	@Override
 	public int insertReview(Review review) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("reviewMapper.insertReview", review);
 	}
 
 	@Override
 	public int updateReview(Review review) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("reviewMapper.updateReview", review);
 	}
 
 	@Override
 	public int deleteReview(int vId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("reviewMapper.deleteReview", vId);
+	}
+
+	@Override
+	public int insertRvReply(RvReply rvReply) {
+		return sqlSession.insert("reviewMapper.insertRvReply", rvReply);
+	}
+
+	@Override
+	public ArrayList<RvReply> selectRvReplyList(int vId) {
+		return (ArrayList)sqlSession.selectList("reviewMapper.selectRvReplyList", vId);
 	}
 
 }
