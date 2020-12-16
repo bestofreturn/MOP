@@ -3,7 +3,7 @@
  * ************** */
 var editEvent = function (event, element, view) {
 
-    $('#deleteEvent').data('id', event._id); //클릭한 이벤트 ID
+    $('#deleteEvent').data('id', event.sId); //클릭한 이벤트 ID
 
     $('.popover.fade.top').remove();
     $(element).popover("hide");
@@ -67,7 +67,7 @@ var editEvent = function (event, element, view) {
         }
 
         eventModal.modal('hide');
-
+		
         event.allDay = statusAllDay;
         event.title = editTitle.val();
         event.start = startDate;
@@ -83,7 +83,14 @@ var editEvent = function (event, element, view) {
             type: "get",
             url: "updateScheduler.do",
             data: {
-                "sId" : sId
+            	sId : event.sId,
+            	title : event.title,
+            	description : event.description,
+            	start : event.start,
+            	end : event.end,
+            	backgroundColor : event.backgroundColor,
+            	
+            
             },
             success: function (response) {
                 alert('수정되었습니다.')
@@ -103,11 +110,12 @@ $('#deleteEvent').on('click', function () {
     //삭제시
     $.ajax({
         type: "get",
-        url: "",
+        url: "deleteScheduler.do",
         data: {
+       			sId : $(this).data('id'),
         },
         success: function (response) {
-            alert('삭제되었습니다.');
+            alert('삭제되었습니다.')
         }
     });
 

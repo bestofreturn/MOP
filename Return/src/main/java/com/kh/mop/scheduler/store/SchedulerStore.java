@@ -8,7 +8,7 @@ public interface SchedulerStore {
 	
 	public int insertScheduler(Scheduler scheduler);
 	public int deleteScheduler(int sId);
-	public int updateScheduler(int sId);
+	public int updateScheduler(Scheduler scheduler);
 	public int detailScheduler(int sId);
 	public ArrayList<Scheduler> selectSubView();
 	public ArrayList<Scheduler> selectList();

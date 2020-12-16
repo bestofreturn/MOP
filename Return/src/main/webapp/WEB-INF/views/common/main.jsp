@@ -178,24 +178,24 @@ to {
       </a>
       <div id="id01" class="modal">
 
+         <form class="modal-content animate" action="#"
+            method="post">
             <div class="imgcontainer">
                <span
                   onclick="document.getElementById('id01').style.display='none'"
                   class="close" title="Close Modal">&times;</span> 
             </div>
             <div class="container">
-         <form class="modal-content animate" action="login1.do"
-            method="post">
                <label for="uname"><br><b>Username</b><br></label> 
                <input type="text"
-                  placeholder="Enter memberId" name="memberId"> 
+                  placeholder="Enter Username" name="memberId" required> 
                <label for="psw"><br><b>Password</b><br></label> 
                <input type="password"
-                  placeholder="Enter Password" name="memberPwd"><p>
-               <button type="submit" id="login-btn" class="btn btn-login">Login</button>
-               <button type="button" onclick="location.href='enrollView.do';">Sign Up</button>
-            </form>
+                  placeholder="Enter Password" name="memberPwd" required><p>
+               <button type="submit">Login</button>
+               <button type="#">Sign Up</button>
             </div>
+         </form>
       </div>
       <a href="placeList.do"
          class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
@@ -284,7 +284,7 @@ to {
                   <h2>$ 25</h2> <span class="w3-opacity">per month</span>
                </li>
                <li class="w3-light-grey w3-padding-24">
-                  <button class="w3-button w3-white w3-padding-large w3-hover-black" >Sign
+                  <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign
                      Up</button>
                </li>
             </ul>

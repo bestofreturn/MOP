@@ -8,7 +8,7 @@ public interface SchedulerService {
 	
 	
 	public int insertScheduler(Scheduler scheduler);
-	public int updateSchdeduler(int sId);
+	public int updateSchdeduler(Scheduler scheduler);
 	public int selectOneScheduler(int sId);
 	public int deleteScheduler(int sId);
 	public int detailScheduler(int sId);

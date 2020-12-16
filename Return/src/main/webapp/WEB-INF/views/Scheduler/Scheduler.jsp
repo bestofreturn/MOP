@@ -6,11 +6,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MoP(My owner Planner)</title>
+    <title>FullCalendar Example</title>
     <link rel=" shortcut icon" href="image/favicon.ico">
 
     <link rel="stylesheet" href="resources/vendor/css/fullcalendar.min.css" />
-    <link rel="stylesheet" href="resources/vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/vendor/css/bootstrap.min.css"/>
     <link rel="stylesheet" href='resources/vendor/css/select2.min.css' />
     <link rel="stylesheet" href='resources/vendor/css/bootstrap-datetimepicker.min.css' />
 
@@ -53,38 +53,31 @@
                         <h4 class="modal-title"></h4>
                     </div>
                     <div class="modal-body">
-                  <div class="row">
-                            <div class="col-xs-12">
-                                
-                                <input type="hidden" id="sId" name="sId">
-                                <input type="hidden" id="sCreateDate" name="sCreateDate">
-                            </div>
-                        </div>
-
+					<input class='allDayNewEvent' id="edit-id" type="hidden" name="edit-id">
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-allDay">하루종일</label>
-                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox"></label>
+                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox" name="edit-allDay"></label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-title">제목</label>
-                                <input class="inputModal" type="text" name="sTitle" id="edit-title"
+                                <label class="col-xs-4" for="edit-title">일정명</label>
+                                <input class="inputModal" type="text" name="edit-title" id="edit-title"
                                     required="required" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-start">시작</label>
-                                <input class="inputModal" type="text" name="startDate" id="edit-start" />
+                                <input class="inputModal" type="text" name="edit-start" id="edit-start" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-end">끝</label>
-                                <input class="inputModal" type="text" name="endDate" id="edit-end" />
+                                <input class="inputModal" type="text" name="edit-end" id="edit-end" />
                             </div>
                         </div>
                         <div class="row">
@@ -101,7 +94,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-color">색상</label>
-                                <select class="inputModal" name="color" id="edit-color">
+                                <select class="inputModal" name="textColor" id="edit-color">
                                     <option value="#D25565" style="color:#D25565;">빨간색</option>
                                     <option value="#9775fa" style="color:#9775fa;">보라색</option>
                                     <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
@@ -116,8 +109,8 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-desc">내용</label>
-                                <textarea rows="4" cols="50" class="inputModal" name="sContent"
+                                <label class="col-xs-4" for="edit-desc">설명</label>
+                                <textarea rows="4" cols="50" class="inputModal" name="description"
                                     id="edit-desc"></textarea>
                             </div>
                         </div>
@@ -168,6 +161,8 @@
                                 checked>나연</label>
                         <label class="checkbox-inline"><input class='filter' type="checkbox" value="지효"
                                 checked>지효</label>
+                                <label class="checkbox-inline"><input class='filter' type="checkbox" value="admin"
+                                checked>admin</label>
                     </div>
                 </div>
 
@@ -191,3 +186,4 @@
 </body>
 
 </html>
+                                

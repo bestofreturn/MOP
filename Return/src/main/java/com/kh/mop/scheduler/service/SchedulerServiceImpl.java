@@ -20,9 +20,8 @@ public class SchedulerServiceImpl implements SchedulerService {
 	}
 
 	@Override
-	public int updateSchdeduler(int sId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateSchdeduler(Scheduler scheduler) {
+		return sStore.updateScheduler(scheduler);
 	}
 
 	@Override
@@ -33,8 +32,7 @@ public class SchedulerServiceImpl implements SchedulerService {
 
 	@Override
 	public int deleteScheduler(int sId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sStore.deleteScheduler(sId);
 	}
 
 	@Override
