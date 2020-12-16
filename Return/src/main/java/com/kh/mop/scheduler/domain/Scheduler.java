@@ -5,25 +5,31 @@ import java.sql.Date;
 public class Scheduler {
 	
 	private int sId;
-	private String sTitle;
-	private String sContent;
-	private String sCreateDate;
-	private String startDate;
-	private String endDate;
-	private String sWriter;
+	private String title;
+	private String description;
+	private String start;
+	private String end;
+	private String type;
+	private String username;
+	private String backgroundColor;
+	private String textColor;
+	private boolean allDay;
 	
 	public Scheduler() {}
 
-	public Scheduler(int sId, String sTitle, String sContent, String sCreateDate, String startDate, String endDate,
-			String sWriter) {
+	public Scheduler(int sId, String title, String description, String start, String end, String type, String username,
+			String backgroundColor, String textColor, boolean allDay) {
 		super();
 		this.sId = sId;
-		this.sTitle = sTitle;
-		this.sContent = sContent;
-		this.sCreateDate = sCreateDate;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.sWriter = sWriter;
+		this.title = title;
+		this.description = description;
+		this.start = start;
+		this.end = end;
+		this.type = type;
+		this.username = username;
+		this.backgroundColor = backgroundColor;
+		this.textColor = textColor;
+		this.allDay = allDay;
 	}
 
 	public int getsId() {
@@ -34,59 +40,86 @@ public class Scheduler {
 		this.sId = sId;
 	}
 
-	public String getsTitle() {
-		return sTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setsTitle(String sTitle) {
-		this.sTitle = sTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getsContent() {
-		return sContent;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setsContent(String sContent) {
-		this.sContent = sContent;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getsCreateDate() {
-		return sCreateDate;
+	public String getStart() {
+		return start;
 	}
 
-	public void setsCreateDate(String sCreateDate) {
-		this.sCreateDate = sCreateDate;
+	public void setStart(String start) {
+		this.start = start;
 	}
 
-	public String getStartDate() {
-		return startDate;
+	public String getEnd() {
+		return end;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setEnd(String end) {
+		this.end = end;
 	}
 
-	public String getEndDate() {
-		return endDate;
+	public String getType() {
+		return type;
 	}
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getsWriter() {
-		return sWriter;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setsWriter(String sWriter) {
-		this.sWriter = sWriter;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getBackgroundColor() {
+		return backgroundColor;
+	}
+
+	public void setBackgroundColor(String backgroundColor) {
+		this.backgroundColor = backgroundColor;
+	}
+
+	public String getTextColor() {
+		return textColor;
+	}
+
+	public void setTextColor(String textColor) {
+		this.textColor = textColor;
+	}
+
+	public boolean isAllDay() {
+		return allDay;
+	}
+
+	public void setAllDay(boolean allDay) {
+		this.allDay = allDay;
 	}
 
 	@Override
 	public String toString() {
-		return "Scheduler [sId=" + sId + ", sTitle=" + sTitle + ", sContent=" + sContent + ", sCreateDate="
-				+ sCreateDate + ", startDate=" + startDate + ", endDate=" + endDate + ", sWriter=" + sWriter + "]";
+		return "Scheduler [sId=" + sId + ", title=" + title + ", description=" + description + ", start=" + start
+				+ ", end=" + end + ", type=" + type + ", username=" + username + ", backgroundColor=" + backgroundColor
+				+ ", textColor=" + textColor + ", allDay=" + allDay + "]";
 	}
+
+	
 
 	
 	

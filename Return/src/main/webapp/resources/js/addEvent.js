@@ -7,7 +7,8 @@ var editStart = $('#edit-start');
 var editEnd = $('#edit-end');
 var editType = $('#edit-type');
 var editColor = $('#edit-color');
-var editDesc = $('#edit-desc');
+var editDesc = $('#edit-desc'); 
+var editId = $('#edit-id');
 
 var addBtnContainer = $('.modalBtnContainer-addEvent');
 var modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
@@ -26,6 +27,8 @@ var newEvent = function (start, end, eventType) {
     editStart.val(start);
     editEnd.val(end);
     editDesc.val('');
+
+
     
     addBtnContainer.show();
     modifyBtnContainer.hide();
@@ -38,14 +41,16 @@ var newEvent = function (start, end, eventType) {
     $('#save-event').on('click', function () {
 
         var eventData = {
-            sTitle: editTitle.val(),
-            startDate: editStart.val(),
-            endDate: editEnd.val(),
-            sContent: editDesc.val(),
+        	sId : editId.val(),
+            title: editTitle.val(),
+            start: editStart.val(),
+            end: editEnd.val(),
+            description: editDesc.val(),
             type: editType.val(),
+            username: 'admin',
             backgroundColor: editColor.val(),
             textColor: '#ffffff',
-            allDay: false
+            allDay: editAllDay.val()
         };
 
         if (eventData.start > eventData.end) {
@@ -68,6 +73,15 @@ var newEvent = function (start, end, eventType) {
             realEndDay = moment(eventData.end).format('YYYY-MM-DD');
 
             eventData.allDay = true;
+        }else{
+         eventData.start = moment(eventData.start).format('YYYY-MM-DD');
+            //render시 날짜표기수정
+            eventData.end = moment(eventData.end).add(1, 'days').format('YYYY-MM-DD');
+            //DB에 넣을때(선택)
+            realEndDay = moment(eventData.end).format('YYYY-MM-DD');
+
+            eventData.allDay = false;
+        
         }
 
         $("#calendar").fullCalendar('renderEvent', eventData, true);
@@ -80,7 +94,6 @@ var newEvent = function (start, end, eventType) {
             type: "post",
             url: "insertScheduler.do", //url등록
             data: eventData,
-                
             
             success: function (response) {
                 //DB연동시 중복이벤트 방지를 위한

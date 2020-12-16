@@ -76,7 +76,7 @@ var calendar = $('#calendar').fullCalendar({
     element.popover({
       title: $('<div />', {
         class: 'popoverTitleCalendar',
-        text: event.sTitle
+        text: event.title
       }).css({
         'background': event.backgroundColor,
         'color': event.textColor
@@ -86,7 +86,7 @@ var calendar = $('#calendar').fullCalendar({
         }).append('<p><strong>등록자:</strong> ' + event.username + '</p>')
         .append('<p><strong>구분:</strong> ' + event.type + '</p>')
         .append('<p><strong>시간:</strong> ' + getDisplayEventDate(event) + '</p>')
-        .append('<div class="popoverDescCalendar"><strong>설명:</strong> ' + event.sContent + '</div>'),
+        .append('<div class="popoverDescCalendar"><strong>설명:</strong> ' + event.description + '</div>'),
       delay: {
         show: "800",
         hide: "50"
@@ -110,13 +110,13 @@ var calendar = $('#calendar').fullCalendar({
       url: "schedulerList.do",
       data: {
         // 화면이 바뀌면 Date 객체인 start, end 가 들어옴
-        startDate : moment(start).format('YYYY-MM-DD'),
-        endDate   : moment(end).format('YYYY-MM-DD')
-        
+        startDate : moment(start).format('YYYY-MM-DD HH:mm:ss'),
+        endDate   : moment(end).format('YYYY-MM-DD HH:mm:ss')
       },
+      dataType : "json",
       success: function (response) {
         var fixedDate = response.map(function (array) {
-          if (array.start !== array.end) {
+          if (array.allDay && array.start !== array.end) {
             array.end = moment(array.end).add(1, 'days'); // 이틀 이상 AllDay 일정인 경우 달력에 표기시 하루를 더해야 정상출력
           }
           return array;
@@ -143,8 +143,8 @@ var calendar = $('#calendar').fullCalendar({
       type: "get",
       url: "",
       data: {
-        //id: event._id,
-        //....
+           //..
+        
       },
       success: function (response) {
         alert('수정: ' + newDates.startDate + ' ~ ' + newDates.endDate);
@@ -175,7 +175,7 @@ var calendar = $('#calendar').fullCalendar({
 
     //드롭한 일정 업데이트
     $.ajax({
-      type: "get",
+      type: "post",
       url: "",
       data: {
         //...

@@ -23,14 +23,15 @@ public class ScedulerStoreLogic implements SchedulerStore{
 
 	@Override
 	public int deleteScheduler(int sId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = sqlSession.delete("SchedulerMapper.deleteScheduler", sId);
+		return result;
 	}
 
 	@Override
-	public int updateScheduler(int sId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateScheduler(Scheduler scheduler) {
+		int result = sqlSession.update("SchedulerMapper.updateScheduler", scheduler);
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

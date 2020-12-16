@@ -243,6 +243,36 @@ to {
 		<!-- Header/Home -->
 		<header class="w3-container w3-padding-32 w3-center w3-black-hover"
 			id="home">
+         <form class="modal-content animate" action="#"
+            method="post">
+            <div class="imgcontainer">
+               <span
+                  onclick="document.getElementById('id01').style.display='none'"
+                  class="close" title="Close Modal">&times;</span> 
+            </div>
+            <div class="container">
+               <label for="uname"><br><b>Username</b><br></label> 
+               <input type="text"
+                  placeholder="Enter Username" name="memberId" required> 
+               <label for="psw"><br><b>Password</b><br></label> 
+               <input type="password"
+                  placeholder="Enter Password" name="memberPwd" required><p>
+               <button type="submit">Login</button>
+               <button type="#">Sign Up</button>
+            </div>
+         </form>
+      </div>
+      <a href="placeList.do"
+         class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+         class="fa fa-eye w3-xxlarge"></i>
+         <p>제휴업체</p>
+      </a> 
+      <a href="#"
+         class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+         class="fas fa-edit w3-xxlarge"></i>
+         <p>게시판</p>
+      </a> 
+   </nav>
 
 			<img src="/resources/image/logo.png"
 				style="width: 185px; margin-top: -50px;">
@@ -298,10 +328,88 @@ to {
 			<!-- Footer -->
 			<footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
 
-				<!-- End footer -->
-			</footer>
-		</div>
-		<!-- END PAGE CONTENT -->
-	</div>
+         <!-- 여기다가 스케줄러를 넣어볼까? -->
+         <img src="/w3images/man_smoke.jpg" alt="boy" class="w3-image"
+            width="992" height="1108">
+      </header>
+
+      <!-- About Section -->
+      <div class="w3-content w3-justify w3-text-grey w3-padding-64"
+         id="about">
+         <h2 class="w3-text-light-grey">My Name</h2>
+         <hr style="width: 200px" class="w3-opacity">
+         <p>Some text about me. Some text about me. I am lorem ipsum
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.</p>
+      </div>
+
+      <!-- Grid for pricing tables -->
+      <h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
+      <div class="w3-row-padding" style="margin: 0 -16px">
+         <div class="w3-half w3-margin-bottom">
+            <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+               <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+               <li class="w3-padding-16">Web Design</li>
+               <li class="w3-padding-16">Photography</li>
+               <li class="w3-padding-16">5GB Storage</li>
+               <li class="w3-padding-16">Mail Support</li>
+               <li class="w3-padding-16">
+                  <h2>$ 10</h2> <span class="w3-opacity">per month</span>
+               </li>
+               <li class="w3-light-grey w3-padding-24">
+                  <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign
+                     Up</button>
+               </li>
+            </ul>
+         </div>
+
+         <div class="w3-half">
+            <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+               <li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
+               <li class="w3-padding-16">Web Design</li>
+               <li class="w3-padding-16">Photography</li>
+               <li class="w3-padding-16">50GB Storage</li>
+               <li class="w3-padding-16">Endless Support</li>
+               <li class="w3-padding-16">
+                  <h2>$ 25</h2> <span class="w3-opacity">per month</span>
+               </li>
+               <li class="w3-light-grey w3-padding-24">
+                  <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign
+                     Up</button>
+               </li>
+            </ul>
+         </div>
+         <!-- End Grid/Pricing tables -->
+      </div>
+
+
+
+      <!-- Portfolio Section -->
+      <div class="w3-padding-64 w3-content" id="photos">
+         <h2 class="w3-text-light-grey">My Photos</h2>
+         <hr style="width: 200px" class="w3-opacity">
+
+
+         <!-- Footer -->
+         <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i> <i
+               class="fa fa-instagram w3-hover-opacity"></i> <i
+               class="fa fa-snapchat w3-hover-opacity"></i> <i
+               class="fa fa-pinterest-p w3-hover-opacity"></i> <i
+               class="fa fa-twitter w3-hover-opacity"></i> <i
+               class="fa fa-linkedin w3-hover-opacity"></i>
+            <!-- End footer -->
+         </footer>
+</div>
+         <!-- END PAGE CONTENT -->
+      </div>
 </body>
 </html>
