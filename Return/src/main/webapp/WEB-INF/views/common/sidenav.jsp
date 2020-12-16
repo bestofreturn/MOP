@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,48 +84,135 @@ span.psw {
 	float: right;
 	padding-top: 16px;
 }
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	/* 5% from the top, 15% from the bottom and centered */
+	border: 1px solid #888;
+	width: 40%; /* Could be more or less, depending on screen size */
+}
 
+/* The Close Button (x) */
+.close {
+	position: absolute;
+	right: 25px;
+	top: 0;
+	color: #000;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: red;
+	cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+}
+
+@
+-webkit-keyframes animatezoom {
+	from {-webkit-transform: scale(0)
+}
+
+to {
+	-webkit-transform: scale(1)
+}
+
+}
+@
+keyframes animatezoom {
+	from {transform: scale(0)
+}
+
+to {
+	transform: scale(1)
+}
+
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+	span.psw {
+		display: block;
+		float: none;
+	}
+	.cancelbtn {
+		width: 100%;
+	}
+}
 </style>
 </head>
 <body class="w3-black">
-
 	<!-- Icon Bar (Sidebar - hidden on small screens) -->
 	<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
 
-		<a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-			<i class="fa fa-home w3-xxlarge"></i>
-			<p>HOME</p>
-		</a> <a onclick="document.getElementById('id01').style.display='block'"
-			style="width: auto;"
+		<a href="#"
 			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
-			class="fa fa-user w3-xxlarge"></i>
-			<p>LOGOUT</p>
+			class="fa fa-home w3-xxlarge"></i>
+			<p>HOME</p>
 		</a>
+		<c:if test="${empty sessionScope.loginMember }">
+			<a onclick="document.getElementById('id01').style.display='block'"
+				style="width: auto;"
+				class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+				class="fa fa-user w3-xxlarge"></i>
+				<p>LOGIN</p>
+			</a>
+					<!--  로그인 form  -->
+		<div id="id01" class="modal">
+			<form class="modal-content animate" action="login1.do" method="post">
+				<div class="imgcontainer">
+					<span
+						onclick="document.getElementById('id01').style.display='none'"
+						class="close" title="Close Modal">&times;</span>
+				</div>
+				<div class="container">
+					<label for="uname"><br> <b>Username</b><br></label> <input
+						type="text" placeholder="Enter memberId" name="memberId">
+					<label for="psw"><br> <b>Password</b><br></label> <input
+						type="password" placeholder="Enter Password" name="memberPwd">
+					<p>
+						<button type="submit" id="login-btn" class="btn btn-login">Login</button>
+						<button type="button" onclick="location.href='enrollView.do';">Sign
+							Up</button>
+				</div>
+			</form>
+		</div>
+		</c:if>
+		<c:if test="${!empty sessionScope.loginMember }">
+			<a onclick="location.href='logout.do'" style="width: auto;"
+				class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+				class="fa fa-user w3-xxlarge"></i>
+				<p>LOGOUT</p>
+			</a>
+		</c:if>
 		<a href="placeList.do"
 			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
 			class="fa fa-eye w3-xxlarge"></i>
 			<p>제휴업체</p>
-		</a> 
-		<a href="#"
+		</a> <a href="freeBoardList.do"
 			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
 			class="fas fa-edit w3-xxlarge"></i>
 			<p>게시판</p>
-		</a> 
+		</a>
 	</nav>
-	
+
 	<!-- Navbar on small screens (Hidden on medium and large screens) -->
 	<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
 		<div
 			class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-			<a href="home.do" class="w3-bar-item w3-button"
-				style="width: 25% !important">HOME</a> <a href="#"
+			<a href="#" class="w3-bar-item w3-button"
+				style="width: 25% !important">HOME</a> <a href="#about"
 				class="w3-bar-item w3-button" style="width: 25% !important">LOGIN</a>
-			<a href="placeList.do" class="w3-bar-item w3-button"
-				style="width: 25% !important">제휴업체</a> <a href="#"
-				class="w3-bar-item w3-button" style="width: 25% !important">게시판</a>
+			<a href="#photos" class="w3-bar-item w3-button"
+				style="width: 25% !important">PHOTOS</a> <a href="#contact"
+				class="w3-bar-item w3-button" style="width: 25% !important">CONTACT</a>
 		</div>
 	</div>
 </body>
-
-
 </html>

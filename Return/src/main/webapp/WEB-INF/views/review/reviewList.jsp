@@ -107,8 +107,8 @@ button{
 												<img id="image5" onmouseover="show(5)" onclick="mark(5)"
 												onmouseout="noshow(5)" src="resources/images/starOff.png">
 											</span> <br /> <span id="startext">평가하기</span>
-										</div> <input type="hidden" name="vStar" /> <input type="hidden"
-										name="vNo" value="1" />
+										</div> <input type="hidden" name="vStar" /> 
+										<input type="hidden" name="vNo" value="${vNo }" />
 									</td>
 								</tr>
 							</table>

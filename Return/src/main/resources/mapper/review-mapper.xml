@@ -17,7 +17,7 @@
 	
 	<select id="selectList" resultMap="reviewResultMap">
 		SELECT * FROM REVIEW
-		WHERE V_STATUS = 'Y'
+		WHERE V_STATUS = 'Y' AND VNO=#{vNo}
 		ORDER BY VID DESC
 	</select>
 	

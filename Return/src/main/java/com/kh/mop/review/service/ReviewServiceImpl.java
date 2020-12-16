@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.mop.review.domain.PageInfo;
 import com.kh.mop.review.domain.Review;
@@ -17,14 +18,15 @@ public class ReviewServiceImpl implements ReviewService{
 	public ReviewStore vStore;
 
 	@Override
+	@Transactional
 	public int getListCount() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public ArrayList<Review> selectList(PageInfo pi) {
-		return vStore.selectList(pi);
+	public ArrayList<Review> selectList(PageInfo pi, int vNo) {
+		return vStore.selectList(pi, vNo);
 	}
 	
 	@Override
@@ -33,11 +35,15 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
+	@Transactional
+
 	public int insertReview(Review review) {
 		return vStore.insertReview(review);
 	}
 
 	@Override
+	@Transactional
+
 	public int updateReview(Review review) {
 		return vStore.updateReview(review);
 	}
@@ -48,6 +54,8 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
+	@Transactional
+
 	public int insertRvReply(RvReply rvReply) {
 		return vStore.insertRvReply(rvReply);
 	}

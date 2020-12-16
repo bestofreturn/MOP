@@ -27,15 +27,16 @@ public class SchedulerController {
 
 	@Autowired
 	private SchedulerService sService;
-
-	@RequestMapping(value="home.do", method = RequestMethod.GET)
-	public String Scheduler(Model model, HttpServletRequest request) {
-		
-		
-		model.addAttribute("Scheduler");
-
-		return "Scheduler/Scheduler";
-	}
+	
+	/*
+	 * @RequestMapping(value="home.do", method = RequestMethod.GET) public String
+	 * Scheduler(Model model, HttpServletRequest request) {
+	 * 
+	 * 
+	 * model.addAttribute("Scheduler");
+	 * 
+	 * return "Scheduler/Scheduler"; }
+	 */
 
 	@ResponseBody
 	@RequestMapping(value="insertScheduler.do", method=RequestMethod.POST)

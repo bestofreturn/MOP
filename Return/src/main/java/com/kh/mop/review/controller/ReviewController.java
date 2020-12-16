@@ -76,7 +76,7 @@ public class ReviewController {
 		String path = null;
 		result = vService.insertReview(review);
 		if(result > 0) {
-			path = "redirect:reviewList.do";
+			path = "redirect:reviewList.do?vNo=" + review.getvNo();
 		}else {
 			model.addAttribute("msg", "리뷰게시글 등록 실패");
 			path = "common/errorPage";
@@ -102,14 +102,16 @@ public class ReviewController {
 	
 	// 리뷰게시판 리스트
 	@RequestMapping(value="reviewList.do", method = RequestMethod.GET)
-	public ModelAndView reviewList(ModelAndView mv, @RequestParam(value="page", required = false) Integer page) {
+	public ModelAndView reviewList(ModelAndView mv, @RequestParam(value="page", required = false) Integer page, String vNo) {
 		int currentPage = (page != null) ? page : 1; 
 		int listCount = vService.getListCount(); 
 		PageInfo pi = Review_Pagination.getReviewPageInfo(currentPage, listCount);
-		ArrayList<Review> vList = vService.selectList(pi);
+		int reviewNo = Integer.parseInt(vNo);
+		ArrayList<Review> vList = vService.selectList(pi, reviewNo);
 		if(!vList.isEmpty()) {
 			mv.addObject("vList", vList);
-			mv.addObject("pi", pi); 
+			mv.addObject("pi", pi);
+			mv.addObject("vNo", vNo);
 			mv.setViewName("review/reviewList");
 		}else {
 			mv.addObject("msg", "리뷰게시판 리스트 에러다 돌아가라");

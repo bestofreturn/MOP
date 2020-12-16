@@ -50,12 +50,12 @@ public class MemberController {
 			return "common/errorPage";
 		}
 	}
-	
+
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public String loginView() {
 		return "member/login";
 	}
-	
+
 
 	@RequestMapping(value="login1.do" , method=RequestMethod.POST)
 	public ModelAndView loginMember(String memberId,String memberPwd,ModelAndView mv,HttpServletRequest request ) {
@@ -82,36 +82,36 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:home.do";
 	}
-		// 마이페이지 뷰
-		@RequestMapping(value="myInfo.do" , method=RequestMethod.GET)
-		public String myInfoView() {
-			return "member/myPage";
+	// 마이페이지 뷰
+	@RequestMapping(value="myInfo.do" , method=RequestMethod.GET)
+	public String myInfoView() {
+		return "member/myPage";
+	}
+	// 회원 정보 수정
+	@RequestMapping(value="memberModify.do" , method=RequestMethod.POST)
+	public String modifyMember(@ModelAttribute Member member,@RequestParam("zipCode") String zipCode,@RequestParam("addr") String addr,Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		member.setAddr(zipCode+","+addr);
+		int result = service.modifyMember(member);
+		if(result > 0) {
+			session.setAttribute("loginMember",member);
+			return "redirect:home.do";
+		}else {
+			model.addAttribute("msg", "정보수정 실패");
+			return "common/errorPage";
 		}
-		// 회원 정보 수정
-		@RequestMapping(value="memberModify.do" , method=RequestMethod.POST)
-		public String modifyMember(@ModelAttribute Member member,@RequestParam("zipCode") String zipCode,@RequestParam("addr") String addr,Model model,HttpServletRequest request) {
-			HttpSession session = request.getSession();
-			member.setAddr(zipCode+","+addr);
-			int result = service.modifyMember(member);
-			if(result > 0) {
-				session.setAttribute("loginMember",member);
-				return "redirect:home.do";
-			}else {
-				model.addAttribute("msg", "정보수정 실패");
-				return "common/errorPage";
-			}
+	}
+	//회원 탈퇴
+	@RequestMapping(value="memberDelete.do",method=RequestMethod.GET)
+	public String deleteMember(String memberId,HttpServletRequest request,Model model) {
+		HttpSession session = request.getSession();
+		int result = service.deleteMember(memberId);
+		if(result > 0) {
+			session.invalidate();
+			return "redirect:home.do";
+		}else {
+			model.addAttribute("msg", "회원탈퇴실패");
+			return "common/errorPage";
 		}
-		//회원 탈퇴
-		@RequestMapping(value="memberDelete.do",method=RequestMethod.GET)
-		public String deleteMember(String memberId,HttpServletRequest request,Model model) {
-			HttpSession session = request.getSession();
-			int result = service.deleteMember(memberId);
-			if(result > 0) {
-				session.invalidate();
-				return "redirect:home.do";
-			}else {
-				model.addAttribute("msg", "회원탈퇴실패");
-				return "common/errorPage";
-			}
-		}
+	}
 }

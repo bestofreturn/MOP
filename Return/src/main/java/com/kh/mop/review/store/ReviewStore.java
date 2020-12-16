@@ -10,7 +10,7 @@ public interface ReviewStore {
 
 	public int getListCount();
 	
-	public ArrayList<Review> selectList(PageInfo pi);
+	public ArrayList<Review> selectList(PageInfo pi, int vNo);
 	
 	public Review selectReview(int vId);
 	

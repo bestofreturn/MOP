@@ -1,18 +1,23 @@
 package com.kh.mop.place.service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.mop.place.domain.Place;
 import com.kh.mop.place.store.PlaceStore;
+import com.kh.mop.review.domain.PageInfo;
+import com.kh.mop.review.domain.Review;
+import com.kh.mop.review.store.ReviewStore;
 
 @Service
 public class PlaceServiceImpl implements PlaceService {
 
 	@Autowired 
 	private PlaceStore pStore;
+	private ReviewStore rStore;
 	
 	@Override
 	public ArrayList<Place> selectList() {
@@ -22,8 +27,18 @@ public class PlaceServiceImpl implements PlaceService {
 
 	@Override
 	public Place selectOne(int pId) {
-		// TODO Auto-generated method stub
-		return null;
+		return pStore.selectOne(pId);
 	}
+
+	@Override
+	public ArrayList<Place> categoryList(Map m) {
+		return pStore.categoryList(m);
+	}
+
+	@Override
+	public ArrayList<Review> reviewList(PageInfo pi, int vNo) {
+		return rStore.selectList(pi, vNo);
+	}
+
 
 }

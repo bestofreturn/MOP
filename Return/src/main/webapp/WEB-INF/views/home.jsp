@@ -2,7 +2,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Spring Project</title>
+	<title>Re:turn</title>
 </head>
 <body>
 	<jsp:include page="common/main.jsp"></jsp:include>

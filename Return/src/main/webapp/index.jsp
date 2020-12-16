@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Spring Project</title>
+<title>Re:turn</title>
 </head>
 <style>
 	*{
@@ -65,9 +65,10 @@
 	}
 	
 	#visual-btn:hover {
-		color: #ff6868;
+		color: black;
+		background-color : white; 
 		font-size: 20px;
-		border: 2px solid #ff6868;
+		border: 2px solid white;
 		padding: 12px 24px;
 		border-radius: 5px;
 		cursor: pointer;
@@ -84,17 +85,11 @@
 		left: 47%;
 		margin: -50px 0 0 -50px;
 	}
-	
-	
 </style>
 <body>
-	<h1 style="text-align:center; color:#fff">
-		<img src="resources/images/sitelogo.png" style="height:50%; width:50%;">
-	</h1>
-	
 	<div id="indexBtn" class="center">
 		<!-- url 요청을 *.kh로 받도록 web.xml에서 설정을 해주어야 함. -->
-		<button id="visual-btn" onclick="location.href='home.do';">Visit Our Site!</button>
+		<button id="visual-btn" onclick="location.href='home.do';">MoP</button>
 	</div>
 	
 	<div class="video-background">
@@ -109,23 +104,20 @@
 	<script async src="https://www.youtube.com/iframe_api"></script>
 	<script type="text/javascript">
 		var player;
-		
 		function onYouTubePlayerAPIReady(){
 			player = new YT.Player('muteYouTubeVideoPlayer', {
-				videoId : 'd0Neb1_y_bg',
+				videoId : 'g7c0W-8rNmw',
 				playerVars : {
 					autoplay : 1, 		// Auto-play the video on load
 					controls : 0, 		// Show pause/play buttons in player
 					rel : 0,
 					start : 30,
-					end : 60,
-					showinfo : 0,
+					end : 80,
 					showinfo : 0, 		// Hide the video title
 					modestbranding : 1, // Hide the Youtube Logo
 					loop : 1, 			// Run the video in a loop
-					playlist : 'SX6rrsPTep4',
-					fs : 0, 			// Hide the full screen button
-					cc_load_policy : 0, // Hide closed captions
+					fs : 1, 			// Hide the full screen button
+					cc_load_policy : 1, // Hide closed captions
 					iv_load_policy : 3, // Hide the Video Annotations
 					autohide : 1		// Hide video controls when playing
 				},

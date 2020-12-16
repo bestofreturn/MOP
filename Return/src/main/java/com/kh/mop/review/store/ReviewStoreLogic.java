@@ -24,10 +24,10 @@ public class ReviewStoreLogic implements ReviewStore{
 	}
 
 	@Override
-	public ArrayList<Review> selectList(PageInfo pi) {
+	public ArrayList<Review> selectList(PageInfo pi, int vNo) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getReviewLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getReviewLimit());
-		return (ArrayList)sqlSession.selectList("reviewMapper.selectList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("reviewMapper.selectList", vNo, rowBounds);
 	}
 	
 	@Override

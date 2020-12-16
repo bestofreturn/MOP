@@ -16,14 +16,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "home.do", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		// HomeController는 메인페이지로 돌아가는 기능을 함
-		return "home";
-	}
+
+
 	
+	  @RequestMapping(value = "/home.do", method = RequestMethod.GET) public String
+	  home(Locale locale, Model model) { // HomeController는 메인페이지로 돌아가는 기능을 함
+	  return "home"; }
+	 
+
+	/*
+	 * @RequestMapping(value = "home.do", method = RequestMethod.GET) public String
+	 * home(Locale locale, Model model) { // HomeController는 메인페이지로돌아가는 기능을 함 
+	 * return "scheduler/SchedulerView"; }
+	 */
+	 
 }
