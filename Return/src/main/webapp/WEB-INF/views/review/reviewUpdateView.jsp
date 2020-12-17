@@ -50,6 +50,7 @@
 				<c:if test="${loginMember.reservation == 'Y' }">
                 <form action="reviewUpdate.do" method="post" name="reviewform" enctype="multipart/form-data">
                 	<input type="hidden" name="vId" value="${review.vId }">
+                	<input type="hidden" name="page" value="${currentPage }">
 					<input type="hidden" name="filePath" value="${review.filePath }">
                    <table>
 					<tr>
@@ -69,7 +70,7 @@
 							src="resources/images/starOff.png">
 						</span> <br /> <span id="startext">평가하기</span>
 					</div> <input type="hidden" name="vStar" value="${review.vStar }"/>
-					<input type="hidden" name="vNo" value="1"/>
+					<%-- <input type="hidden" name="vNo" value="${vNo }"/> --%>
 				</td>
 				</tr>
 				</table>
