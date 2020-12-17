@@ -37,7 +37,7 @@ div.empty {
 
 .w3-col.m2 {
 	position: relative;
-	left: 450px;
+	left: 400px;
 }
 
 div.left {
@@ -50,7 +50,7 @@ div.right {
 	height: 100%;
 	position : absolute;
 	z-index : 1;
-	left : 900px;
+	left : 700px;
 
 }
 </style>

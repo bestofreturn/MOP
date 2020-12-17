@@ -56,8 +56,6 @@ public class PlaceController {
 		ModelAndView categoryMv = new ModelAndView("place/placeList");
 		categoryMv.addObject("pCode", pCode);
 		categoryMv.addObject("categoryList", categoryList);
-		
-		System.out.println(categoryList);
 		return categoryMv;
 	}
 	
@@ -67,6 +65,7 @@ public class PlaceController {
 		Place place = pService.selectOne(pId);
 		if(place != null) {
 			mv.addObject("place", place);
+			mv.addObject("pId", pId);
 			mv.setViewName("place/placeDetail");
 		}
 		return mv;

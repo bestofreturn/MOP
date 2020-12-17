@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -106,7 +107,7 @@ public class ReviewController {
 		int currentPage = (page != null) ? page : 1; 
 		int listCount = vService.getListCount(); 
 		PageInfo pi = Review_Pagination.getReviewPageInfo(currentPage, listCount);
-		int reviewNo = Integer.parseInt(vNo);
+		int reviewNo = Integer.parseInt(vNo); 
 		ArrayList<Review> vList = vService.selectList(pi, reviewNo);
 		if(!vList.isEmpty()) {
 			mv.addObject("vList", vList);
@@ -128,6 +129,7 @@ public class ReviewController {
 	}
 	
 	// 리뷰게시판 수정
+	@Transactional
 	@RequestMapping(value="reviewUpdate.do", method = RequestMethod.POST)
 	public String reviewUpdate(Review review, Model model, HttpServletRequest request, MultipartFile reloadFile) {
 		if(reloadFile != null && !reloadFile.isEmpty()) {

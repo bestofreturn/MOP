@@ -69,7 +69,7 @@
 							src="resources/images/starOff.png">
 						</span> <br /> <span id="startext">평가하기</span>
 					</div> <input type="hidden" name="vStar" value="${review.vStar }"/>
-					<input type="hidden" name="vNo" value="1"/>
+					<input type="hidden" name="vNo" value="${vNo }"/>
 				</td>
 				</tr>
 				</table>
@@ -104,7 +104,7 @@
                         </div>
                         <div class="btn-toolbar justify-content-between">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-primary">수정</button>
+                                <button type="submit" class="btn btn-primary" >수정</button>
                             </div>
                         </div>
                     </div>
