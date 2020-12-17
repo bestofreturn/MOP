@@ -15,9 +15,6 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet"
 	href="https://www.w3schools.com/w3css/4/w3.css?after">
-<!--  지도 api -->
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e2ff479e69641e529685675a0c08ffd4"></script>
 <title>MoP - 제휴 업체 리스트</title>
 <style>
 body {
@@ -53,7 +50,7 @@ div.right {
 	height: 100%;
 	position : absolute;
 	z-index : 1;
-	left : 800px;
+	left : 900px;
 
 }
 </style>
@@ -83,14 +80,16 @@ div.right {
 		<div id="map" style="width :100%; height : 1000px;"></div>
 	</div>
 	<c:forEach var="place" items="${pList }">
-		<div class="w3-content" style="max-width: 85%;">
+		<div class="w3-content" style="max-width: 86%;">
 			<div class="w3-row-padding w3-padding-13">
-				<div class="w3-third w3-margin-bottom">
+				<div class="w3-third w3-margin-bottom" style="width:38%;">
 					<img src="/resources/image${place.pImg }" alt="Image"
 						style="width: 100%;">
 					<div class="w3-container w3-white">
-						<h3>${place.pName }</h3>
-						<h6 class="w3-opacity">${place.price }원</h6>
+						<h2>${place.pName }</h2>
+						<h6 class="w3-opacity">가격 : ${place.price }원</h6>
+						<h6 class="w3-opacity">최대 인원 수 : ${place.pMax }명</h6>
+						<h6 class="w3-opacity">상세 정보 :${place.pDetail }</h6>
 						<p class="w3-large">
 							<i class="fa fa-car"></i> <i class="fa fa-phone"></i> <i
 								class="fa fa-wifi"></i>
@@ -103,20 +102,22 @@ div.right {
 	</c:forEach>
 
 	<c:forEach var="place" items="${categoryList }">
-		<div class="w3-content" style="max-width: 85%;">
+		<div class="w3-content" style="max-width: 86%;">
 			<div class="w3-row-padding w3-padding-13">
-				<div class="w3-third w3-margin-bottom">
+				<div class="w3-third w3-margin-bottom" style="width:38%;">
 					<img src="/resources/image${place.pImg }" alt="Image"
 						style="width: 100%;">
 					<div class="w3-container w3-white">
-						<h3>${place.pName }</h3>
-						<h6 class="w3-opacity">${place.price }원</h6>
+						<h2>${place.pName }</h2>
+						<h6 class="w3-opacity">가격 : ${place.price }원</h6>
+						<h6 class="w3-opacity">최대 인원 수 : ${place.pMax }명</h6>
+						<h6 class="w3-opacity">상세 정보 :${place.pDetail }</h6>
 						<p class="w3-large">
 							<i class="fa fa-car"></i> <i class="fa fa-phone"></i> <i
 								class="fa fa-wifi"></i>
 						</p>
 						<button class="w3-button w3-block w3-black w3-margin-bottom"
-							style="text-align: center">상세보기</button>
+							onclick="location.href='placeDetail.do?pId=${place.pId}';">상세보기</button>
 					</div>
 				</div>
 			</div>
@@ -147,141 +148,80 @@ div.right {
 				});
 			});
 		});
-
 		
-		// 지도 
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = { //지도를 생성할 때 필요한 기본 옵션
-			center : new kakao.maps.LatLng(37.57322751275347, 126.9823491544678), //지도의 중심좌표.
-			level : 8
-		//지도의 레벨(확대, 축소 정도)
-		};
-		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-		
-		var positions = [
-		    {
-		        title: 'KH 정보교육원', 
-		        latlng: new kakao.maps.LatLng(37.57322751275347, 126.9823491544678)
-		    },
-		    {
-		        title: '스터디 카페 북킹', 
-		        latlng: new kakao.maps.LatLng(37.6486518,127.0598204)
-		    },
-		    {
-		        title: '더 스터디 카페 (회기)', 
-		        latlng: new kakao.maps.LatLng(37.4983333,127.0000335)
-		    },
-		    {
-		        title: '작심 스터디 카페',
-		        latlng: new kakao.maps.LatLng(37.4971688,127.0344931)
-		    },
-		    {
-		        title: '디플레이스 스터디 카페 일산',
-		        latlng: new kakao.maps.LatLng(37.4999791,126.9909113)
-		    },
-		    {
-		        title: '포텐 스터디카페',
-		        latlng: new kakao.maps.LatLng(37.6686013,126.7647988)
-		    },
-		    {
-		        title: '스터디 카페 ON24 잠실점',
-		        latlng: new kakao.maps.LatLng(37.576401, 127.001090)
-		    },
-		    {
-		        title: '르하임 스터디 카페',
-		        latlng: new kakao.maps.LatLng(37.5711842,127.0195243)
-		    },
-		    {
-		        title: '비에이블 스터디 카페 문래센터',
-		        latlng: new kakao.maps.LatLng(37.4873419,127.0173855)
-		    },
-		    {
-		        title: '랭스터디카페 대학로점',
-		        latlng: new kakao.maps.LatLng(37.5343925,126.9956614)
-		    },
-		    {
-		        title: 'Monday Blues',
-		        latlng: new kakao.maps.LatLng(37.5671447,126.9785753)
-		    },
-		    {
-		        title: '압구정 미연',
-		        latlng: new kakao.maps.LatLng(37.5014438,126.9950806)
-		    },
-		    {
-		        title: '만요 임피리얼 팰리스 호텔',
-		        latlng: new kakao.maps.LatLng(37.5014438,126.9950806)
-		    },
-		    {
-		        title: '아트리움(Atrium)',
-		        latlng: new kakao.maps.LatLng(37.4958262,126.9866563)
-		    },
-		    {
-		        title: '엘올리브',
-		        latlng: new kakao.maps.LatLng(37.5282375,127.0529482)
-		    },
-		    {
-		        title: '피터팬스테이크',
-		        latlng: new kakao.maps.LatLng(37.5558303,127.0040056)
-		    },
-		    {
-		        title: '세종클럽',
-		        latlng: new kakao.maps.LatLng(37.5557742,127.1092363)
-		    },
-		    {
-		        title: '임페리얼 트레져',
-		        latlng: new kakao.maps.LatLng(37.5507732,127.1052563)
-		    },
-		    {
-		        title: '밀레폴리에',
-		        latlng: new kakao.maps.LatLng(37.5571565,127.0363003)
-		    },
-		    {
-		        title: '더파크뷰',
-		        latlng: new kakao.maps.LatLng(37.5454952,127.0548793)
-		    },
-		    {
-		        title: '시그니엘 서울',
-		        latlng: new kakao.maps.LatLng(37.5408164,127.0733652)
-		    },
-		    
-		    
-		];
-
-		// 마커 이미지의 이미지 주소입니다
-		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-		    
-		for (var i = 0; i < positions.length; i ++) {
-		    
-		    // 마커 이미지의 이미지 크기 입니다
-		    var imageSize = new kakao.maps.Size(24, 35); 
-		    
-		    // 마커 이미지를 생성합니다    
-		    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-		    
-		    // 마커를 생성합니다
-		    var marker = new kakao.maps.Marker({
-		        map: map, // 마커를 표시할 지도
-		        position: positions[i].latlng, // 마커를 표시할 위치
-		        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-		        image : markerImage // 마커 이미지 
-		    });
-		}
-		// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-		var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-		// 인포윈도우를 생성합니다
-		var infowindow = new kakao.maps.InfoWindow({
-		    content : iwContent,
-		    removable : iwRemoveable
-		});
-
-		// 마커에 클릭이벤트를 등록합니다
-		kakao.maps.event.addListener(marker, 'click', function() {
-		      // 마커 위에 인포윈도우를 표시합니다
-		      infowindow.open(map, marker);  
-		});
-		
+        function initMap() {
+            //지도 스타일
+            var map = new google.maps.Map(document.getElementById('map'), {  
+                //처음 중심 좌표
+                center: {
+                    lat: 37.587624,
+                    lng: 126.976020
+                },
+                //처음 줌 값. 숫자가 작을수록 낮은 배율
+                zoom: 13
+            });
+ 
+            //마커 정보
+            var locations = [
+                //경복궁 마커
+                ['<div class="wrap"><div class="text-box"><h4>경복궁</h4><div class="img-box"><img src="https://image.shutterstock.com/image-vector/palace-icon-outline-vector-web-260nw-1046855677.jpg"></div><a target="_blank" href="https://www.royalpalace.go.kr/"><p>홈페이지 방문하기</p></a></div>', 37.577624, 126.976020],          
+                
+                //딸기케이크 마커
+                ['<div class="wrap"><div class="text-box"><h4>딸기케이크</h4><div class="img-box"><img src="https://media.istockphoto.com/vectors/piece-of-cake-with-strawberries-icon-element-of-bakery-icon-premium-vector-id931551700"></div><a target="_blank" href="https://noa-xyz.tistory.com"><p>홈페이지 방문하기</p></a></div>', 37.559524, 126.976710],
+                
+                
+                //창덕궁 마커
+                ['<a target="_blank" href="https://cdg.go.kr/">창덕궁 홈페이지</a>', 37.579711, 126.991043]
+                
+                
+                ]
+ 
+            //마커 이미지
+            var customicon = 'http://drive.google.com/uc?export=view&id=1tZgPtboj4mwBYT6cZlcY36kYaQDR2bRM'
+ 
+            //인포윈도우
+            var infowindow = new google.maps.InfoWindow();
+ 
+            //마커 생성
+            var marker, i;
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    
+                    //마커의 위치
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    
+                    //마커 아이콘
+                    icon: customicon,
+                    
+                    //마커를 표시할 지도
+                    map: map
+                });
+ 
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        
+                        //html로 표시될 인포 윈도우의 내용
+                        infowindow.setContent(locations[i][0]);
+                        
+                        //인포윈도우가 표시될 위치
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+                
+                if (marker) {
+                    marker.addListener('click', function() {
+                        
+                        //중심 위치를 클릭된 마커의 위치로 변경
+                        map.setCenter(this.getPosition());
+ 
+                        //마커 클릭 시의 줌 변화
+                        map.setZoom(14);
+                    });
+                }
+            }
+        }
 	</script>
+    <!-- key= 뒤에 API 키 입력 -->
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyAWyXsL_ueqnHIPOyOWeywqEbPStXQSMHw&callback=initMap" type="text/javascript" async defer></script>
 </body>
 </html>

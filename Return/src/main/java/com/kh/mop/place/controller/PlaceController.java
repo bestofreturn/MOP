@@ -61,19 +61,23 @@ public class PlaceController {
 		return categoryMv;
 	}
 	
-	// 게시판 상세보기 페이지로 넘어가는 메소드 
 	@RequestMapping(value="placeDetail.do")
-	public String placeDetailView(int pId, Model model) {
-		model.addAttribute("pId", pId);
-		return "place/placeDetail";
+	public ModelAndView placeDetail(ModelAndView mv, int pId) {
+		
+		Place place = pService.selectOne(pId);
+		if(place != null) {
+			mv.addObject("place", place);
+			mv.setViewName("place/placeDetail");
+		}
+		return mv;
 	}
-	
-	/*
-	 * @RequestMapping(value="reviewList.do") public ModelAndView reviewListView
-	 * (int vNo, ModelAndView mv, PageInfo pi) { ArrayList<Review> rList =
-	 * rService.selectList(pi, vNo); if(!rList.isEmpty()) { mv.addObject("rList",
-	 * rList); mv.setViewName("review/reviewList"); } else { mv.addObject("msg",
-	 * "리뷰 조회 실패"); mv.setViewName("common/errorPage"); } return mv; }
-	 */
-	
+	@RequestMapping(value="reserve.do")
+	public ModelAndView reserView(ModelAndView mv) {
+		/*
+		 * int placeNoReserve = Integer.parseInt(pId); 
+		 * mv.addObject("placeNoReserve",placeNoReserve);
+		 */
+		mv.setViewName("reservation/reservationForm");
+		return mv;
+	}
 }

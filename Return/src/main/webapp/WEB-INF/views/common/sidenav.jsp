@@ -18,7 +18,14 @@
 body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Montserrat", sans-serif
 }
-
+body {
+  background-color: white;
+  color: black;
+}
+.dark-mode {
+  background-color: black !important;
+  color: white !important;
+}
 .w3-row-padding img {
 	margin-bottom: 12px
 }
@@ -37,7 +44,6 @@ body, h1, h2, h3, h4, h5, h6 {
 		margin-left: 0
 	}
 }
-
 /* 로그인 창 
  Full-width input fields */
 input[type=text], input[type=password] {
@@ -48,7 +54,6 @@ input[type=text], input[type=password] {
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 }
-
 /* Set a style for all buttons */
 button {
 	background-color: black;
@@ -59,30 +64,38 @@ button {
 	cursor: pointer;
 	width: 50%;
 }
-
 button:hover {
 	opacity: 0.8;
 }
-
 /* Center the image and position the close button */
 .imgcontainer {
 	text-align: center;
 	margin: 24px 0 12px 0;
 	position: relative;
 }
-
 img.avatar {
 	width: 40%;
 	border-radius: 50%;
 }
-
 .container {
 	padding: 16px;
 }
-
 span.psw {
 	float: right;
 	padding-top: 16px;
+}
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	padding-top: 60px;
 }
 /* Modal Content/Box */
 .modal-content {
@@ -92,7 +105,6 @@ span.psw {
 	border: 1px solid #888;
 	width: 40%; /* Could be more or less, depending on screen size */
 }
-
 /* The Close Button (x) */
 .close {
 	position: absolute;
@@ -102,39 +114,31 @@ span.psw {
 	font-size: 35px;
 	font-weight: bold;
 }
-
 .close:hover, .close:focus {
 	color: red;
 	cursor: pointer;
 }
-
 /* Add Zoom Animation */
 .animate {
 	-webkit-animation: animatezoom 0.6s;
 	animation: animatezoom 0.6s
 }
-
 @
 -webkit-keyframes animatezoom {
 	from {-webkit-transform: scale(0)
 }
-
 to {
 	-webkit-transform: scale(1)
 }
-
 }
 @
 keyframes animatezoom {
 	from {transform: scale(0)
 }
-
 to {
 	transform: scale(1)
 }
-
 }
-
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
 	span.psw {
@@ -149,11 +153,10 @@ to {
 </head>
 <body class="w3-black">
 	<!-- Icon Bar (Sidebar - hidden on small screens) -->
-	<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+	<div class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
 
-		<a href="#"
-			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
-			class="fa fa-home w3-xxlarge"></i>
+		<a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+			<i class="fa fa-home w3-xxlarge"></i>
 			<p>HOME</p>
 		</a>
 		<c:if test="${empty sessionScope.loginMember }">
@@ -163,7 +166,15 @@ to {
 				class="fa fa-user w3-xxlarge"></i>
 				<p>LOGIN</p>
 			</a>
-					<!--  로그인 form  -->
+		</c:if>
+		<c:if test="${!empty sessionScope.loginMember }">
+			<a onclick="location.href='logout.do'" style="width: auto;"
+				class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+				class="fa fa-user w3-xxlarge"></i>
+				<p>LOGOUT</p>
+			</a>
+		</c:if>
+		<!--  로그인 form  -->
 		<div id="id01" class="modal">
 			<form class="modal-content animate" action="login1.do" method="post">
 				<div class="imgcontainer">
@@ -183,14 +194,6 @@ to {
 				</div>
 			</form>
 		</div>
-		</c:if>
-		<c:if test="${!empty sessionScope.loginMember }">
-			<a onclick="location.href='logout.do'" style="width: auto;"
-				class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
-				class="fa fa-user w3-xxlarge"></i>
-				<p>LOGOUT</p>
-			</a>
-		</c:if>
 		<a href="placeList.do"
 			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
 			class="fa fa-eye w3-xxlarge"></i>
@@ -200,7 +203,7 @@ to {
 			class="fas fa-edit w3-xxlarge"></i>
 			<p>게시판</p>
 		</a>
-	</nav>
+	</div>
 
 	<!-- Navbar on small screens (Hidden on medium and large screens) -->
 	<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">

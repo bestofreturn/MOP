@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="resources/css/main2.css">
 
 </head>
-
 <body>
     <div class="container">
 
