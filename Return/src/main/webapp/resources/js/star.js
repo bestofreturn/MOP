@@ -59,5 +59,5 @@
 	function mark(star) {
 		lock(star);
 		alert("별" + star + "를 선택하셨습니다.");
-		document.reviewform.star.value = star;
+		document.reviewform.vStar.value = star;
 	}
