@@ -24,7 +24,7 @@
 </select>
 
 <!--  상세 페이지  pId 값 전달받음 -->
-<select id="selectOne">
+<select id="selectOne" resultType="Place">
 	SELECT * FROM PLACE WHERE PID = #{pId}
 </select>
 
