@@ -14,13 +14,30 @@ public class FreeBoard {
 	private String fOriginalFileName;
 	private String fRenameFileName;
 	private int fCount;
+	private int replycount;
 	
+	public int getReplycount() {
+		return replycount;
+	}
+
+
+
+	public void setReplycount(int replycount) {
+		this.replycount = replycount;
+	}
+
+
+
 	public FreeBoard() {}
 
 	
 	
+	
+
+
+
 	public FreeBoard(int fId, String fTitle, String fContent, String fWriter, Date fCreateDate, Date fModifyDate,
-			String fStatus, String fOriginalFileName, String fRenameFileName, int fCount) {
+			String fStatus, String fOriginalFileName, String fRenameFileName, int fCount, int replycount) {
 		super();
 		this.fId = fId;
 		this.fTitle = fTitle;
@@ -32,6 +49,7 @@ public class FreeBoard {
 		this.fOriginalFileName = fOriginalFileName;
 		this.fRenameFileName = fRenameFileName;
 		this.fCount = fCount;
+		this.replycount = replycount;
 	}
 
 

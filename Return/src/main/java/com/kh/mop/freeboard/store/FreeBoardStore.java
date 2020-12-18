@@ -18,4 +18,6 @@ public interface FreeBoardStore {
 	public int insertFreeBoardReply(FreeBoardReply freeBoardReply);
 	public int updateFreeBoardReply(FreeBoardReply freeBoardReply);
 	public int deleteFreeBoardReply(int fbrId);
+	public int addReplyCount(int refFBId);
+	public int deleteReplyCount(int refFBId);
 }

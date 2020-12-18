@@ -39,7 +39,10 @@
 					<td><c:url var="fDetail" value="freeBoardDetail.do">
 							<c:param name="fId" value="${freeBoard.fId }"></c:param>
 							<c:param name="page" value="${pi.currentPage }"></c:param>
-						</c:url> <a href="${fDetail}">${freeBoard.fTitle }</a></td>
+						</c:url> 
+						<a href="${fDetail}">${freeBoard.fTitle }</a>
+						<c:if test="${freeBoard.replycount > 0 }"><span style="color:red;">[${freeBoard.replycount }]</span></c:if>
+						</td>
 					<td>${freeBoard.fWriter }</td>
 					<td>${freeBoard.fCreateDate }</td>
 					<td>${freeBoard.fCount }</td>

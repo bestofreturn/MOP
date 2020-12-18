@@ -23,12 +23,13 @@
 		INSERT INTO FREEBOARD
 		VALUES(SEQ_FID.NEXTVAL, #{fTitle}, #{fContent}, #{fWriter},
 		SYSDATE, SYSDATE, DEFAULT, #{fOriginalFileName}, #{fRenameFileName},
-		#{fCount})
+		#{fCount}, DEFAULT)
 	</insert>
+	
 	
 	<update id="deleteFreeBoard">
 	UPDATE FREEBOARD
-	SET F_STATUS = 'N'
+	SET F_STATUS = 'N'  	
 	WHERE FID = #{fId}
 	</update>
 	
@@ -54,11 +55,48 @@
 	WHERE FID = #{fId}
 	</update>
 	
+	<update id="updateReplyCount">
+	UPDATE FREEBOARD
+	SET REPLYCOUNT = REPLYCOUNT+1
+	WHERE FID = #{fId}
+	</update>
+	
+	<update id="deleteReplyCount">
+	UPDATE FREEBOARD
+	SET REPLYCOUNT = REPLYCOUNT-1
+	WHERE FID = #{refFBId}
+	</update>
+	
 	<update id="updateFreeBoard">
 	UPDATE FREEBOARD
 	SET FTITLE = #{fTitle}, FCONTENT=#{fContent}, F_MODIFY_DATE=SYSDATE, 
 	F_ORIGINAL_FILENAME = #{fOriginalFileName}, F_RENAME_FILENAME=#{fRenameFileName}
 	WHERE FID=#{fId}
 	</update>
+	
+	<insert id="insertFBReply">
+	INSERT INTO FREEBOARDREPLY 
+	VALUES(SEQ_FBRID.NEXTVAL, #{refFBId}, #{fbrWriter}, #{fbrContent}, SYSDATE, SYSDATE, DEFAULT)
+	</insert>
+	
+	<select id="selectFBReplyList" resultMap="freeBoardReplyResultMap">
+	SELECT * FROM FREEBOARDREPLY
+	WHERE REF_FBID = #{refFBID} AND FBR_STATUS = 'Y'
+	ORDER BY FBRID DESC
+	</select>
+	
+	<update id="updateFBReply">
+	UPDATE FREEBOARDREPLY
+	SET FBR_CONTENT =#{fbrContent}, FBR_MODIFY_DATE = SYSDATE
+	WHERE FBRID= #{fbrId}
+	</update>
+	
+	<update id="deleteFBReply">
+	UPDATE FREEBOARDREPLY
+	SET FBR_STATUS = 'N'
+	WHERE FBRID=#{fbrId}
+	</update>
+	
+	
 	
 </mapper>

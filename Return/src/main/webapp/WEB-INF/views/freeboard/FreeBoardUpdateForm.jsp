@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>자유게시판 수정</title>
+<jsp:include page="../common/sidenav.jsp"></jsp:include>
 </head>
 <body>
 	<h1 align="center">${freeBoard.fId }번게시글수정</h1>

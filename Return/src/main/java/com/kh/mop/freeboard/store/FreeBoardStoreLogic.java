@@ -36,9 +36,18 @@ public class FreeBoardStoreLogic implements FreeBoardStore{
 	}
 
 	@Override
+	public int addReplyCount(int refFBId) {
+		return sqlSession.update("FreeBoardMapper.updateReplyCount",refFBId);
+	}
+
+	@Override
 	public FreeBoard selectFreeBoard(int fId) {
-		FreeBoard fb = sqlSession.selectOne("FreeBoardMapper.selectOne",fId);
 		return sqlSession.selectOne("FreeBoardMapper.selectOne",fId);
+	}
+
+	@Override
+	public int deleteReplyCount(int refFBId) {
+		return sqlSession.update("FreeBoardMapper.deleteReplyCount",refFBId);
 	}
 
 	@Override
@@ -58,25 +67,22 @@ public class FreeBoardStoreLogic implements FreeBoardStore{
 
 	@Override
 	public ArrayList<FreeBoardReply> selectFreeBoardReplyList(int fId) {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList)sqlSession.selectList("FreeBoardMapper.selectFBReplyList",fId);
 	}
 
 	@Override
 	public int insertFreeBoardReply(FreeBoardReply freeBoardReply) {
-		return 0;
+		return sqlSession.insert("FreeBoardMapper.insertFBReply",freeBoardReply);
 	}
 
 	@Override
 	public int updateFreeBoardReply(FreeBoardReply freeBoardReply) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("FreeBoardMapper.updateFBReply",freeBoardReply);
 	}
 
 	@Override
 	public int deleteFreeBoardReply(int fbrId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("FreeBoardMapper.deleteFBReply",fbrId);
 	}
 
 }

@@ -17,6 +17,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	private FreeBoardStore fStore;
 	
 	@Override
+	public int addReplyCount(int refFBId) {
+		return fStore.addReplyCount(refFBId);
+	}
+
+	@Override
 	public int getListCount() {
 		return fStore.getListCount();
 	}
@@ -24,6 +29,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	@Override
 	public ArrayList<FreeBoard> selectList(FreeBoardPageInfo pi) {
 		return fStore.selectList(pi);
+	}
+
+	@Override
+	public int deleteReplyCount(int refFBId) {
+		return fStore.deleteReplyCount(refFBId);
 	}
 
 	@Override
@@ -53,26 +63,23 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
 	@Override
 	public ArrayList<FreeBoardReply> selectFreeBoardReplyList(int fId) {
-		// TODO Auto-generated method stub
-		return null;
+		return fStore.selectFreeBoardReplyList(fId);
 	}
 
 	@Override
 	public int insertFreeBoardReply(FreeBoardReply freeBoardReply) {
-		// TODO Auto-generated method stub
-		return 0;
+	return fStore.insertFreeBoardReply(freeBoardReply);
 	}
+	
 
 	@Override
 	public int updateFreeBoardReply(FreeBoardReply freeBoardReply) {
-		// TODO Auto-generated method stub
-		return 0;
+		return fStore.updateFreeBoardReply(freeBoardReply);
 	}
 
 	@Override
 	public int deleteFreeBoardReply(int fbrId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return fStore.deleteFreeBoardReply(fbrId);
 	}
 
 }
