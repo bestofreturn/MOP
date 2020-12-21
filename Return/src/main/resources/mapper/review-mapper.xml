@@ -49,7 +49,7 @@
 		VALUES(SEQ_RE_ID.NEXTVAL, #{reContent}, #{refBid}, #{reWriter}, SYSDATE)
 	</insert>
 	
-	<select id="selectRvReplyList">
+	<select id="selectRvReplyList" resultMap="rvReplyResultMap">
 		SELECT * FROM REVIEW_REPLY
 		WHERE REF_BID = #{vId}
 		ORDER BY RE_ID DESC

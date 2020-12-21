@@ -94,7 +94,7 @@ public class ReviewController {
 		}
 		int result = vService.deleteReview(vId);
 		if(result > 0) {
-			return "redirect:reviewList.do";
+			return "redirect:reviewList.do?vNo=" +review.getvNo();
 		}else {
 			model.addAttribute("msg", "리뷰게시글 삭제 실패");
 			return "common/errorPage";
@@ -104,11 +104,17 @@ public class ReviewController {
 	// 리뷰게시판 리스트
 	@RequestMapping(value="reviewList.do", method = RequestMethod.GET)
 	public ModelAndView reviewList(ModelAndView mv, @RequestParam(value="page", required = false) Integer page, String vNo) {
-		int currentPage = (page != null) ? page : 1; 
-		int listCount = vService.getListCount(); 
+		int currentPage = (page != null) ? page : 1;
+		int listCount = vService.getListCount();
 		PageInfo pi = Review_Pagination.getReviewPageInfo(currentPage, listCount);
-		int reviewNo = Integer.parseInt(vNo); 
+		int reviewNo = Integer.parseInt(vNo);
 		ArrayList<Review> vList = vService.selectList(pi, reviewNo);
+		// 댓글 리스트
+		for (Review rvOne : vList) {
+			ArrayList<RvReply> rvReplyList = vService.selectRvReplyList(rvOne.getvId());
+			rvOne.setRvReplyList(rvReplyList);
+		}
+		
 		if(!vList.isEmpty()) {
 			mv.addObject("vList", vList);
 			mv.addObject("pi", pi);
@@ -143,7 +149,7 @@ public class ReviewController {
 		}
 		int result = vService.updateReview(review);
 		if(result > 0) {
-			return "redirect:reviewList.do?vId="+review.getvId();
+			return "redirect:reviewList.do?vNo="+review.getvNo();
 		}else {
 			model.addAttribute("msg", "리뷰 수정 실패");
 			return "common/errorPage";
@@ -165,16 +171,17 @@ public class ReviewController {
 		}
 	}
 	
-	// 댓글 전체 조회
-	@RequestMapping(value="rvReplyList.do", method = RequestMethod.GET)
-	public void getRvReplyList(HttpServletResponse response, int vId) throws Exception{
-		ArrayList<RvReply> reList = vService.selectRvReplyList(vId);
-		
-		for(RvReply re : reList) {
-			re.setReContent(URLEncoder.encode(re.getReContent(), "utf-8"));
-		}
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-		gson.toJson(reList, response.getWriter());
-	}
+	/*
+	 * // 댓글 전체 조회
+	 * 
+	 * @RequestMapping(value="rvReplyList.do", method = RequestMethod.GET) public
+	 * void getRvReplyList(HttpServletResponse response, int vId) throws Exception{
+	 * ArrayList<RvReply> reList = vService.selectRvReplyList(vId);
+	 * 
+	 * for(RvReply re : reList) {
+	 * re.setReContent(URLEncoder.encode(re.getReContent(), "utf-8")); } Gson gson =
+	 * new GsonBuilder().setDateFormat("yyyy-MM-dd").create(); gson.toJson(reList,
+	 * response.getWriter()); }
+	 */
 	
 }

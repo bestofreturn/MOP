@@ -69,7 +69,7 @@
 							src="resources/images/starOff.png">
 						</span> <br /> <span id="startext">평가하기</span>
 					</div> <input type="hidden" name="vStar" value="${review.vStar }"/>
-					<input type="hidden" name="vNo" value="${vNo }"/>
+					<input type="hidden" name="vNo" value="${review.vNo }"/>
 				</td>
 				</tr>
 				</table>
