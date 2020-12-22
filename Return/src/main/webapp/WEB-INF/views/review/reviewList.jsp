@@ -54,6 +54,34 @@
 			border: 3px solid #007bff;
 			border-radius: 5px;
 		}
+		
+		/* 마우스 클릭 이벤트 css */
+		@charset 'UTF-8';
+		
+		.clickEffect{
+		    position:fixed;
+		    box-sizing:border-box;
+		    border-style:solid;
+		    border-color:#1b40ba;
+		    border-radius:50%;
+		    animation:clickEffect 0.4s ease-out;
+		    z-index:99999;
+		}
+		
+		@keyframes clickEffect{
+		    0%{
+		        opacity:1;
+		        width:0.5em; height:0.5em;
+		        margin:-0.25em;
+		        border-width:0.5em;
+		    }
+		    100%{
+		        opacity:0.2;
+		        width:15em; height:15em;
+		        margin:-7.5em;
+		        border-width:0.03em;
+		    }
+		}
 	</style>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -303,6 +331,20 @@
 				}
 			});
 		};
+		
+		// 마우스 클릭 이벤트
+		function clickEffect(e){
+			var d=document.createElement("div");
+		    d.className="clickEffect";
+		    d.style.top=e.clientY+"px";
+		    d.style.left=e.clientX+"px";
+		    document.body.appendChild(d);
+		    d.addEventListener('animationend',function()
+		        {d.parentElement.removeChild(d);}.bind(this)
+		    );
+		}
+		//document에 clickEffect function 등록
+		document.addEventListener('click',clickEffect);		
     </script>
 </body>
 </html>
