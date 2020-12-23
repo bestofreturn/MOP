@@ -6,32 +6,54 @@
 <head>
 <meta charset="UTF-8">
 <title>리뷰 게시글 수정</title>
-<style>
-	.row{
-		background-color: #F2F2F2;
-	}
-	#resNo{
-		text-align: center;
-		color: red;
-	}
-	.card-footer{
-		margin-top: 10px;
-	}
-</style>
+	<style>
+		.row{
+			background-color: #F2F2F2;
+		}
+		#resNo{
+			text-align: center;
+			color: red;
+		}
+		.card-footer{
+			margin-top: 10px;
+		}
+	
+		/* 마우스 클릭 이벤트 css */
+		@charset 'UTF-8';
+		
+		.clickEffect{
+		    position:fixed;
+		    box-sizing:border-box;
+		    border-style:solid;
+		    border-color:#1b40ba;
+		    border-radius:50%;
+		    animation:clickEffect 0.4s ease-out;
+		    z-index:99999;
+		}
+		
+		@keyframes clickEffect{
+		    0%{
+		        opacity:1;
+		        width:0.5em; height:0.5em;
+		        margin:-0.25em;
+		        border-width:0.5em;
+		    }
+		    100%{
+		        opacity:0.2;
+		        width:15em; height:15em;
+		        margin:-7.5em;
+		        border-width:0.03em;
+		    }
+		}	
+	</style>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-        crossorigin="anonymous">
-        
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="resources/js/star.js"></script>
 </head>
 <body>
@@ -51,27 +73,24 @@
                 <form action="reviewUpdate.do" method="post" name="reviewform" enctype="multipart/form-data">
                 	<input type="hidden" name="vId" value="${review.vId }">
 					<input type="hidden" name="filePath" value="${review.filePath }">
-                   <table>
+                   	<table>
 					<tr>
-				<td width="100" rowspan="2"><input type="hidden" name="vWriter" value="${review.vWriter }"></td>
-				<td width="500" height="50" colspan="2">
-					<div id="rating" align="center">
-						<span> <img id="image1" onmouseover="show(1)"
-							onclick="mark(1)" onmouseout="noshow(1)"
-							src="resources/images/starOff.png"> <img id="image2"
-							onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)"
-							src="resources/images/starOff.png"> <img id="image3"
-							onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)"
-							src="resources/images/starOff.png"> <img id="image4"
-							onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)"
-							src="resources/images/starOff.png"> <img id="image5"
-							onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)"
-							src="resources/images/starOff.png">
-						</span> <br /> <span id="startext">평가하기</span>
-					</div> <input type="hidden" name="vStar" value="${review.vStar }"/>
-					<input type="hidden" name="vNo" value="${review.vNo }"/>
-				</td>
-				</tr>
+						<td width="100" rowspan="2"><input type="hidden" name="vWriter" value="${review.vWriter }"></td>
+						<td width="500" height="50" colspan="2">
+						<div id="rating" align="center">
+							<span> <img id="image1" onmouseover="show(1)" onclick="mark(1)" onmouseout="noshow(1)" src="resources/images/starOff.png">
+							<img id="image2" onmouseover="show(2)" onclick="mark(2)" onmouseout="noshow(2)" src="resources/images/starOff.png">
+							<img id="image3" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)" src="resources/images/starOff.png">
+							<img id="image4" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)" src="resources/images/starOff.png">
+							<img id="image5" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)" src="resources/images/starOff.png">
+							</span>
+							<br/> 
+							<span id="startext">평가하기</span>
+						</div>
+						<input type="hidden" name="vStar" value="${review.vStar }"/>
+						<input type="hidden" name="vNo" value="${review.vNo }"/>
+						</td>
+					</tr>
 				</table>
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -104,7 +123,7 @@
                         </div>
                         <div class="btn-toolbar justify-content-between">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-primary" >수정</button>
+                                <button type="submit" class="btn btn-primary">수정</button>
                             </div>
                         </div>
                     </div>
@@ -121,5 +140,20 @@
             </div>
         </div>
     </div>
+    <script>
+    // 마우스 클릭 이벤트
+		function clickEffect(e){
+			var d=document.createElement("div");
+		    d.className="clickEffect";
+		    d.style.top=e.clientY+"px";
+		    d.style.left=e.clientX+"px";
+		    document.body.appendChild(d);
+		    d.addEventListener('animationend',function()
+		        {d.parentElement.removeChild(d);}.bind(this)
+		    );
+		}
+		//document에 clickEffect function 등록
+		document.addEventListener('click',clickEffect);
+	</script>
 </body>
 </html>
