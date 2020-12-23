@@ -55,6 +55,17 @@
 			border-radius: 5px;
 		}
 		
+		#reContent{
+			padding: .375rem .75rem;
+			border: 1px solid #ced4da;
+			border-radius: .25rem;
+			transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		}
+		#rev{
+			position: relative;
+			left: 90%;
+		}
+		
 		/* 마우스 클릭 이벤트 css */
 		@charset 'UTF-8';
 		
@@ -121,8 +132,7 @@
 							enctype="multipart/form-data">
 							<table align="center">
 								<tr>
-									<td rowspan="2"><input type="hidden" name="vWriter"
-										value="${loginMember.memberId }"></td>
+									<td rowspan="2"><input type="hidden" name="vWriter" value="${loginMember.memberId }"></td>
 									<td width="500" height="50" colspan="2">
 										<div id="rating" align="center">
 											<span> 
@@ -174,13 +184,14 @@
 						</form>
 					</c:if>
 				</div>
-				<br><br>
+				<br>
 				<!-- Post /////-->
-
+				<select id="selectCondition" name="selectCondition">
+					
+				</select>
 				<!--- \\\\\\\Post-->
 				<c:if test="${vStar != 0 }">
 					<c:forEach items="${vList }" var="review">
-						<input type="hidden" class="reviewVid" value="${review.vId }">
 						<div class="card gedf-card">
 							<div class="card-header">
 								<div class="d-flex justify-content-between align-items-center">
@@ -288,9 +299,10 @@
 							<button id="showBtn" onclick="showReply(this)">댓글달기</button>
 							<div class="addRvReply" style="display: none;">
 								<div class="card-footer">
-									<button id="rev" onclick="reviewReply('${review.vId}', this)"><i class="fa fa-gittip"></i>등록</button>
+									<textarea rows="3" cols="100" id="reContent" style="width: 100%;" placeholder="댓글을 작성해주세요."></textarea>
+									<a href="#" id="rev" class="card-link" onclick="reviewReply('${review.vId}', this)"><i class="fa fa-comment"></i>등록</a>
 								</div>
-								<textarea rows="3" cols="100" id="reContent" style="width: 100%;"></textarea>
+								
 							</div>
 							</c:if>
 								<c:forEach items="${review.rvReplyList }" var="rvReply">
@@ -320,7 +332,7 @@
 		}
 		// 댓글 등록
     	function reviewReply(vId, obj){
-  			var reContent = $(obj).parent().next().val();
+  			var reContent = $(obj).prev().val();
 			var refBid = vId;
 			$.ajax({
 				url : "addRvReply.do",
