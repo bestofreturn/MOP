@@ -8,7 +8,8 @@ var editEnd = $('#edit-end');
 var editType = $('#edit-type');
 var editColor = $('#edit-color');
 var editDesc = $('#edit-desc'); 
-var editId = $('#edit-id');
+var editGroup = $('#edit-schedulergroup');
+var editUser = $('#edit-username');
 
 var addBtnContainer = $('.modalBtnContainer-addEvent');
 var modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
@@ -26,7 +27,10 @@ var newEvent = function (start, end, eventType) {
     editTitle.val('');
     editStart.val(start);
     editEnd.val(end);
+    editGroup.val('');
     editDesc.val('');
+
+    
 
 
     
@@ -46,9 +50,10 @@ var newEvent = function (start, end, eventType) {
             end: editEnd.val(),
             description: editDesc.val(),
             type: editType.val(),
-            username: 'admin',
+            username: editUser.val(),
+            schedulerGroup : editGroup.val(),
             backgroundColor: editColor.val(),
-            textColor: '#333',
+            textColor: '#ffffff',
             allDay: editAllDay.val()
         };
 
@@ -67,7 +72,7 @@ var newEvent = function (start, end, eventType) {
         if (editAllDay.is(':checked')) {
             eventData.start = moment(eventData.start).format('YYYY-MM-DD');
             //render시 날짜표기수정
-            eventData.end = moment(eventData.end).add(1, 'days').format('YYYY-MM-DD');
+            //eventData.end = moment(eventData.end).add(1, 'days').format('YYYY-MM-DD');
             //DB에 넣을때(선택)
             realEndDay = moment(eventData.end).format('YYYY-MM-DD');
 
@@ -75,7 +80,7 @@ var newEvent = function (start, end, eventType) {
         }else{
          eventData.start = moment(eventData.start).format('YYYY-MM-DD');
             //render시 날짜표기수정
-            eventData.end = moment(eventData.end).add(1, 'days').format('YYYY-MM-DD');
+            //eventData.end = moment(eventData.end).add(1, 'days').format('YYYY-MM-DD');
             //DB에 넣을때(선택)
             realEndDay = moment(eventData.end).format('YYYY-MM-DD');
 
@@ -91,7 +96,7 @@ var newEvent = function (start, end, eventType) {
         //새로운 일정 저장
         $.ajax({
             type: "post",
-            url: "insertScheduler.do", //url등록
+            url: "SchedulerGroupinsert.do", //url등록
             data: eventData,
             
             success: function (response) {

@@ -6,18 +6,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FullCalendar Example</title>
+    <title>단체 스케줄러</title>
     <link rel=" shortcut icon" href="image/favicon.ico">
 
-    <link rel="stylesheet" href="resources/vendor/css/fullcalendar.min.css" />
-    <link rel="stylesheet" href="resources/vendor/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href='resources/vendor/css/select2.min.css' />
-    <link rel="stylesheet" href='resources/vendor/css/bootstrap-datetimepicker.min.css' />
+    <link rel="stylesheet" href="resources/vendorGroup/css/fullcalendar.min.css" />
+    <link rel="stylesheet" href="resources/vendorGroup/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href='resources/vendorGroup/css/select2.min.css' />
+    <link rel="stylesheet" href='resources/vendorGroup/css/bootstrap-datetimepicker.min.css' />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="resources/css/main2.css">
+    <link rel="stylesheet" href="resources/cssGroup/main2.css">
 
 </head>
 
@@ -80,7 +80,11 @@
                                 <input class="inputModal" type="text" name="edit-end" id="edit-end" />
                             </div>
                         </div>
-                         
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-schedulergroup">인원수</label>
+                                <input class="inputModal" type="text" name="edit-schedulergroup" id="edit-schedulergroup" value="${schedulergroup.schedulerGroup }"/>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
@@ -139,7 +143,7 @@
             <div class="panel-body">
 
                 <div class="col-lg-6" style="display : none;">
-                    <label for="calendar_view">구분별</label>
+                    <label for="calendar_view" >구분별</label>
                     <div class="input-group">
                         <select class="filter" id="type_filter" multiple="multiple">
                             <option value="카테고리1">카테고리1</option>
@@ -154,8 +158,10 @@
                     <label for="calendar_view">등록자별</label>
                     <div class="input-group">
                         
-                                <label class="checkbox-inline"><input class='filter' type="checkbox" value="${loginMember.memberId }"
+                                <label class="checkbox-inline"><input class='filter' type="checkbox" id="edit-username" value="${loginMember.memberId }"
                                 checked>${loginMember.memberId }</label>
+                                
+                           
                     </div>
                 </div>
 
@@ -164,19 +170,23 @@
         <!-- /.filter panel -->
     </div>
     <!-- /.container -->
-
-    <script src="resources/vendor/js/jquery.min.js"></script>
-    <script src="resources/vendor/js/bootstrap.min.js"></script>
-    <script src="resources/vendor/js/moment.min.js"></script>
-    <script src="resources/vendor/js/fullcalendar.min.js"></script>
-    <script src="resources/vendor/js/ko.js"></script>
-    <script src="resources/vendor/js/select2.min.js"></script>
-    <script src="resources/vendor/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="resources/js/main.js?after"></script>
-    <script src="resources/js/addEvent.js"></script>
-    <script src="resources/js/editEvent.js"></script>
-    <script src="resources/js/etcSetting.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="resources/vendorGroup/js/jquery.min.js"></script>
+    <script src="resources/vendorGroup/js/bootstrap.min.js"></script>
+    <script src="resources/vendorGroup/js/moment.min.js"></script>
+    <script src="resources/vendorGroup/js/fullcalendar.min.js"></script>
+    <script src="resources/vendorGroup/js/ko.js"></script>
+    <script src="resources/vendorGroup/js/select2.min.js"></script>
+    <script src="resources/vendorGroup/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="resources/jsGroup/main.js?after"></script>
+    <script src="resources/jsGroup/addEvent.js"></script>
+    <script src="resources/jsGroup/editEvent.js"></script>
+    <script src="resources/jsGroup/etcSetting.js"></script>
+    
 </body>
-
+	<script>
+		
+	
+	</script>
 </html>
                                 
