@@ -29,7 +29,7 @@ public class SchedulerGroup {
 		this.schedulerGroup = schedulerGroup;
 		this.backgroundColor = backgroundColor;
 		this.textColor = textColor;
-		this.allDay = allDay;
+		this.allDay = allDay;;
 	}
 
 	public int getgId() {

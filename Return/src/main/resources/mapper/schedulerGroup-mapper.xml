@@ -13,7 +13,7 @@
 	<result property="allDay" column="GALLDAY"/>
 	
 	
-	</resultMap>
+	</resultMap>/
 
 
 <select id="schedulerGroupList" resultMap = "schedulerGroupResultMap">

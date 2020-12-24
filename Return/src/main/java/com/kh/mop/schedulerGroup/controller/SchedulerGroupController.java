@@ -70,7 +70,7 @@ public class SchedulerGroupController {
 		gService.insertSchedulerGroup(schedulergroup);
 		System.out.println(schedulergroup.toString());
 		
-		return map;
+		return map;;
 	}
 	// 스케줄러 수정
 	@ResponseBody

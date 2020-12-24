@@ -12,7 +12,7 @@ import com.kh.mop.schedulerGroup.store.SchedulerGroupStore;
 public class SchedulerGroupImpl implements SchedulerGroupService {
 	
 	@Autowired
-	private SchedulerGroupStore gStore;
+	private SchedulerGroupStore gStore;;
 	
 	@Override
 	public int insertSchedulerGroup(SchedulerGroup schedulergroup) {

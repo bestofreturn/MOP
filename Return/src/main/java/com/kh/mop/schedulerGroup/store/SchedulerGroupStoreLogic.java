@@ -14,7 +14,7 @@ public class SchedulerGroupStoreLogic implements SchedulerGroupStore {
 	
 	
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSession;;
 	
 	@Override
 	public int insertSchedulerGroup(SchedulerGroup schedulergroup) {

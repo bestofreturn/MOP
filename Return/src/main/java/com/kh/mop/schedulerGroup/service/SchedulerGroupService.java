@@ -13,5 +13,5 @@ public interface SchedulerGroupService {
 	public int deleteSchedulerGroup(int gId);
 	public int detailSchedulerGroup(int gId);
 	public ArrayList<SchedulerGroup> selectSubView();
-	public ArrayList<SchedulerGroup> selectList();
+	public ArrayList<SchedulerGroup> selectList();;
 }
