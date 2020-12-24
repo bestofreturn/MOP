@@ -41,7 +41,6 @@ var newEvent = function (start, end, eventType) {
     $('#save-event').on('click', function () {
 
         var eventData = {
-        	sId : editId.val(),
             title: editTitle.val(),
             start: editStart.val(),
             end: editEnd.val(),
@@ -49,7 +48,7 @@ var newEvent = function (start, end, eventType) {
             type: editType.val(),
             username: 'admin',
             backgroundColor: editColor.val(),
-            textColor: '#ffffff',
+            textColor: '#333',
             allDay: editAllDay.val()
         };
 
