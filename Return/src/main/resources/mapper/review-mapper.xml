@@ -54,4 +54,28 @@
 		WHERE REF_BID = #{vId}
 		ORDER BY RE_ID DESC
 	</select>
+	
+	<select id="selectRvReply" resultMap="rvReplyResultMap">
+		SELECT * FROM REVIEW_REPLY
+		WHERE RE_ID = #{reId}
+	</select>
+	
+	<delete id="deleteRvReply">
+		DELETE FROM REVIEW_REPLY
+		WHERE RE_ID = #{reId}
+	</delete>
+	
+	<select id="selectBoxList" parameterType="java.util.Map" resultMap="reviewResultMap">
+		SELECT * FROM REVIEW
+		WHERE V_STATUS = 'Y' AND VNO = #{vNo}
+			<if test="select.selectCondition.toString() == 'new'">
+				ORDER BY V_CREATE_DATE DESC
+			</if>
+			<if test="select.selectCondition.toString() == 'starUp'">
+				ORDER BY VSTAR DESC
+			</if>
+			<if test="select.selectCondition.toString() == 'starDown'">
+				ORDER BY VSTAR ASC
+			</if>
+	</select>
 </mapper>

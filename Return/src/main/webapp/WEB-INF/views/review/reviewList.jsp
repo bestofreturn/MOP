@@ -186,9 +186,14 @@
 				</div>
 				<br>
 				<!-- Post /////-->
-				<select id="selectCondition" name="selectCondition">
-					
-				</select>
+				<form action="reviewSelect.do" method="get">
+					<input type="hidden" name="vNo" value="${vNo }">
+					<select id="selectCondition" name="selectCondition" onchange="formChange(this.form)">
+						<option value="new" <c:if test="${select.selectCondition == 'new' }">selected</c:if>>최근 작성순</option>
+						<option value="starUp" <c:if test="${select.selectCondition == 'starUp' }">selected</c:if>>별점 높은순</option>
+						<option value="starDown" <c:if test="${select.selectCondition == 'starDown' }">selected</c:if>>별점 낮은순</option>
+					</select>
+				</form>
 				<!--- \\\\\\\Post-->
 				<c:if test="${vStar != 0 }">
 					<c:forEach items="${vList }" var="review">
@@ -307,8 +312,16 @@
 							</c:if>
 								<c:forEach items="${review.rvReplyList }" var="rvReply">
 									<div id="rvReplyList">
-										<b>${rvReply.reWriter }</b><br><br>
-										${rvReply.reContent }	
+										<b>${rvReply.reWriter }</b><br>
+										<c:url var="reDelete" value="rvReplyDelete.do">
+											<c:param name="vId" value="${review.vId }"></c:param>
+											<c:param name="reId" value="${rvReply.reId }"></c:param>
+										</c:url>
+										<div style="float:right;">
+											<a href="${reDelete }">삭제</a>
+										</div>
+										<i class="fa fa-clock-o"></i>${rvReply.reCreateDate }<br><br>
+										${rvReply.reContent }
 									</div>
 								</c:forEach>
 						</div>
@@ -356,7 +369,11 @@
 		    );
 		}
 		//document에 clickEffect function 등록
-		document.addEventListener('click',clickEffect);		
+		document.addEventListener('click',clickEffect);
+		
+		function formChange(obj){
+			obj.submit();
+		}
     </script>
 </body>
 </html>

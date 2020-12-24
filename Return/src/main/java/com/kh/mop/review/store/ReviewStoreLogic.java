@@ -1,6 +1,7 @@
 package com.kh.mop.review.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.mop.review.domain.PageInfo;
 import com.kh.mop.review.domain.Review;
 import com.kh.mop.review.domain.RvReply;
+import com.kh.mop.review.domain.Select;
 
 @Repository
 public class ReviewStoreLogic implements ReviewStore{
@@ -58,6 +60,24 @@ public class ReviewStoreLogic implements ReviewStore{
 	@Override
 	public ArrayList<RvReply> selectRvReplyList(int vId) {
 		return (ArrayList)sqlSession.selectList("reviewMapper.selectRvReplyList", vId);
+	}
+
+	@Override
+	public RvReply selectRvReply(int reId) {
+		return sqlSession.selectOne("reviewMapper.selectRvReply", reId);
+	}
+
+	@Override
+	public int deleteRvReply(int reId) {
+		return sqlSession.delete("reviewMapper.deleteRvReply", reId);
+	}
+
+	@Override
+	public ArrayList<Review> selectBoxList(Select select, int vNo) {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("select", select);
+		paramMap.put("vNo", vNo);
+		return (ArrayList)sqlSession.selectList("reviewMapper.selectBoxList", paramMap);
 	}
 
 }

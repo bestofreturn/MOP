@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kh.mop.review.domain.PageInfo;
 import com.kh.mop.review.domain.Review;
 import com.kh.mop.review.domain.RvReply;
+import com.kh.mop.review.domain.Select;
 import com.kh.mop.review.store.ReviewStore;
 
 @Service
@@ -36,14 +37,12 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Override
 	@Transactional
-
 	public int insertReview(Review review) {
 		return vStore.insertReview(review);
 	}
 
 	@Override
 	@Transactional
-
 	public int updateReview(Review review) {
 		return vStore.updateReview(review);
 	}
@@ -55,7 +54,6 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Override
 	@Transactional
-
 	public int insertRvReply(RvReply rvReply) {
 		return vStore.insertRvReply(rvReply);
 	}
@@ -63,6 +61,22 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public ArrayList<RvReply> selectRvReplyList(int vId) {
 		return vStore.selectRvReplyList(vId);
+	}
+
+	@Override
+	public RvReply selectRvReply(int reId) {
+		return vStore.selectRvReply(reId);
+	}
+
+	@Override
+	@Transactional
+	public int deleteRvReply(int reId) {
+		return vStore.deleteRvReply(reId);
+	}
+
+	@Override
+	public ArrayList<Review> selectBoxList(Select select, int vNo) {
+		return vStore.selectBoxList(select, vNo);
 	}
 
 }

@@ -29,6 +29,7 @@ import com.kh.mop.member.domain.Member;
 import com.kh.mop.review.domain.PageInfo;
 import com.kh.mop.review.domain.Review;
 import com.kh.mop.review.domain.RvReply;
+import com.kh.mop.review.domain.Select;
 import com.kh.mop.review.service.ReviewService;
 
 @Controller
@@ -127,6 +128,28 @@ public class ReviewController {
 		return mv;
 	}
 	
+	// 리뷰게시판 selectBox
+	@RequestMapping(value="reviewSelect.do", method = RequestMethod.GET)
+	public String reviewSelect(Select select, Model model, String vNo) {
+		int reviewNo = Integer.parseInt(vNo);
+		ArrayList<Review> selectList = vService.selectBoxList(select, reviewNo);
+		// 댓글 리스트
+		for (Review rvOne : selectList) {
+			ArrayList<RvReply> rvReplyList = vService.selectRvReplyList(rvOne.getvId());
+			rvOne.setRvReplyList(rvReplyList);
+		}
+
+		if(!selectList.isEmpty()) {
+			model.addAttribute("vList", selectList);
+			model.addAttribute("select", select);
+			model.addAttribute("vNo", vNo);
+			return "review/reviewList";
+		}else {
+			model.addAttribute("msg", "리뷰게시판 선택 실패");
+			return "common/errorPage";
+		}
+	}
+	
 	// 리뷰게시판 수정화면
 	@RequestMapping(value="reviewUpdateView.do", method = RequestMethod.GET)
 	public String reviewUpdateView(int vId, Model model) {
@@ -135,7 +158,6 @@ public class ReviewController {
 	}
 	
 	// 리뷰게시판 수정
-	@Transactional
 	@RequestMapping(value="reviewUpdate.do", method = RequestMethod.POST)
 	public String reviewUpdate(Review review, Model model, HttpServletRequest request, MultipartFile reloadFile) {
 		if(reloadFile != null && !reloadFile.isEmpty()) {
@@ -171,17 +193,18 @@ public class ReviewController {
 		}
 	}
 	
-	/*
-	 * // 댓글 전체 조회
-	 * 
-	 * @RequestMapping(value="rvReplyList.do", method = RequestMethod.GET) public
-	 * void getRvReplyList(HttpServletResponse response, int vId) throws Exception{
-	 * ArrayList<RvReply> reList = vService.selectRvReplyList(vId);
-	 * 
-	 * for(RvReply re : reList) {
-	 * re.setReContent(URLEncoder.encode(re.getReContent(), "utf-8")); } Gson gson =
-	 * new GsonBuilder().setDateFormat("yyyy-MM-dd").create(); gson.toJson(reList,
-	 * response.getWriter()); }
-	 */
+	// 댓글 삭제
+	@RequestMapping(value="rvReplyDelete.do", method = RequestMethod.GET)
+	public String rvReplyDelete(int vId, int reId, HttpServletRequest request, Model model) {
+		Review review = vService.selectReview(vId);
+		
+		int result = vService.deleteRvReply(reId);
+		if(result > 0) {
+			return "redirect:reviewList.do?vNo=" +review.getvNo();
+		}else {
+			model.addAttribute("msg", "리뷰게시글 삭제 실패");
+			return "common/errorPage";
+		}
+	}
 	
 }
