@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<jsp:include page="../common/main.jsp"></jsp:include>
-	<h1 align="center">${loginUser.memberName }님의정보보기</h1>
+	<h1 align="center">${loginUser.memberName }님의 정보 수정 </h1>
 	<div class="centerText">
 		
 		<form action="memberModify.do" method="post">

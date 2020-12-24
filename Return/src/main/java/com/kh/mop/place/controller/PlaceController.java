@@ -29,6 +29,7 @@ public class PlaceController {
 	private PlaceService pService;
 	private ReviewService rService;
 	
+	@ResponseBody
 	@RequestMapping(value="placeList.do")
 	public ModelAndView placeList (ModelAndView mv) {
 		ArrayList<Place> pList = pService.selectList();

@@ -3,163 +3,149 @@ package com.kh.mop.member.domain;
 import java.sql.Date;
 
 public class Member {
-	
-	private String memberId;
-	private String memberPwd;
-	private String memberName;
-	private String addr;
-	private String phone;
-	private String email;
-	private String zipCode;
-	private String accountNumber;
-	private String won;
-	private String reservation;
-	private Date joinDate;
 
-	
-	public Member() {}
-	public Member(String memberId, String memberPwd) {
-		super();
-		this.memberId = memberId;
-		this.memberPwd = memberPwd;
-	}
+   private String memberId;
+   private String memberPwd;
+   private String memberName;
+   private String phone;
+   private String email;
+   private String accountNumber;
+   private String zipCode;
+   private String addr;
+   private String bank;
+   private String won;
+   private String reservation;
+   private Date joinDate;
 
 
-	public Member(String memberId, String memberPwd, String memberName, String addr, String phone, String email,
-			String zipCode, String accountNumber, String won, String reservation, Date joinDate) {
-		super();
-		this.memberId = memberId;
-		this.memberPwd = memberPwd;
-		this.memberName = memberName;
-		this.addr = addr;
-		this.phone = phone;
-		this.email = email;
-		this.zipCode = zipCode;
-		this.accountNumber = accountNumber;
-		this.won = won;
-		this.reservation = reservation;
-		this.joinDate = joinDate;
-	}
+   public Member() {}
 
+   public Member(String memberId, String memberPwd) {
+      super();
+      this.memberId = memberId;
+      this.memberPwd = memberPwd;
+   }
 
-	public String getMemberId() {
-		return memberId;
-	}
+   public Member(String memberId, String memberPwd, String memberName, String phone, String email,
+         String accountNumber, String zipCode, String addr, String bank, String won, String reservation,
+         Date joinDate) {
+      super();
+      this.memberId = memberId;
+      this.memberPwd = memberPwd;
+      this.memberName = memberName;
+      this.phone = phone;
+      this.email = email;
+      this.accountNumber = accountNumber;
+      this.zipCode = zipCode;
+      this.addr = addr;
+      this.bank = bank;
+      this.won = won;
+      this.reservation = reservation;
+      this.joinDate = joinDate;
+   }
 
+   public String getMemberId() {
+      return memberId;
+   }
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
+   public void setMemberId(String memberId) {
+      this.memberId = memberId;
+   }
 
+   public String getMemberPwd() {
+      return memberPwd;
+   }
 
-	public String getMemberPwd() {
-		return memberPwd;
-	}
+   public void setMemberPwd(String memberPwd) {
+      this.memberPwd = memberPwd;
+   }
 
+   public String getMemberName() {
+      return memberName;
+   }
 
-	public void setMemberPwd(String memberPwd) {
-		this.memberPwd = memberPwd;
-	}
+   public void setMemberName(String memberName) {
+      this.memberName = memberName;
+   }
 
+   public String getPhone() {
+      return phone;
+   }
 
-	public String getMemberName() {
-		return memberName;
-	}
+   public void setPhone(String phone) {
+      this.phone = phone;
+   }
 
+   public String getEmail() {
+      return email;
+   }
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
-	}
+   public void setEmail(String email) {
+      this.email = email;
+   }
 
+   public String getAccountNumber() {
+      return accountNumber;
+   }
 
-	public String getAddr() {
-		return addr;
-	}
+   public void setAccountNumber(String accountNumber) {
+      this.accountNumber = accountNumber;
+   }
 
+   public String getZipCode() {
+      return zipCode;
+   }
 
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
+   public void setZipCode(String zipCode) {
+      this.zipCode = zipCode;
+   }
 
+   public String getAddr() {
+      return addr;
+   }
 
-	public String getPhone() {
-		return phone;
-	}
+   public void setAddr(String addr) {
+      this.addr = addr;
+   }
 
+   public String getBank() {
+      return bank;
+   }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+   public void setBank(String bank) {
+      this.bank = bank;
+   }
 
+   public String getWon() {
+      return won;
+   }
 
-	public String getEmail() {
-		return email;
-	}
+   public void setWon(String won) {
+      this.won = won;
+   }
 
+   public String getReservation() {
+      return reservation;
+   }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+   public void setReservation(String reservation) {
+      this.reservation = reservation;
+   }
 
+   public Date getJoinDate() {
+      return joinDate;
+   }
 
-	public String getZipCode() {
-		return zipCode;
-	}
+   public void setJoinDate(Date joinDate) {
+      this.joinDate = joinDate;
+   }
 
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
-
-	public String getAccountNumber() {
-		return accountNumber;
-	}
-
-
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
-
-	public String getWon() {
-		return won;
-	}
-
-
-	public void setWon(String won) {
-		this.won = won;
-	}
-
-
-	public String getReservation() {
-		return reservation;
-	}
-
-
-	public void setReservation(String reservation) {
-		this.reservation = reservation;
-	}
-
-
-	public Date getJoinDate() {
-		return joinDate;
-	}
-
-
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Member [memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName=" + memberName + ", addr="
-				+ addr + ", phone=" + phone + ", email=" + email + ", zipCode=" + zipCode + ", accountNumber="
-				+ accountNumber + ", won=" + won + ", reservation=" + reservation + ", joinDate=" + joinDate + "]";
-	}
-	
-
-
+   @Override
+   public String toString() {
+      return "Member [memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName=" + memberName + ", phone="
+            + phone + ", email=" + email + ", accountNumber=" + accountNumber + ", zipCode=" + zipCode + ", addr="
+            + addr + ", bank=" + bank + ", won=" + won + ", reservation=" + reservation + ", joinDate=" + joinDate
+            + "]";
+   }
 
 }

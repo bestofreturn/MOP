@@ -191,13 +191,13 @@ var calendar = $('#calendar').fullCalendar({
 
     $(".fc-body").unbind('click');
     $(".fc-body").on('click', 'td', function (e) {
-
+	console.log(e.pageX +"," +e.pageY)
       $("#contextMenu")
         .addClass("contextOpened")
         .css({
           display: "block",
-          left: e.pageX,
-          top: e.pageY
+          left: parseInt(e.pageX)-230,
+          top: parseInt(e.pageY)-230
         });
       return false;
     });

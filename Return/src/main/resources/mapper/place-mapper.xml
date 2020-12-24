@@ -15,7 +15,9 @@
 	</resultMap>
 <!-- plae 전체 list 출력  -->
 <select id="selectList" resultType="Place">
-	SELECT * FROM PLACE 
+	<!-- <![CDATA[SELECT * FROM(SELECT * FROM (SELECT ROWNUM AS PID, PCODE, PIMG, PNAME, PADDRESS, PRICE, PMAX, PTEL, PDETAIL FROM 
+(SELECT * FROM PLACE ORDER BY PID DESC)) WHERE PID >= 6) WHERE ROWNUM <= 5]]>  -->
+SELECT * FROM PLACE
 </select>
 
 <select id="selectCtgList" resultType="Place">

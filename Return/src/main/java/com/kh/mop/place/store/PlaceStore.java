@@ -16,4 +16,5 @@ public interface PlaceStore {
 	public ArrayList<Place> categoryList(Map m);
 	
 	public ArrayList<Review> reviewList(PageInfo pi, int vNo); 
+
 }

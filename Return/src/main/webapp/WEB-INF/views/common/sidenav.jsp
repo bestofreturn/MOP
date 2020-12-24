@@ -32,7 +32,7 @@ body {
 /* Set the width of the sidebar to 120px */
 .w3-sidebar {
 	width: 120px;
-	background: #222;
+	background: black;
 }
 /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
 #main {
@@ -88,7 +88,7 @@ span.psw {
 .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
+	z-index: 9999 !important; /* Sit on top */ 
 	left: 0;
 	top: 0;
 	width: 100%; /* Full width */
@@ -155,7 +155,7 @@ to {
 	<!-- Icon Bar (Sidebar - hidden on small screens) -->
 	<div class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
 
-		<a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+		<a href="home.do" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
 			<i class="fa fa-home w3-xxlarge"></i>
 			<p>HOME</p>
 		</a>
@@ -173,9 +173,13 @@ to {
 				class="fa fa-user w3-xxlarge"></i>
 				<p>LOGOUT</p>
 			</a>
+			<a onclick="#" style="width: auto;"
+				class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fa fa-pencil-square-o w3-xxlarge" aria-hidden="true" ></i>
+				<p>MYPAGE</p>
+			</a>
 		</c:if>
-		<!--  로그인 form  -->
-		<div id="id01" class="modal">
+		<!-- 로그인 form  -->
+<!-- 		<div id="id01" class="modal">
 			<form class="modal-content animate" action="login1.do" method="post">
 				<div class="imgcontainer">
 					<span
@@ -190,17 +194,17 @@ to {
 					<p>
 						<button type="submit" id="login-btn" class="btn btn-login">Login</button>
 						<button type="button" onclick="location.href='enrollView.do';">Sign
-							Up</button>
+							Up</button>	
 				</div>
 			</form>
-		</div>
+		</div> -->
 		<a href="placeList.do"
 			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
 			class="fa fa-eye w3-xxlarge"></i>
 			<p>제휴업체</p>
 		</a> <a href="freeBoardList.do"
-			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
-			class="fas fa-edit w3-xxlarge"></i>
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+			<i class="fa fa-book  w3-xxlarge" aria-hidden="true"></i>
 			<p>게시판</p>
 		</a>
 	</div>
