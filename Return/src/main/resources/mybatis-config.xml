@@ -19,6 +19,7 @@
 		<typeAlias type="com.kh.mop.review.domain.Review" alias="Review"/>
 		<typeAlias type="com.kh.mop.member.domain.Member" alias="Member"/>
 		<typeAlias type="com.kh.mop.review.domain.RvReply" alias="RvReply"/>
+		<typeAlias alias="Reservation" type="com.kh.mop.reservation.domain.Reservation"/>
 	</typeAliases>
 	
 	<mappers>
@@ -29,5 +30,6 @@
 		<mapper resource="mapper/place-mapper.xml"></mapper>
 		<mapper resource="mapper/review-mapper.xml"></mapper>
 		<mapper resource="mapper/member-mapper.xml"></mapper>
+		<mapper resource="mapper/reservation-mapper.xml"/>
 	</mappers>
 </configuration>

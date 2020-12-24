@@ -90,7 +90,7 @@ a:visited {
 	<div id=myInfoDiv style="margin-top: 6%"> 예약 정보 
 	<hr>
 	<div>
-	 ${loginMember.memberName }님 <span style="color: red"> 사용 가능 포인트 : </span>
+	 ${loginMember.memberName }님 <span style="color: red"> 사용 가능 포인트 :${loginMember.won } </span>
 	</div>
 	<hr style="width:40%; text-align:center;    width: 40%;
     position: relative;
