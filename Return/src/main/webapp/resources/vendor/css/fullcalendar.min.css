@@ -125,7 +125,8 @@
 
 .fc-event.fc-draggable, .fc-event[href], .fc-popover .fc-header .fc-close,
 	a[data-goto] {
-	cursor: pointer
+	cursor: pointer;
+	color : black;
 }
 
 .fc-button-group {
@@ -209,7 +210,8 @@ hr.fc-divider {
 }
 
 .fc td.fc-today {
-	border-style: double
+	border-style: double;
+	color : black;
 }
 
 a[data-goto]:hover {
@@ -264,7 +266,7 @@ a[data-goto]:hover {
 .fc .fc-row .fc-content-skeleton table, .fc .fc-row .fc-content-skeleton td,
 	.fc .fc-row .fc-helper-skeleton td {
 	background: 0 0;
-	border-color: transparent
+	border-color: black;
 }
 
 .fc-row .fc-content-skeleton td, .fc-row .fc-helper-skeleton td {
@@ -480,7 +482,9 @@ a.fc-more:hover {
 }
 
 .fc-icon, .fc-toolbar .fc-center {
-	display: inline-block
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: -20px;
 }
 
 .fc-day-grid .fc-row {
@@ -522,7 +526,8 @@ a.fc-more:hover {
 	.fc-unthemed .fc-list-view, .fc-unthemed .fc-popover, .fc-unthemed .fc-row,
 	.fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead
 	{
-	border-color: #ddd
+	border-color: black;
+/* 	background-color: whitesmoke; */
 }
 
 .fc-unthemed .fc-popover {
@@ -537,7 +542,7 @@ a.fc-more:hover {
 }
 
 .fc-unthemed td.fc-today {
-	background: #fcf8e3
+	background: gray;
 }
 
 .fc-unthemed .fc-disabled-day {
@@ -684,7 +689,7 @@ a.fc-more:hover {
 
 .fc .fc-toolbar>*>* {
 	float: left;
-	margin-left: .75em
+	margin-left: .75em;
 }
 
 .fc .fc-toolbar>*>:first-child {
@@ -696,7 +701,9 @@ a.fc-more:hover {
 }
 
 .fc-toolbar button {
-	position: relative
+	position: relative;
+	width: 80px;
+	background-color: gray;
 }
 
 .fc-toolbar .fc-state-hover, .fc-toolbar .ui-state-hover {
@@ -748,7 +755,8 @@ a.fc-more:hover {
 }
 
 .fc-basic-view .fc-day-number, .fc-basic-view .fc-week-number {
-	padding: 2px
+	padding: 2px;
+	color : white;
 }
 
 .fc-basic-view th.fc-day-number, .fc-basic-view th.fc-week-number {

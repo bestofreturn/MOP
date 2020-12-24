@@ -72,7 +72,7 @@ img {
 
 .card {
   margin-top: 50px;
-  background: #eee;
+  background: black;
   padding: 3em;
   line-height: 1.5em; }
 
@@ -105,7 +105,7 @@ img {
   font-weight: bold; }
 
 .checked, .price span {
-  color: #ff9f1a; }
+  color: gray; }
 
 .product-title, .rating, .product-description, .price, .vote, .sizes {
   margin-bottom: 15px; }
@@ -129,17 +129,17 @@ img {
     margin-left: 20px; }
 
 .add-to-cart, .like {
-  background: #ff9f1a;
+  background: #f6f3eb;
   padding: 1.2em 1.5em;
   border: none;
   text-transform: UPPERCASE;
   font-weight: bold;
-  color: #fff;
+  color: black;
   -webkit-transition: background .3s ease;
           transition: background .3s ease; }
   .add-to-cart:hover, .like:hover {
-    background: #b36800;
-    color: #fff; }
+    background: #686868;
+    color: white; }
 
 .not-available {
   text-align: center;
@@ -183,7 +183,14 @@ img {
 
 /*# sourceMappingURL=style.css.map */
 
-/*# sourceMappingURL=style.css.map */
+.container {
+	position: relative;
+    left: 100px;
+    top: -70px;
+}
+header {
+	height: 100px;
+}
 </style>
 <body>
 	<jsp:include page="../common/sidenav.jsp"></jsp:include>
@@ -245,7 +252,7 @@ img {
 						<p class="product-description">전화번호 : ${place.pTel }</p>
 						<p class="product-description">상세 정보 : ${place.pDetail }</p>
 						<h4 class="price">
-							가격: <span>${place.price }</span>
+							가격: <span>${place.price }원</span>
 						</h4>
 						<div class="action">
 							<button class="add-to-cart btn btn-default" type="button"

@@ -27,8 +27,10 @@ body {
 }
 /* Set the width of the sidebar to 120px */
 .w3-sidebar {
-	width: 120px;
-	background: #222;
+	width: 100px;
+	background: black;
+	margin-left: -30px;
+    margin-top: 50px;
 }
 /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
 #main {
@@ -145,12 +147,18 @@ to {
 		width: 100%;
 	}
 }
+
+.w3-half {
+    position: relative;
+    left: 60px;
+}
+
 </style>
 <body class="w3-black">
 	<!-- Icon Bar (Sidebar - hidden on small screens) -->
 	<div class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
 
-		<a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+		<a href="home.do" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
 			<i class="fa fa-home w3-xxlarge"></i>
 			<p>HOME</p>
 		</a>
@@ -168,34 +176,18 @@ to {
 				class="fa fa-user w3-xxlarge"></i>
 				<p>LOGOUT</p>
 			</a>
+			<a onclick="location.href='myPage.do'" style="width: auto;"
+				class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fa fa-pencil-square-o w3-xxlarge" aria-hidden="true" ></i>
+				<p>MYPAGE</p>
+			</a>
 		</c:if>
-		<!--  로그인 form  -->
-		<div id="id01" class="modal">
-			<form class="modal-content animate" action="login1.do" method="post">
-				<div class="imgcontainer">
-					<span
-						onclick="document.getElementById('id01').style.display='none'"
-						class="close" title="Close Modal">&times;</span>
-				</div>
-				<div class="container">
-					<label for="uname"><br> <b>Username</b><br></label> <input
-						type="text" placeholder="Enter memberId" name="memberId">
-					<label for="psw"><br> <b>Password</b><br></label> <input
-						type="password" placeholder="Enter Password" name="memberPwd">
-					<p>
-						<button type="submit" id="login-btn" class="btn btn-login">Login</button>
-						<button type="button" onclick="location.href='enrollView.do';">Sign
-							Up</button>
-				</div>
-			</form>
-		</div>
 		<a href="placeList.do"
 			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
 			class="fa fa-eye w3-xxlarge"></i>
 			<p>제휴업체</p>
 		</a> <a href="freeBoardList.do"
-			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
-			class="fas fa-edit w3-xxlarge"></i>
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+			<i class="fa fa-book  w3-xxlarge" aria-hidden="true"></i>
 			<p>게시판</p>
 		</a>
 	</div>
@@ -223,37 +215,27 @@ to {
 				style="width: 185px; margin-top: -50px;">
 			<!-- 여기다가 스케줄러를 넣어볼까? -->
 			<!-- <img src="" alt="" class="w3-image" width="992" height="1108"> -->
-			<a href="scheduler.do">스케줄러</a>
 		</header>
 		<!-- <button onclick="myFunction()">Toggle dark mode</button> -->
 	
 		<!-- Grid for pricing tables -->
-		<h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
-		<div class="w3-row-padding" style="margin: 0 -16px">
-			<div class="w3-half w3-margin-bottom">
-				<ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-					<li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-					<li class="w3-padding-16">Web Design</li>
-					<li class="w3-padding-16">Photography</li>
-					<li class="w3-padding-16">5GB Storage</li>
-					<li class="w3-padding-16">Mail Support</li>
-					<li class="w3-padding-16">
-						<h2>$ 10</h2> <span class="w3-opacity">per month</span>
-					</li>
-					<li class="w3-light-grey w3-padding-24">
-						<button class="w3-button w3-white w3-padding-large w3-hover-black">Sign
-							Up</button>
-					</li>
-				</ul>
+		
+		<div class="w3-row-padding">
+			<div class="w3-half w3-margin-bottom" style="width : 600px;">
+			<jsp:include page="../scheduler/Scheduler.jsp"></jsp:include>
 			</div>
 
-			<div class="w3-half">
+			<div class="w3-half" id="sibal" style="width:300px; float:right; top:-30px;">
 				<ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-					<li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
-					<li class="w3-padding-16">Web Design</li>
-					<li class="w3-padding-16">Photography</li>
+				<!--  cif 추가  -->
+					<li class="w3-dark-grey w3-xlarge w3-padding-32">${loginMember.memberId }님 환영합니다</li>
+					<c:forEach items="${sList }" var="scheduler">
+					
+					<li class="w3-padding-16">${scheduler.title }</li>
+					<li class="w3-padding-16">${scheduler.description }</li>
 					<li class="w3-padding-16">50GB Storage</li>
 					<li class="w3-padding-16">Endless Support</li>
+					</c:forEach>
 					<li class="w3-padding-16">
 						<h2>$ 25</h2> <span class="w3-opacity">per month</span>
 					</li>
@@ -265,18 +247,58 @@ to {
 			</div>
 			<!-- End Grid/Pricing tables -->
 		</div>
-		<!-- Portfolio Section -->
+		<!--  로그인 form  -->
+		<div id="id01" class="modal">
+			<form class="modal-content animate" action="login1.do" method="post">
+				<div class="imgcontainer">
+					<span
+						onclick="document.getElementById('id01').style.display='none'"
+						class="close" title="Close Modal">&times;</span>
+				</div>
+				<div class="container">
+					<label for="uname"><br> <b>Username</b><br></label> <input
+						type="text" placeholder="Enter memberId" name="memberId">
+					<label for="psw"><br> <b>Password</b><br></label> <input
+						type="password" placeholder="Enter Password" name="memberPwd">
+					<p>
+						<button type="submit" id="login-btn" class="btn btn-login">Login</button>
+						<button type="button" onclick="location.href='enrollView.do';">Sign
+							Up</button>
+				</div>
+			</form>
+		</div>
 		<div class="w3-padding-64 w3-content" id="photos">
-			<h2 class="w3-text-light-grey">My Photos</h2>
-			<hr style="width: 200px" class="w3-opacity">
-
-			<!-- Footer -->
+			
+		</div>
+					<!-- Footer -->
 			<footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-
+				시발
 				<!-- End footer -->
 			</footer>
-		</div>
 		<!-- END PAGE CONTENT -->
 	</div>
+	<script>
+	// 플로팅
+	$(function() {
+		var offset = $("#sibal").offset();
+		var topPadding = 200;
+		$(window).scroll(
+				function() {
+					if ($(window).scrollTop() > offset.top) {
+						$("#sibal").stop().animate(
+								{
+									marginTop : $(window).scrollTop()
+											- offset.top + topPadding
+								});
+					} else {
+						$("#sibal").stop().animate({
+							marginTop : 0
+						});
+					}
+					;
+				});
+	});
+	
+	</script>
 </body>
 </html>

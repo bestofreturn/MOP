@@ -28,7 +28,7 @@ public class MemberController {
 	 */	
 	@RequestMapping(value="enrollView.do" , method=RequestMethod.GET)
 	public String enrollView() {
-		return "member/insert";
+		return "member/MemberInsert";
 	}
 	//아이디 중복 검사
 	@ResponseBody
@@ -53,7 +53,7 @@ public class MemberController {
 
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public String loginView() {
-		return "member/login";
+		return "member/MemberLogin";
 	}
 
 
@@ -82,11 +82,18 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:home.do";
 	}
-	// 마이페이지 뷰
-	@RequestMapping(value="myInfo.do" , method=RequestMethod.GET)
+	// 회원 정보 수정 창
+	@RequestMapping(value="memberUpdate.do" , method=RequestMethod.GET)
 	public String myInfoView() {
-		return "member/myPage";
+		return "member/MemberUpdateView";
 	}
+	
+	// 마이 페이지 뷰 
+	@RequestMapping(value="myPage.do")
+	public String myPageView() {
+		return "member/MemberMyPage";
+	}
+	
 	// 회원 정보 수정
 	@RequestMapping(value="memberModify.do" , method=RequestMethod.POST)
 	public String modifyMember(@ModelAttribute Member member,@RequestParam("zipCode") String zipCode,@RequestParam("addr") String addr,Model model,HttpServletRequest request) {

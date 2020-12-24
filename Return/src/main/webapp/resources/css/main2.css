@@ -52,12 +52,14 @@ body {
 .inputModal {
   width: 65%;
   margin-bottom: 10px;
+  height: 25px;
 }
 
 #contextMenu {
   position: absolute;
   display: none;
   z-index: 2;
+  
 }
 
 #contextMenu .dropdown-menu {
@@ -92,8 +94,9 @@ body {
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 500;
-  color: #505363;
-  background-color: #FAFAFA;
+  color: white;
+  font-weight: bolder;
+  /* background-color: #FAFAFA; */
   padding: 11px 0px !important;
   text-decoration: none;
 }
@@ -107,7 +110,7 @@ body {
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 600;
-  color: #505363;
+  color: white;
   line-height: 32px;
 }
 
@@ -215,7 +218,7 @@ body {
 .fc-unthemed td,
 .fc-unthemed th,
 .fc-unthemed thead {
-  border-color: #DADFEA;
+  border-color: black;
 }
 
 .fc-ltr .fc-h-event .fc-end-resizer,

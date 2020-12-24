@@ -40,5 +40,4 @@ public class PlaceServiceImpl implements PlaceService {
 		return rStore.selectList(pi, vNo);
 	}
 
-
 }
