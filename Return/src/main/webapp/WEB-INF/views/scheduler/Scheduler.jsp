@@ -2,20 +2,7 @@
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-<style>
-.modal-content {
-	width : 770px;
-	color : black;
-}
-label {
-	width : 600px;
-}
-#calendar {
-    position: relative;
-    left: -80px;
-    top: -60px;
-}
-</style>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,6 +20,7 @@ label {
     <link rel="stylesheet" href="resources/css/main2.css">
 
 </head>
+
 <body>
     <div class="container">
 
@@ -51,7 +39,7 @@ label {
 
         <div id="wrapper">
             <div id="loading"></div>
-            <div id="calendar" style="width : 750px;"></div>
+            <div id="calendar"></div>
         </div>
 
 
@@ -65,7 +53,7 @@ label {
                         <h4 class="modal-title"></h4>
                     </div>
                     <div class="modal-body">
-					<input class='allDayNewEvent' id="edit-id" type="hidden" name="edit-id">
+					<input class='inputModal' id="edit-id" type="hidden" name="edit-id">
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-allDay">하루종일</label>
@@ -91,6 +79,8 @@ label {
                                 <label class="col-xs-4" for="edit-end">끝</label>
                                 <input class="inputModal" type="text" name="edit-end" id="edit-end" />
                             </div>
+                        </div>
+                         
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
@@ -122,7 +112,7 @@ label {
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-desc">설명</label>
-                                <textarea rows="4" cols="50" class="inputModal" name="description"
+                                <textarea rows="4" cols="50" class="inputModal" name="edit-desc"
                                     id="edit-desc"></textarea>
                             </div>
                         </div>
@@ -140,18 +130,37 @@ label {
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-        
+        <div class="panel panel-default">
+
+            <div class="panel-heading" style="display : none;">
+                <h3 class="panel-title">필터</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="col-lg-6" style="display : none;">
+                    <label for="calendar_view">구분별</label>
+                    <div class="input-group">
+                        <select class="filter" id="type_filter" multiple="multiple">
+                            <option value="카테고리1">카테고리1</option>
+                            <option value="카테고리2">카테고리2</option>
+                            <option value="카테고리3">카테고리3</option>
+                            <option value="카테고리4">카테고리4</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="col-lg-6" style="display : none;">
                     <label for="calendar_view">등록자별</label>
                     <div class="input-group">
-                       
-                                <label class="checkbox-inline"><input class='filter' type="checkbox" value="admin"
-                                checked>admin</label>
+                        
+                                <label class="checkbox-inline"><input class='filter' type="checkbox" value="${loginMember.memberId }"
+                                checked>${loginMember.memberId }</label>
                     </div>
                 </div>
 
-       
+            </div>
+        </div>
         <!-- /.filter panel -->
     </div>
     <!-- /.container -->
