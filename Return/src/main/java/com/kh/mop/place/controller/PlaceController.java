@@ -71,13 +71,4 @@ public class PlaceController {
 		}
 		return mv;
 	}
-	@RequestMapping(value="reserve.do")
-	public ModelAndView reserView(ModelAndView mv) {
-		/*
-		 * int placeNoReserve = Integer.parseInt(pId); 
-		 * mv.addObject("placeNoReserve",placeNoReserve);
-		 */
-		mv.setViewName("reservation/reservationForm");
-		return mv;
-	}
 }
