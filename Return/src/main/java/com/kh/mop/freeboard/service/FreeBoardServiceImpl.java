@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kh.mop.freeboard.domain.FreeBoard;
 import com.kh.mop.freeboard.domain.FreeBoardPageInfo;
 import com.kh.mop.freeboard.domain.FreeBoardReply;
+import com.kh.mop.freeboard.domain.FreeBoardSearch;
 import com.kh.mop.freeboard.store.FreeBoardStore;
 
 @Service
@@ -59,6 +60,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	@Override
 	public int insertFreeBoard(FreeBoard freeBoard) {
 		return fStore.insertFreeBoard(freeBoard);
+	}
+
+	@Override
+	public ArrayList<FreeBoard> selectSearchList(FreeBoardSearch search) {
+		return fStore.selectSearchList(search);
 	}
 
 	@Override

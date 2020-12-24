@@ -39,10 +39,10 @@
 					<td><c:url var="fDetail" value="freeBoardDetail.do">
 							<c:param name="fId" value="${freeBoard.fId }"></c:param>
 							<c:param name="page" value="${pi.currentPage }"></c:param>
-						</c:url> 
-						<a href="${fDetail}">${freeBoard.fTitle }</a>
-						<c:if test="${freeBoard.replycount > 0 }"><span style="color:red;">[${freeBoard.replycount }]</span></c:if>
-						</td>
+						</c:url> <a href="${fDetail}">${freeBoard.fTitle }</a> <c:if
+							test="${freeBoard.replycount > 0 }">
+							<span style="color: red;">[${freeBoard.replycount }]</span>
+						</c:if></td>
 					<td>${freeBoard.fWriter }</td>
 					<td>${freeBoard.fCreateDate }</td>
 					<td>${freeBoard.fCount }</td>
@@ -51,6 +51,7 @@
 		</table>
 		<button type="button" class="btn btn-default pull-right"
 			onclick="location.href='freeBoardWriteView.do'">글쓰기</button>
+
 		<div class="text-center">
 			<ul class="pagination">
 				<!-- 이전 -->
@@ -89,6 +90,29 @@
 				</c:if>
 			</ul>
 		</div>
+
+		
+		<div class="text-center">
+		<form action="freeBoardSearch.do" method="get">
+			<div class="w100" style="padding-right:10px">
+				<select class="form-control-sm" name="searchType" id="searchType">
+					<option value="all">전체</option>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="fWriter">작성자</option>
+				</select>
+				<input type="text" class="form-control-sm" name="searchValue" id="searchValue">
+				<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+			</div>
+			</form>
+		</div>
 	</div>
+<!-- 	<script>
+	$(document).on("click","#btnSearch",function(e){
+		e.preventDefault();
+		var url = "freeBoardList.do";
+		
+	})
+	</script> -->
 </body>
 </html>

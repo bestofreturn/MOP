@@ -1,14 +1,13 @@
 package com.kh.mop.freeboard.controller;
 
 import java.io.File;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.kh.mop.common.Pagination;
 import com.kh.mop.freeboard.domain.FreeBoard;
 import com.kh.mop.freeboard.domain.FreeBoardPageInfo;
 import com.kh.mop.freeboard.domain.FreeBoardReply;
+import com.kh.mop.freeboard.domain.FreeBoardSearch;
 import com.kh.mop.freeboard.service.FreeBoardService;
 import com.kh.mop.member.domain.Member;
 
@@ -60,7 +58,6 @@ public class FreeBoardController {
 		int result = 0;
 		String path = null;
 		result = fService.insertFreeBoard(freeBoard);
-		System.out.println("컨트롤러" + freeBoard);
 		if(result > 0) {
 			path = "redirect:freeBoardList.do";
 		}else {
@@ -237,19 +234,21 @@ public class FreeBoardController {
 	}
 	
 	//댓글 전체 조회
-	@RequestMapping(value="fbreplyList.do",method=RequestMethod.GET)
-	public void getFBReplyList(HttpServletResponse response, int fId) throws Exception {
+	@ResponseBody
+	@RequestMapping(value="fbreplyList.do",method=RequestMethod.POST)
+	public ArrayList<FreeBoardReply> getFBReplyList(HttpServletResponse response, @RequestParam("fId")int fId) throws Exception {
 		
-		ArrayList<FreeBoardReply> fbrList = fService.selectFreeBoardReplyList(fId);
+		return fService.selectFreeBoardReplyList(fId);
+//		ArrayList<FreeBoardReply> fbrList = fService.selectFreeBoardReplyList(fId);
 		
 		//dDB에서 가져온값을 JSON으로 변환
 		//그전에 dB데이터에 한글이 있다면 인코딩해줌
-		for(FreeBoardReply fbr : fbrList) {
-			fbr.setFbrContent(URLEncoder.encode(fbr.getFbrContent(), "UTF-8"));
-			System.out.println("$$$$$$$$$$$$$$$$" + fbr);
-		}
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-			gson.toJson(fbrList, response.getWriter());
+//		for(FreeBoardReply fbr : fbrList) {
+//			fbr.setFbrContent(URLEncoder.encode(fbr.getFbrContent(), "UTF-8"));
+//			System.out.println("$$$$$$$$$$$$$$$$" + fbr);
+//		}
+//		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+//			gson.toJson(fbrList, response.getWriter());
 	}
 	
 	//댓글 수정
@@ -282,6 +281,25 @@ public class FreeBoardController {
 				return "fail";
 			}
 		}
+		
+		//자유게시판 검색
+		@RequestMapping(value="freeBoardSearch.do", method=RequestMethod.GET)
+		public String feeBoardSearch(FreeBoardSearch search, Model model, @RequestParam(value="page",required=false)Integer page) {
+			int currentPage = (page != null) ? page : 1;
+			int listCount = fService.getListCount();
+			FreeBoardPageInfo pi = Pagination.getFreeBoardPageInfo(currentPage, listCount);
+			ArrayList<FreeBoard> searchList = fService.selectSearchList(search);
+			System.out.println(searchList);
+			if(!searchList.isEmpty()) {
+				model.addAttribute("fList", searchList);
+				model.addAttribute("pi",pi);
+				return "freeboard/FreeBoardListView";
+			}else {
+				model.addAttribute("msg","검색 실패");
+				return "common/errorPage";
+			}
+		}
+		
 	
 }
 

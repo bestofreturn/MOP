@@ -97,6 +97,25 @@
 	WHERE FBRID=#{fbrId}
 	</update>
 	
+	<select id="searchList" resultMap="freeBoardResultMap">
+	SELECT * FROM FREEBOARD
+	<if test="searchType.toString() == 'title'">
+	WHERE FTITLE LIKE '%' || #{searchValue} || '%' AND F_STATUS = 'Y'
+	</if>
+	<if test="searchType.toString() == 'fWriter'">
+	WHERE FWRITER LIKE '%' || #{searchValue} || '%' AND F_STATUS = 'Y'
+	</if>
+	<if test="searchType.toString() == 'content'">
+	WHERE FCONTENT LIKE '%' || #{searchValue} || '%' AND F_STATUS = 'Y'
+	</if>
+	<if test="searchType.toString() == 'all'">
+	WHERE FTITLE LIKE '%' || #{searchValue} || '%' AND F_STATUS = 'Y'
+	OR FWRITER LIKE '%' || #{searchValue} || '%' AND F_STATUS = 'Y'
+	OR FCONTENT LIKE '%' || #{searchValue} || '%' AND F_STATUS = 'Y'
+	</if>
+	ORDER BY F_CREATE_DATE DESC
+	</select>
+	
 	
 	
 </mapper>

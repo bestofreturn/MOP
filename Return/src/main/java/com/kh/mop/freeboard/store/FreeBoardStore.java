@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.kh.mop.freeboard.domain.FreeBoard;
 import com.kh.mop.freeboard.domain.FreeBoardPageInfo;
 import com.kh.mop.freeboard.domain.FreeBoardReply;
+import com.kh.mop.freeboard.domain.FreeBoardSearch;
 
 public interface FreeBoardStore {
 	public int getListCount();
@@ -20,4 +21,5 @@ public interface FreeBoardStore {
 	public int deleteFreeBoardReply(int fbrId);
 	public int addReplyCount(int refFBId);
 	public int deleteReplyCount(int refFBId);
+	public ArrayList<FreeBoard> selectSearchList(FreeBoardSearch search);
 }

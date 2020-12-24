@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.mop.freeboard.domain.FreeBoard;
 import com.kh.mop.freeboard.domain.FreeBoardPageInfo;
 import com.kh.mop.freeboard.domain.FreeBoardReply;
+import com.kh.mop.freeboard.domain.FreeBoardSearch;
 
 @Repository
 public class FreeBoardStoreLogic implements FreeBoardStore{
@@ -68,6 +69,11 @@ public class FreeBoardStoreLogic implements FreeBoardStore{
 	@Override
 	public ArrayList<FreeBoardReply> selectFreeBoardReplyList(int fId) {
 		return (ArrayList)sqlSession.selectList("FreeBoardMapper.selectFBReplyList",fId);
+	}
+
+	@Override
+	public ArrayList<FreeBoard> selectSearchList(FreeBoardSearch search) {
+		return (ArrayList)sqlSession.selectList("FreeBoardMapper.searchList",search);
 	}
 
 	@Override

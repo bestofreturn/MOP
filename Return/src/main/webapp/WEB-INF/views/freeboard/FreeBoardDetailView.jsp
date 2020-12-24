@@ -99,13 +99,18 @@
 				var fbrContent = $("#fbrContent").val();
 				var refFBId = ${freeBoard.fId};
 				
+
 				$.ajax({
 					url : "addFBReply.do",
+					header: {"Content-Type" : "application/json"
+
+						, "X-HTTP-Method-Override" : "POST"},
 					type : "post",
 					data : {
 						"fbrContent" : fbrContent,
 						"refFBId" : refFBId
 					},
+					dataType: "text",
 					success : function(data) {
 						if (data == "success") {
 							$("#fbrContent").val("");
@@ -123,7 +128,7 @@
 			var fId = ${freeBoard.fId};
 			$.ajax({
 				url : "fbreplyList.do",
-				type : "get",
+				type : "post",
 				data : {"fId" : fId},
 				dataType : "json",
 				success : function(data){
@@ -166,12 +171,16 @@
 							
 
 							htmls += '</div>';
+							console.log(this.fbrContent);
 						});
 						
 						}else{
 						htmls = "등록된 댓글이 없습니다."
 					}
 					$("#replyList").html(htmls);
+				},
+				error:function(data){
+					console.log(data);
 				}
 			});
 		}
@@ -202,7 +211,7 @@
 
 			htmls += '<a href="javascript:void(0)" onclick="updateFBReply(' + fbrId + ', \'' + fbrWriter + '\')" style="padding-right:5px">저장</a>';
 
-			htmls += '<a href="javascript:void(0)" onClick="showReplyList()">취소<a>';
+			htmls += '<a href="javascript:void(0)" onClick="getReplyList()">취소<a>';
 
 			htmls += '</span>';
 
@@ -233,12 +242,20 @@
 			
 			var fbrContent = JSON.stringify($('#editContent').val());
 			
+
+			
 			
 			if( '${ sessionScope.loginMember.memberId }' == fbrWriter){
 			$.ajax({
 
 				url: "updateReply.do"
+				,header: {"Content-Type" : "application/json"
 
+					, "X-HTTP-Method-Override" : "POST"}
+
+			
+			
+			
 				, data : {"fbrContent" : fbrContent, "fbrId" : fbrId}
 
 				, type : "post"
