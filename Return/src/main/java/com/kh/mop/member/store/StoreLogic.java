@@ -34,6 +34,12 @@ public class StoreLogic implements Store{
 	}
 
 	@Override
+	public int reservationMember(Member member) {
+		System.out.println("###########");
+		return sqlSession.update("MemberMapper.reservationMember",member);
+	}
+
+	@Override
 	public Member selectOneMember(Member member) {
 		Member loginMember = sqlSession.selectOne("MemberMapper.selectOne",member);
 		return loginMember;

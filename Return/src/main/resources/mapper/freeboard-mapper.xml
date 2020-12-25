@@ -12,8 +12,8 @@
 	
 	<resultMap type="FreeBoardReply" id="freeBoardReplyResultMap">
 	<result property="refFBId" column="REF_FBID"/>
-	<result property="fbrWriter" column="FBR_WRITER"/>
-	<result property="fbrContent" column="FBR_CONTENT"/>
+	<result property="fbrWriter" column="FBRWRITER"/>
+	<result property="fbrContent" column="FBRCONTENT"/>
 	<result property="fbrCreateDate" column="FBR_CREATE_DATE"/>
 	<result property="fbrModifyDate" column="FBR_MODIFY_DATE"/>
 	<result property="fbrStatus" column="FBR_STATUS"/>
@@ -87,7 +87,7 @@
 	
 	<update id="updateFBReply">
 	UPDATE FREEBOARDREPLY
-	SET FBR_CONTENT =#{fbrContent}, FBR_MODIFY_DATE = SYSDATE
+	SET FBRCONTENT =#{fbrContent}, FBR_MODIFY_DATE = SYSDATE
 	WHERE FBRID= #{fbrId}
 	</update>
 	

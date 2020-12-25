@@ -238,8 +238,12 @@ public class FreeBoardController {
 	@RequestMapping(value="fbreplyList.do",method=RequestMethod.POST)
 	public ArrayList<FreeBoardReply> getFBReplyList(HttpServletResponse response, @RequestParam("fId")int fId) throws Exception {
 		
-		return fService.selectFreeBoardReplyList(fId);
-//		ArrayList<FreeBoardReply> fbrList = fService.selectFreeBoardReplyList(fId);
+		
+		
+		
+		ArrayList<FreeBoardReply> fbrList = fService.selectFreeBoardReplyList(fId);
+		
+		return fbrList;
 		
 		//dDB에서 가져온값을 JSON으로 변환
 		//그전에 dB데이터에 한글이 있다면 인코딩해줌
@@ -289,7 +293,6 @@ public class FreeBoardController {
 			int listCount = fService.getListCount();
 			FreeBoardPageInfo pi = Pagination.getFreeBoardPageInfo(currentPage, listCount);
 			ArrayList<FreeBoard> searchList = fService.selectSearchList(search);
-			System.out.println(searchList);
 			if(!searchList.isEmpty()) {
 				model.addAttribute("fList", searchList);
 				model.addAttribute("pi",pi);

@@ -14,5 +14,7 @@ public interface MemberService {
 	public int modifyMember(Member member);
 	
 	public int deleteMember(String userId);
+	
+	public int reservationMember(Member member);
 
 }

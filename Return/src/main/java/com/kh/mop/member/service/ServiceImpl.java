@@ -36,4 +36,10 @@ public class ServiceImpl implements MemberService{
 		return 0;
 	}
 
+	@Override
+	public int reservationMember(Member member) {
+		System.out.println("@@@@@@@@@");
+		return store.updateMember(member);
+	}
+
 }

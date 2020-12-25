@@ -13,5 +13,7 @@ public Member selectOneMember(Member member);
 	public int updateMember(Member member);
 	
 	public int deleteMember(String userId);
+	
+	public int reservationMember(Member member);
 
 }

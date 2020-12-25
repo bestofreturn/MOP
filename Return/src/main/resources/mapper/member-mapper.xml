@@ -39,4 +39,9 @@
    <select id="checkIdDup" resultType="int">
       SELECT COUNT(*) FROM MEMBER WHERE MEMBERID = #{memberId}
    </select>
+   <update id="reservationMember">
+   UPDATE MEMBER
+   SET WON =#{won}, RESERVATION= 'Y'
+   WHERE MEMBERID = #{memberId}
+   </update>
 </mapper>

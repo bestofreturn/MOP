@@ -3,6 +3,7 @@ package com.kh.mop.reservation.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,19 +42,21 @@ public class ReservationController {
 		return mv;
 	}
 	
-	//예약추가
-	@RequestMapping(value="insertReservation.do", method=RequestMethod.POST)
-	public String insertReservation(Reservation reservation, String memberId){
-		
-		 int result = rService.insertReservation(reservation);
-		 
-		 
-		 if(result > 0) {
-			 return "reservationConfirm.do";
-		 }else {
-			 return "common/errorPage";
-		 }
-		 
-	}
 	
+	  //예약추가
+	  
+	  @RequestMapping(value="insertReservation.do", method=RequestMethod.POST)
+	  public String insertReservation(Reservation reservation, @ModelAttribute
+	  Member member){
+	  
+	  int result = rService.insertReservation(reservation);
+	  
+	  int result1 = mService.modifyMember(member); System.out.println(result1);
+	  if(result1 > 0) { return "reservationConfirm.do"; }else { return
+	  "common/errorPage"; }
+	  
+	  }
+	 
+	
+
 }

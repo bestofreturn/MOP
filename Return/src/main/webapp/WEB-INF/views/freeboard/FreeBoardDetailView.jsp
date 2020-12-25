@@ -102,9 +102,7 @@
 
 				$.ajax({
 					url : "addFBReply.do",
-					header: {"Content-Type" : "application/json"
-
-						, "X-HTTP-Method-Override" : "POST"},
+					
 					type : "post",
 					data : {
 						"fbrContent" : fbrContent,
@@ -240,22 +238,13 @@
 
 			var fbrId = fbrId;
 			
-			var fbrContent = JSON.stringify($('#editContent').val());
-			
-
+			var fbrContent = $('#editContent').val();
 			
 			
 			if( '${ sessionScope.loginMember.memberId }' == fbrWriter){
 			$.ajax({
 
 				url: "updateReply.do"
-				,header: {"Content-Type" : "application/json"
-
-					, "X-HTTP-Method-Override" : "POST"}
-
-			
-			
-			
 				, data : {"fbrContent" : fbrContent, "fbrId" : fbrId}
 
 				, type : "post"
