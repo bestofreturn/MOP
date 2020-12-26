@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kh.mop.review.domain.PageInfo;
+import com.kh.mop.review.domain.ReviewPageInfo;
 import com.kh.mop.review.domain.Review;
 import com.kh.mop.review.domain.RvReply;
-import com.kh.mop.review.domain.Select;
+import com.kh.mop.review.domain.ReviewSelect;
 import com.kh.mop.review.store.ReviewStore;
 
 @Service
@@ -19,14 +19,13 @@ public class ReviewServiceImpl implements ReviewService{
 	public ReviewStore vStore;
 
 	@Override
-	@Transactional
 	public int getListCount() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public ArrayList<Review> selectList(PageInfo pi, int vNo) {
+	public ArrayList<Review> selectList(ReviewPageInfo pi, int vNo) {
 		return vStore.selectList(pi, vNo);
 	}
 	
@@ -75,7 +74,7 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public ArrayList<Review> selectBoxList(Select select, int vNo) {
+	public ArrayList<Review> selectBoxList(ReviewSelect select, int vNo) {
 		return vStore.selectBoxList(select, vNo);
 	}
 

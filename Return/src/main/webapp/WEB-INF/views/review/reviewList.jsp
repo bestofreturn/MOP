@@ -47,7 +47,9 @@
 			border-radius: 8px;
 			background-color: #f2f2f2;
 			padding: 10px;
-			margin: 3px auto;
+			margin: 10px auto;
+			padding-left: 30px;
+			padding-right: 30px;
 		}
 		
 		#showBtn{
@@ -61,9 +63,27 @@
 			border-radius: .25rem;
 			transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 		}
+		
 		#rev{
 			position: relative;
 			left: 90%;
+		}
+		
+		#selectCondition{
+			padding: 5px;
+			position: relative;
+		    color: #0152cc;
+		    padding-right: 20px;
+		    background-color: transparent;
+		    background-image: url(https://assets.yanolja.com/50067aa09286b37af1b0f621401811a69cd649d4/202012171358/c36d0e8fe552b4b2e84e680465552fdb.svg);
+		    background-position: 100% 8px;
+		    background-repeat: no-repeat;
+		    appearance: none;
+		    border: none;
+		}
+		
+		#select_div{
+			background-color: white;
 		}
 		
 		/* 마우스 클릭 이벤트 css */
@@ -186,14 +206,18 @@
 				</div>
 				<br>
 				<!-- Post /////-->
-				<form action="reviewSelect.do" method="get">
-					<input type="hidden" name="vNo" value="${vNo }">
-					<select id="selectCondition" name="selectCondition" onchange="formChange(this.form)">
-						<option value="new" <c:if test="${select.selectCondition == 'new' }">selected</c:if>>최근 작성순</option>
-						<option value="starUp" <c:if test="${select.selectCondition == 'starUp' }">selected</c:if>>별점 높은순</option>
-						<option value="starDown" <c:if test="${select.selectCondition == 'starDown' }">selected</c:if>>별점 낮은순</option>
-					</select>
-				</form>
+				<div class="card-header" id="select_div">
+					<form action="reviewSelect.do" method="get">
+						<input type="hidden" name="vNo" value="${vNo }">
+						<select id="selectCondition" name="selectCondition" onchange="formChange(this.form)">
+							<option value="new" <c:if test="${select.selectCondition == 'new' }">selected</c:if>>전체 글보기</option>
+							<option value="starUp" <c:if test="${select.selectCondition == 'starUp' }">selected</c:if>>별점 높은순</option>
+							<option value="starDown" <c:if test="${select.selectCondition == 'starDown' }">selected</c:if>>별점 낮은순</option>
+						</select>
+						
+					</form>
+					
+				</div>
 				<!--- \\\\\\\Post-->
 				<c:if test="${vStar != 0 }">
 					<c:forEach items="${vList }" var="review">
@@ -293,7 +317,7 @@
 							<div class="card-body">
 								<div class="text-muted h7 mb-2">
 									<i class="fa fa-clock-o"></i>${review.vCreateDate }</div>
-								<p class="card-text">${review.vContent }</p>
+								<pre style="font-family : 'Nanum Brush Script', 필기체;">${review.vContent }</pre>
 								<c:if test="${ !empty review.filePath }">
 									<td>
 										<img style="width: 200px; height: 100px; border-radius: 8px;" src="resources/reviewUploadFiles/${review.filePath }">
@@ -307,7 +331,6 @@
 									<textarea rows="3" cols="100" id="reContent" style="width: 100%;" placeholder="댓글을 작성해주세요."></textarea>
 									<a href="#" id="rev" class="card-link" onclick="reviewReply('${review.vId}', this)"><i class="fa fa-comment"></i>등록</a>
 								</div>
-								
 							</div>
 							</c:if>
 								<c:forEach items="${review.rvReplyList }" var="rvReply">
@@ -317,11 +340,13 @@
 											<c:param name="vId" value="${review.vId }"></c:param>
 											<c:param name="reId" value="${rvReply.reId }"></c:param>
 										</c:url>
-										<div style="float:right;">
-											<a href="${reDelete }">삭제</a>
-										</div>
+										<c:if test="${loginMember.memberId eq 'admin'}">
+											<div style="float:right;">
+												<a href="${reDelete }">삭제</a>
+											</div>
+										</c:if>
 										<i class="fa fa-clock-o"></i>${rvReply.reCreateDate }<br><br>
-										${rvReply.reContent }
+										<pre style="font-family : 'Nanum Brush Script', 필기체;">${rvReply.reContent }</pre>
 									</div>
 								</c:forEach>
 						</div>

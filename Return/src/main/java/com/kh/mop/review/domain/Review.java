@@ -13,14 +13,13 @@ public class Review {
 	private Date vModifyDate;
 	private String vStatus;
 	private int vStar;
-	private String vImgLogo;
 	private int vNo;
 	private ArrayList<RvReply> rvReplyList;
 	
 	public Review() {}
 
 	public Review(int vId, String vWriter, String vContent, String filePath, Date vCreateDate, Date vModifyDate,
-			String vStatus, int vStar, String vImgLogo, int vNo, ArrayList<RvReply> rvReplyList) {
+			String vStatus, int vStar, int vNo, ArrayList<RvReply> rvReplyList) {
 		super();
 		this.vId = vId;
 		this.vWriter = vWriter;
@@ -30,7 +29,6 @@ public class Review {
 		this.vModifyDate = vModifyDate;
 		this.vStatus = vStatus;
 		this.vStar = vStar;
-		this.vImgLogo = vImgLogo;
 		this.vNo = vNo;
 		this.rvReplyList = rvReplyList;
 	}
@@ -99,14 +97,6 @@ public class Review {
 		this.vStar = vStar;
 	}
 
-	public String getvImgLogo() {
-		return vImgLogo;
-	}
-
-	public void setvImgLogo(String vImgLogo) {
-		this.vImgLogo = vImgLogo;
-	}
-
 	public int getvNo() {
 		return vNo;
 	}
@@ -127,7 +117,7 @@ public class Review {
 	public String toString() {
 		return "Review [vId=" + vId + ", vWriter=" + vWriter + ", vContent=" + vContent + ", filePath=" + filePath
 				+ ", vCreateDate=" + vCreateDate + ", vModifyDate=" + vModifyDate + ", vStatus=" + vStatus + ", vStar="
-				+ vStar + ", vImgLogo=" + vImgLogo + ", vNo=" + vNo + ", rvReplyList=" + rvReplyList + "]";
+				+ vStar + ", vNo=" + vNo + ", rvReplyList=" + rvReplyList + "]";
 	}
 	
 }

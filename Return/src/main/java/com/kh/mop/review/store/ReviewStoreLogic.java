@@ -8,10 +8,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.mop.review.domain.PageInfo;
+import com.kh.mop.review.domain.ReviewPageInfo;
 import com.kh.mop.review.domain.Review;
 import com.kh.mop.review.domain.RvReply;
-import com.kh.mop.review.domain.Select;
+import com.kh.mop.review.domain.ReviewSelect;
 
 @Repository
 public class ReviewStoreLogic implements ReviewStore{
@@ -26,7 +26,7 @@ public class ReviewStoreLogic implements ReviewStore{
 	}
 
 	@Override
-	public ArrayList<Review> selectList(PageInfo pi, int vNo) {
+	public ArrayList<Review> selectList(ReviewPageInfo pi, int vNo) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getReviewLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getReviewLimit());
 		return (ArrayList)sqlSession.selectList("reviewMapper.selectList", vNo, rowBounds);
@@ -73,7 +73,7 @@ public class ReviewStoreLogic implements ReviewStore{
 	}
 
 	@Override
-	public ArrayList<Review> selectBoxList(Select select, int vNo) {
+	public ArrayList<Review> selectBoxList(ReviewSelect select, int vNo) {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("select", select);
 		paramMap.put("vNo", vNo);

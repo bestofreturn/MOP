@@ -29,7 +29,7 @@
 	<insert id="insertReview">
 		INSERT INTO REVIEW
 		VALUES(SEQ_VID.NEXTVAL, #{vWriter}, #{vContent}, #{filePath},
-		SYSDATE, SYSDATE, DEFAULT, #{vStar}, #{vImgLogo}, #{vNo})
+		SYSDATE, SYSDATE, DEFAULT, #{vStar}, #{vNo})
 	</insert>
 	
 	<update id="deleteReview">
@@ -72,10 +72,11 @@
 				ORDER BY V_CREATE_DATE DESC
 			</if>
 			<if test="select.selectCondition.toString() == 'starUp'">
-				ORDER BY VSTAR DESC
+				ORDER BY VSTAR DESC, V_CREATE_DATE DESC
 			</if>
 			<if test="select.selectCondition.toString() == 'starDown'">
-				ORDER BY VSTAR ASC
+				ORDER BY VSTAR ASC, V_CREATE_DATE DESC
 			</if>
 	</select>
+
 </mapper>

@@ -1,7 +1,7 @@
 package com.kh.mop.common;
 
 import com.kh.mop.freeboard.domain.FreeBoardPageInfo;
-import com.kh.mop.review.domain.PageInfo;
+import com.kh.mop.review.domain.ReviewPageInfo;
 
 public class Review_Pagination {
 
@@ -11,10 +11,10 @@ public class Review_Pagination {
 	//한번만 생성하여 정보를 저장할 수 있도록 해야함
 	//그래서 그냥 메소드가 아닌 static 메소드로 만들어줌
 
-	public static PageInfo getReviewPageInfo(int currentPage, int listCount) {
+	public static ReviewPageInfo getReviewPageInfo(int currentPage, int listCount) {
 		//즉 pagination 클래스에서 만드는 페이징 처리에 대한 정보를
 		//PageInfo 클래스가 저장을 하는 것임
-		PageInfo pi = null;
+		ReviewPageInfo pi = null;
 
 		int pageLimit = 5; //한페이지에서 보여줄 네비게이션 수
 		int maxPage;	//전체 페이지 중 가장 마지막 페이지
@@ -38,7 +38,7 @@ public class Review_Pagination {
 		if(maxPage < endPage) {
 			endPage = maxPage;
 		}
-		pi = new PageInfo(currentPage, boardLimit, pageLimit, startPage , endPage, listCount, maxPage);
+		pi = new ReviewPageInfo(currentPage, boardLimit, pageLimit, startPage , endPage, listCount, maxPage);
 		return pi;
 	}
 }

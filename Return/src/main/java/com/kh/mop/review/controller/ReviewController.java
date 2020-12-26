@@ -26,10 +26,10 @@ import com.google.gson.GsonBuilder;
 import com.kh.mop.common.Pagination;
 import com.kh.mop.common.Review_Pagination;
 import com.kh.mop.member.domain.Member;
-import com.kh.mop.review.domain.PageInfo;
+import com.kh.mop.review.domain.ReviewPageInfo;
 import com.kh.mop.review.domain.Review;
 import com.kh.mop.review.domain.RvReply;
-import com.kh.mop.review.domain.Select;
+import com.kh.mop.review.domain.ReviewSelect;
 import com.kh.mop.review.service.ReviewService;
 
 @Controller
@@ -107,7 +107,7 @@ public class ReviewController {
 	public ModelAndView reviewList(ModelAndView mv, @RequestParam(value="page", required = false) Integer page, String vNo) {
 		int currentPage = (page != null) ? page : 1;
 		int listCount = vService.getListCount();
-		PageInfo pi = Review_Pagination.getReviewPageInfo(currentPage, listCount);
+		ReviewPageInfo pi = Review_Pagination.getReviewPageInfo(currentPage, listCount);
 		int reviewNo = Integer.parseInt(vNo);
 		ArrayList<Review> vList = vService.selectList(pi, reviewNo);
 		// 댓글 리스트
@@ -130,7 +130,7 @@ public class ReviewController {
 	
 	// 리뷰게시판 selectBox
 	@RequestMapping(value="reviewSelect.do", method = RequestMethod.GET)
-	public String reviewSelect(Select select, Model model, String vNo) {
+	public String reviewSelect(ReviewSelect select, Model model, String vNo) {
 		int reviewNo = Integer.parseInt(vNo);
 		ArrayList<Review> selectList = vService.selectBoxList(select, reviewNo);
 		// 댓글 리스트
