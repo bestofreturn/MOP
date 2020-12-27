@@ -1,7 +1,7 @@
 package com.kh.mop.review.domain;
 
 public class ReviewSelect {
-
+ 
 	private String selectCondition;
 	
 	public ReviewSelect() {}

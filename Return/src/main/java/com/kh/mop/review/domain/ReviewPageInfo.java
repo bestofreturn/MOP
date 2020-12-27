@@ -8,7 +8,7 @@ public class ReviewPageInfo {
 	// 네비게이션 첫번째값
 	// 네비게이션 마지막값
 	// 전체 게시글 갯수
-	// 페이지 마지막 번호
+	// 페이지 마지막 번호 
 	private int currentPage;
 	private int reviewLimit;
 	private int pageLimit;
