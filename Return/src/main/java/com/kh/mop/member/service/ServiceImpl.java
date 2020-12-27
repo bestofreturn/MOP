@@ -17,8 +17,8 @@ public class ServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int checkIdDup(String userId) {
-		return 0;
+	public int checkIdDup(String memberId) {
+		return store.checkIdDup(memberId);
 	}
 
 	@Override
@@ -27,19 +27,13 @@ public class ServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int modifyMember(Member member) {
-		return 0;
-	}
-
-	@Override
-	public int deleteMember(String userId) {
-		return 0;
-	}
-
-	@Override
-	public int reservationMember(Member member) {
-		System.out.println("@@@@@@@@@");
+	public int updateMember(Member member) {
 		return store.updateMember(member);
+	}
+
+	@Override
+	public int deleteMember(String memberId) {
+		return store.deleteMember(memberId);
 	}
 
 }

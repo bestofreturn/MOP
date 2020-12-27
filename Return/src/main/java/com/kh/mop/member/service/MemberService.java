@@ -7,14 +7,12 @@ public interface MemberService {
 	
 	public Member loginMember(Member member);
 	
-	public int checkIdDup(String userId);
+	public int checkIdDup(String memberId);
 	
 	public int insertMember(Member member);
 	
-	public int modifyMember(Member member);
+	public int updateMember(Member member);
 	
-	public int deleteMember(String userId);
-	
-	public int reservationMember(Member member);
+	public int deleteMember(String memberId);
 
 }

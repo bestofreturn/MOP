@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" type="image⁄x-icon" href="/resources/image/calendar-icon.png">
 <title>마이페이지</title>
 </head>
 <body>

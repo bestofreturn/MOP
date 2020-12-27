@@ -13,8 +13,9 @@ public class StoreLogic implements Store{
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public int checkIdDup(String userId) {
-		return 0;
+	public int checkIdDup(String memberId) {
+		int result = sqlSession.selectOne("MemberMapper.checkIdDup",memberId);
+		return result;
 	}
 
 	@Override
@@ -25,18 +26,14 @@ public class StoreLogic implements Store{
 
 	@Override
 	public int updateMember(Member member) {
-		return 0;
+		int result = sqlSession.update("MemberMapper.updateMember",member);
+		return result;
 	}
 
 	@Override
-	public int deleteMember(String userId) {
-		return 0;
-	}
-
-	@Override
-	public int reservationMember(Member member) {
-		System.out.println("###########");
-		return sqlSession.update("MemberMapper.reservationMember",member);
+	public int deleteMember(String memberId) {
+		int result = sqlSession.delete("MemberMapper.deleteMember",memberId);
+		return result;
 	}
 
 	@Override

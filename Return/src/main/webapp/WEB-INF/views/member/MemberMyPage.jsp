@@ -82,6 +82,7 @@ a:visited {
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" type="image⁄x-icon" href="/resources/image/calendar-icon.png">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <title>내 정보</title>
 </head>
@@ -90,7 +91,7 @@ a:visited {
 	<div id=myInfoDiv style="margin-top: 6%"> 예약 정보 
 	<hr>
 	<div>
-	 ${loginMember.memberName }님 <span style="color: red"> 사용 가능 포인트 :${loginMember.won } </span>
+	 ${loginMember.memberName }님 <span style="color: red"> 사용 가능 포인트 : </span>
 	</div>
 	<hr style="width:40%; text-align:center;    width: 40%;
     position: relative;

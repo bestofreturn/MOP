@@ -11,6 +11,7 @@
    href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/bs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="shortcut icon" type="image⁄x-icon" href="/resources/image/calendar-icon.png">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <title>re:turn 회원가입 페이지</title>
  <script>
