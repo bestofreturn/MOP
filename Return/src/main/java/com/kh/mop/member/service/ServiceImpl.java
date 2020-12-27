@@ -38,8 +38,8 @@ public class ServiceImpl implements MemberService{
 
 	@Override
 	public int reservationMember(Member member) {
-		System.out.println("@@@@@@@@@");
-		return store.updateMember(member);
+		System.out.println("This is MemberServiceImpl" + member);
+		return store.reservationMember(member);
 	}
 
 }

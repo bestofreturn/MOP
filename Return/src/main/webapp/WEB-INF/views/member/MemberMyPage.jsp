@@ -97,11 +97,39 @@ a:visited {
     left: 238px;
     margin-top: 5px;">
 	<div id="mypagecontent">
-		<div id="img"> 이미지 </div> 
-		<div id="detail"> 예약 상세 설명 </div>
-		<div id="review"> 리뷰 작성  </div>
+		<div name="img" id="img"> 이미지 
+		
+		</div> 
+		<div name="detail" id="detail"> 예약 상세 설명 
+		
+		</div>
+		<div id="review"> 리뷰 작성  
+		
+		</div>
 	</div>
 	<hr>
 	</div>
+	<script>
+	$(function(){
+		
+	})
+	function getReservationList(){
+		var memberId = ${loginMember.memberId};
+		
+		$.ajax({
+			url :"MyReservationList.do",
+			type : "post",
+			data :{"memberId" : memberId},
+			success:function(data){
+				var htmls = "";
+				$(data).each(function(){
+					
+				})
+			},
+			error:
+		})
+	}
+	
+	</script>
 </body>
 </html>

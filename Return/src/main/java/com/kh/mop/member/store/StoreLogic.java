@@ -35,8 +35,10 @@ public class StoreLogic implements Store{
 
 	@Override
 	public int reservationMember(Member member) {
-		System.out.println("###########");
+		System.out.println("this is MemberStoreLogic");
 		return sqlSession.update("MemberMapper.reservationMember",member);
+		/* System.out.println("StoreLogic" + result); */
+		
 	}
 
 	@Override
