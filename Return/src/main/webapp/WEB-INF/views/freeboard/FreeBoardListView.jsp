@@ -107,13 +107,5 @@
 			</ul>
 		</div>
 
-		
-<!-- 	<script>
-	$(document).on("click","#btnSearch",function(e){
-		e.preventDefault();
-		var url = "freeBoardList.do";
-		
-	})
-	</script> -->
 </body>
 </html>

@@ -72,7 +72,7 @@ public class ReservationController {
 
 		  
 		  if(result > 0 && result1 > 0) {
-			  return "myPage";
+			  return "member/MemberMyPage";
 		  }else {
 			  return "common/errorPage";
 		  }

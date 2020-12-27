@@ -44,7 +44,7 @@ function getSelectValue(frm)
 	var price = ${place.price};
 	
  	frm.rPrice.value = frm.headCount.options[frm.headCount.selectedIndex].text * price;
- 	frm.won.value = frm.rPrice.value * 0.01;
+ 	frm.rPoint.value = frm.rPrice.value * 0.01;
 }
 
 $(document).ready(function(){
@@ -126,7 +126,7 @@ $(document).ready(function(){
 
 										<fmt:parseNumber var="point" integerOnly="true"
 											value="${place.price * 0.01}" />
-										<input class="form-control" name=won value="${point}" readonly>
+										<input class="form-control" name="rPoint" value="${point}" readonly>
 										<span class="select-arrow"></span>
 									</div>
 								</div>
