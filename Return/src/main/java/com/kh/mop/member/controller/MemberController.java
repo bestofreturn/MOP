@@ -46,7 +46,7 @@ public class MemberController {
 	
 	  // <!-- 회원가입 -->
 	 
-	@RequestMapping(value = "insert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "enrollView.do", method = RequestMethod.GET)
 	public String enrollView() {
 		return "member/MemberInsert";
 	}
