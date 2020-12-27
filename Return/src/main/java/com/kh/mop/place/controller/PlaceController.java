@@ -26,7 +26,6 @@ public class PlaceController {
 
 	@Autowired 
 	private PlaceService pService;
-	private ReviewService rService;
 	
 	@ResponseBody
 	@RequestMapping(value="placeList.do")
