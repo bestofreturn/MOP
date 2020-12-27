@@ -16,6 +16,10 @@
 			color: red;
 		}
 		
+		#startext{
+			color: #007bff;
+		}
+		
 		.card-footer {
 			margin-top: 10px;
 		}
@@ -114,6 +118,7 @@
 		    }
 		}
 	</style>
+<link rel="shortcut icon" type="image⁄x-icon" href="/resources/image/calendar-icon.png">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -122,6 +127,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="resources/js/star.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <body>
@@ -161,9 +167,9 @@
 												<img id="image3" onmouseover="show(3)" onclick="mark(3)" onmouseout="noshow(3)" src="resources/images/starOff.png">
 												<img id="image4" onmouseover="show(4)" onclick="mark(4)" onmouseout="noshow(4)" src="resources/images/starOff.png">
 												<img id="image5" onmouseover="show(5)" onclick="mark(5)" onmouseout="noshow(5)" src="resources/images/starOff.png">
-											</span> 
+											</span>
 											<br/>
-											<span id="startext">평가하기</span>
+											<span id="startext">별점주기</span>
 										</div>
 										<input type="hidden" name="vStar"/> 
 										<input type="hidden" name="vNo" value="${vNo }"/>
@@ -368,6 +374,7 @@
 				$(reply).next().hide();
 			}
 		}
+		
 		// 댓글 등록
     	function reviewReply(vId, obj){
   			var reContent = $(obj).prev().val();
@@ -396,6 +403,7 @@
 		//document에 clickEffect function 등록
 		document.addEventListener('click',clickEffect);
 		
+		// selectBox submit
 		function formChange(obj){
 			obj.submit();
 		}

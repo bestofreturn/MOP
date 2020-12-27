@@ -58,6 +58,12 @@
 
 	function mark(star) {
 		lock(star);
-		alert("별" + star + "를 선택하셨습니다.");
-		document.reviewform.vStar.value = star;
+		swal({
+        title: "별점주기",
+        text: "별점" + star + "점을 선택하셨습니다.",
+        icon: "success"
+    }).then(function() {
+        document.reviewform.vStar.value = star;
+    });
+		
 	}
