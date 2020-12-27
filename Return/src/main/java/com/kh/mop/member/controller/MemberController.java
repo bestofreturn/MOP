@@ -1,6 +1,7 @@
 package com.kh.mop.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.mop.member.domain.Member;
 /*import com.kh.mop.member.naver.NaverLogin;*/
 import com.kh.mop.member.service.MemberService;
+import com.kh.mop.place.domain.Place;
+import com.kh.mop.place.service.PlaceService;
+import com.kh.mop.reservation.domain.Reservation;
+import com.kh.mop.reservation.service.ReservationService;
 
 @Controller
 public class MemberController {
@@ -32,7 +37,12 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
-
+	
+	@Autowired
+	private ReservationService rService;
+	
+	@Autowired
+	private PlaceService pService;
 	
 	  // <!-- 회원가입 -->
 	 
@@ -128,7 +138,21 @@ public class MemberController {
 		}
 	}
 
-	
+	// 마이 페이지 뷰 
+		@RequestMapping(value="myPage.do")
+		public ModelAndView myPageView(ModelAndView mv, HttpServletRequest request, String memberId) {
+			HttpSession session = request.getSession();
+			session.setAttribute("memberId", memberId);
+			ArrayList<Reservation> rList = rService.resertvationList();
+			ArrayList<Place> pList = pService.selectList();
+			System.out.println(rList);
+			System.out.println(pList);
+			mv.addObject("rList", rList);
+			mv.addObject("pList", pList);
+			mv.setViewName("member/MemberMyPage");
+			
+			return mv;
+		}
 	/*
 	 * @RequestMapping(value="NLogin.do" , method=
 	 * {RequestMethod.GET,RequestMethod.POST}) public String NLogin(Model
