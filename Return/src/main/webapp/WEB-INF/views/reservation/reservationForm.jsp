@@ -12,6 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<title>Booking Form HTML Template</title>
@@ -41,7 +42,7 @@ function getSelectValue(frm)
 	var price = ${place.price};
 	
  	frm.rPrice.value = frm.headCount.options[frm.headCount.selectedIndex].text * price;
- 	frm.won.value = frm.rPrice.value * 0.01;
+ 	frm.rPoint.value = frm.rPrice.value * 0.01;
 }
 
 $(document).ready(function(){
@@ -66,7 +67,7 @@ $(document).ready(function(){
 								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
 							</div>
 						</div>
-						<form action="insertReservation.do" method="post">
+						<form action="payment.do" method="post">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
@@ -122,7 +123,7 @@ $(document).ready(function(){
 								<span class="form-label">적립 예정 포인트</span>
 								
 								<fmt:parseNumber var="point" integerOnly="true" value="${place.price * 0.01}"/>
-								<input class="form-control" name=won value="${point}" readonly>
+								<input class="form-control" name=rPoint value="${point}" readonly>
 								<span class="select-arrow"></span>
 							</div>
 							</div>
@@ -130,6 +131,7 @@ $(document).ready(function(){
 							</div>
 							<div class="form-btn">
 								<input type="submit" class="submit-btn" value="결제하기">
+								<input type="button" onclick="location.href='payment.do?price=${place.price}'" value="예약버튼">
 							</div>
 						</form>
 					</div>

@@ -14,4 +14,5 @@ public Member selectOneMember(Member member);
 	
 	public int deleteMember(String memberId);
 
+	public int reservationMember(Member member);
 }

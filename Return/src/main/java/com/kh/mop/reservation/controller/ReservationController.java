@@ -51,7 +51,8 @@ public class ReservationController {
 	  
 	  int result = rService.insertReservation(reservation);
 	  
-	  int result1 = mService.modifyMember(member); System.out.println(result1);
+	  int result1 = mService.modifyMember(member); 
+	  System.out.println(result1);
 	  if(result1 > 0) { return "reservationConfirm.do"; }else { return
 	  "common/errorPage"; }
 	  

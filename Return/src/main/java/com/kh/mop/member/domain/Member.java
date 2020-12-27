@@ -13,7 +13,7 @@ public class Member {
    private String zipCode;
    private String addr;
    private String bank;
-   private String won;
+   private int won;
    private String reservation;
    private Date joinDate;
 
@@ -27,7 +27,7 @@ public class Member {
    }
 
    public Member(String memberId, String memberPwd, String memberName, String phone, String email,
-         String accountNumber, String zipCode, String addr, String bank, String won, String reservation,
+         String accountNumber, String zipCode, String addr, String bank, int won, String reservation,
          Date joinDate) {
       super();
       this.memberId = memberId;
@@ -116,11 +116,11 @@ public class Member {
       this.bank = bank;
    }
 
-   public String getWon() {
+   public int getWon() {
       return won;
    }
 
-   public void setWon(String won) {
+   public void setWon(int won) {
       this.won = won;
    }
 

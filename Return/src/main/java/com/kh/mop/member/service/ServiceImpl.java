@@ -27,8 +27,15 @@ public class ServiceImpl implements MemberService{
 	}
 
 	@Override
+
 	public int updateMember(Member member) {
 		return store.updateMember(member);
+	}
+
+	@Override
+	public int reservationMember(Member member) {
+		System.out.println("This is MemberServiceImpl" + member);
+		return store.reservationMember(member);
 	}
 
 	@Override

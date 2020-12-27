@@ -41,7 +41,7 @@
    </select>
    <update id="reservationMember">
    UPDATE MEMBER
-   SET WON =#{won}, RESERVATION= 'Y'
+   SET WON = WON + #{won}, RESERVATION= 'Y'
    WHERE MEMBERID = #{memberId}
    </update>
 </mapper>
