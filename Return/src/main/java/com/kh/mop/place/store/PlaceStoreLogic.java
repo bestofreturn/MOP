@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.mop.place.domain.Place;
-import com.kh.mop.review.domain.PageInfo;
 import com.kh.mop.review.domain.Review;
+import com.kh.mop.review.domain.ReviewPageInfo;
 
 @Repository
 public class PlaceStoreLogic implements PlaceStore {
@@ -41,7 +41,7 @@ public class PlaceStoreLogic implements PlaceStore {
 	}
 
 	@Override
-	public ArrayList<Review> reviewList(PageInfo pi, int vNo) {
+	public ArrayList<Review> reviewList(ReviewPageInfo pi, int vNo) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getReviewLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getReviewLimit());
 		return (ArrayList)sqlSession.selectList("reviewMapper.selectList", vNo, rowBounds);

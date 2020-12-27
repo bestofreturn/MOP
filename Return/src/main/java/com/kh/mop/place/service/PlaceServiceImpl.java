@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.kh.mop.place.domain.Place;
 import com.kh.mop.place.store.PlaceStore;
-import com.kh.mop.review.domain.PageInfo;
 import com.kh.mop.review.domain.Review;
+import com.kh.mop.review.domain.ReviewPageInfo;
 import com.kh.mop.review.store.ReviewStore;
 
 @Service
@@ -17,6 +17,8 @@ public class PlaceServiceImpl implements PlaceService {
 
 	@Autowired 
 	private PlaceStore pStore;
+	
+	@Autowired
 	private ReviewStore rStore;
 	
 	@Override
@@ -36,7 +38,7 @@ public class PlaceServiceImpl implements PlaceService {
 	}
 
 	@Override
-	public ArrayList<Review> reviewList(PageInfo pi, int vNo) {
+	public ArrayList<Review> reviewList(ReviewPageInfo pi, int vNo) {
 		return rStore.selectList(pi, vNo);
 	}
 

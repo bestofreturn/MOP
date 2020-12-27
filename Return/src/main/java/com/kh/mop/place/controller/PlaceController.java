@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.mop.place.domain.Place;
 import com.kh.mop.place.service.PlaceService;
-import com.kh.mop.review.domain.PageInfo;
 import com.kh.mop.review.domain.Review;
 import com.kh.mop.review.service.ReviewService;
 
