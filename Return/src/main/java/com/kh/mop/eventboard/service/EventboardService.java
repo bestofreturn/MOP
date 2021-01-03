@@ -15,7 +15,7 @@ public interface EventboardService {
 	public ArrayList<Eventboard> selectList(EventboardPageInfo pi);
 	public int addReadCount(int eId);
 	public Eventboard selectEventboard(int eId);
-	public int updateEvnetboard(Eventboard freeBoard);
+	public int updateEvnetboard(Eventboard eventboard);
 	public int deleteEvnetboard(int eId);
 	public int insertEventboard(Eventboard eventboard);
 	public ArrayList<EventboardReply> selecteventboardReplyList(int eId);

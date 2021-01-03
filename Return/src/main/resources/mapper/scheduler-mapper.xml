@@ -16,6 +16,7 @@
   
   <select id="selectListScheduler" resultMap="schedulerResultMap">
 	SELECT * FROM SCHEDULER
+	ORDER BY STARTDATE ASC
   </select> 
   
   <delete id="deleteScheduler" >

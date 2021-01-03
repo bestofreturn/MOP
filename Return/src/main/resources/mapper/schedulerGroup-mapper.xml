@@ -19,6 +19,7 @@
 <select id="schedulerGroupList" resultMap = "schedulerGroupResultMap">
 	
 	SELECT * FROM SCHEDULER_GROUP
+	ORDER BY GSTARTDATE ASC
 
 </select>
 

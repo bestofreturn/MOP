@@ -4,6 +4,14 @@
 
 <insert id="insertReservation">
 INSERT INTO RESERVATION
-VALUES(SEQ_RID.NEXTVAL, #{rMemberId}, #{rDate}, #{rPlace}, #{rPrice}, #{rPeople}, #{rPhone})
+VALUES(SEQ_RID.NEXTVAL, #{rMemberId}, #{rMemberName}, #{rDate}, #{rPlace}, #{rPrice}, #{rPeople}, #{rPhone})
 </insert>
+
+<select id="selectReservation" resultType="Reservation">
+	SELECT * FROM RESERVATION
+</select>
+
+<delete id="deleteReservation">
+	DELETE FROM RESERVATION WHERE RID = #{rId}
+</delete>
 </mapper>

@@ -196,8 +196,8 @@ var calendar = $('#calendar').fullCalendar({
         .addClass("contextOpened")
         .css({
           display: "block",
-          left: parseInt(e.pageX)-230,
-          top: parseInt(e.pageY)-230
+          left: parseInt(e.pageX)-100,
+          top: parseInt(e.pageY)-100
         });
       return false;
     });

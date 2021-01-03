@@ -15,6 +15,8 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet"
 	href="https://www.w3schools.com/w3css/4/w3.css?after">
+	<link rel="shortcut icon" type="image⁄x-icon" href="/resources/image/calendar-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>MoP - 제휴 업체 리스트</title>
 <style>
 div.wrap {
@@ -44,7 +46,7 @@ div.empty {
 
 .w3-content {
 	position: relative;
-	left: 50px;
+	left: -30px;
 	padding-top: 10px;
 }
 
@@ -71,16 +73,7 @@ div.right {
 	z-index: 1;
 	left: 560px;
 }
-/* 로그인 창 
- Full-width input fields */
-input[type=text], input[type=password] {
-	width: 50%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-}
+
 /* Set a style for all buttons */
 button {
 	background-color: black;
@@ -95,102 +88,11 @@ button {
 button:hover {
 	opacity: 0.8;
 }
-/* Center the image and position the close button */
-.imgcontainer {
-	text-align: center;
-	margin: 24px 0 12px 0;
-	position: relative;
-}
 
-img.avatar {
-	width: 40%;
-	border-radius: 50%;
-}
-
-.container {
-	padding: 16px;
-}
-
-span.psw {
-	float: right;
-	padding-top: 16px;
-}
-/* The Modal (background) */
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 9999 !important; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-	padding-top: 60px;
-}
-/* Modal Content/Box */
-.modal-content {
-	background-color: #fefefe;
-	margin: 5% auto 15% auto;
-	/* 5% from the top, 15% from the bottom and centered */
-	border: 1px solid #888;
-	width: 40%; /* Could be more or less, depending on screen size */
-}
-/* The Close Button (x) */
-.close {
-	position: absolute;
-	right: 25px;
-	top: 0;
-	color: #000;
-	font-size: 35px;
-	font-weight: bold;
-}
-
-.close:hover, .close:focus {
-	color: red;
-	cursor: pointer;
-}
-/* Add Zoom Animation */
-.animate {
-	-webkit-animation: animatezoom 0.6s;
-	animation: animatezoom 0.6s
-}
-
-@
--webkit-keyframes animatezoom {
-	from {-webkit-transform: scale(0)
-}
-
-to {
-	-webkit-transform: scale(1)
-}
-
-}
-@
-keyframes animatezoom {
-	from {transform: scale(0)
-}
-
-to {
-	transform: scale(1)
-}
-
-}
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-	span.psw {
-		display: block;
-		float: none;
-	}
-	.cancelbtn {
-		width: 100%;
-	}
-}
 </style>
 </head>
-<body>
+<body class="w3-black">
 	<jsp:include page="../common/sidenav.jsp"></jsp:include>
-	
 	<header class="w3-container w3-padding-32 w3-center w3-black" id="home">
 		<img src="/resources/image/logo.png"
 			style="width: 185px; margin-top: -75px;">
@@ -208,26 +110,7 @@ to {
 		</div>
 	</div>
 	<div class="right">
-		<div id="map" style="width: 100%; height: 430px;"></div>
-	</div>
-	<!--  로그인 form  -->
-	<div id="id01" class="modal">
-		<form class="modal-content animate" action="login1.do" method="post">
-			<div class="imgcontainer">
-				<span onclick="document.getElementById('id01').style.display='none'"
-					class="close" title="Close Modal">&times;</span>
-			</div>
-			<div class="container">
-				<label for="uname"><br> <b>Username</b><br></label> <input
-					type="text" placeholder="Enter memberId" name="memberId"> <label
-					for="psw"><br> <b>Password</b><br></label> <input
-					type="password" placeholder="Enter Password" name="memberPwd">
-				<p>
-					<button type="submit" id="login-btn" class="btn btn-login">Login</button>
-					<button type="button" onclick="location.href='enrollView.do';">Sign
-						Up</button>
-			</div>
-		</form>
+		<div id="map" style="width: 100%; height: 430px; position: relative; left: -36px;"></div>
 	</div>
 	
 	<!--  장소 전체 리스트 출력  -->
@@ -320,73 +203,73 @@ to {
 					option);
 			//마커 정보
 			var locations = [
-					// 3번
-					[
-						'<div class="wrap"><div class="text-box"><h4>어썸 스터디 카페</h4><div class="img-box"><img src="/resources/image/img/lg_3.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=3"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.577624, 126.976020 ],
-					// 4번
-					[
-						'<div class="wrap"><div class="text-box"><h4>작심 스터디 카페</h4><div class="img-box"><img src="/resources/image/img/lg_4.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=4"><p style="color : black; text-align:center;" >상세보기</p></a></div>',		
-							37.559524, 126.976710 ],
+				// 3번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_3.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=3" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" ></p></a></div></div>',
+						37.577624, 126.976020 ],
+				// 4번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_4.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=4" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >작심 스터디 카페  </p></a></div></div>',
+						37.559524, 126.976710 ],
 
-					// 1번
-					[
-						'<div class="wrap"><div class="text-box"><h4>스터디 카페 북킹 </h4><div class="img-box"><img src="/resources/image/img/lg_1.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=1"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.579711, 126.991043 ],
-					//30번
-					[
-						'<div class="wrap"><div class="text-box"><h4>롯데호텔 페닌슐라 라운지 / 바 </h4><div class="img-box"><img src="/resources/image/img/lg_30.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=30"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.5652962,126.9788531 ],
-					//20번
-					[
-						'<div class="wrap"><div class="text-box"><h4>더 파크 뷰</h4><div class="img-box"><img src="/resources/image/img/lg_20.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=20"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.5554698,127.0033856 ],
-					//25번
-					[
-						'<div class="wrap"><div class="text-box"><h4>스카이 라운지</h4><div class="img-box"><img src="/resources/image/img/lg_25.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=25"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.579711, 126.991043 ],
-					//10번
-					[
-						'<div class="wrap"><div class="text-box"><h4>랭 스터디 카페 대학로점 </h4><div class="img-box"><img src="/resources/image/img/lg_10.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=10"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.5822206,127.0005696 ],
-							
-					//15번
-					[
-						'<div class="wrap"><div class="text-box"><h4>엘 올리브</h4><div class="img-box"><img src="/resources/image/img/lg_15.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=15"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.5047005,127.0253226 ],
-					//26번
-					[
-						'<div class="wrap"><div class="text-box"><h4>쉐라톤 서울 디큐브 시티 라운지 바 </h4><div class="img-box"><img src="/resources/image/img/lg_26.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=26"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.508807,126.8875999 ],
-					//19번
-					[
-						'<div class="wrap"><div class="text-box"><h4>밀레폴리에</h4><div class="img-box"><img src="/resources/image/img/lg_19.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=19"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-						37.6622976,126.7846428],
-					//22번
-					[
-						'<div class="wrap"><div class="text-box"><h4>신라 호텔 라운지 제주 </h4><div class="img-box"><img src="/resources/image/img/lg_22.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=22"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-						33.2473942,126.4058431 ],
-					//21번
-					[
-						'<div class="wrap"><div class="text-box"><h4>시그니엘 서울 </h4><div class="img-box"><img src="/resources/image/img/lg_21.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=21"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-						37.5127973,127.1004395 ],
-					
-					//11번
-					[ 
-						'<div class="wrap"><div class="text-box"><h4> Monday Blues </h4><div class="img-box"><img src="/resources/image/img/lg_11.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=11"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-						37.5049534,127.0959039	],
-					// 12번
-					[
-						'<div class="wrap"><div class="text-box"><h4>압구정 미연</h4><div class="img-box"><img src="/resources/image/img/lg_12.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=12"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-						37.5269553,127.0372125 ],
-					// 23번
-					[
-						'<div class="wrap"><div class="text-box"><h4>리바 | Re:bar </h4><div class="img-box"><img src="/resources/image/img/lg_23.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=23"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.577624, 126.976020 ],
-					// 28번
-					[
-						'<div class="wrap"><div class="text-box"><h4> 라운지 </h4><div class="img-box"><img src="/resources/image/img/lg_28.jpg" style="width:150px;height:100px;"></div><a target="_blank" href="placeDetail.do?pId=28"><p style="color : black; text-align:center;" >상세보기</p></a></div>',
-							37.472611,127.038996 ],
+				// 1번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_1.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=1" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >스터디 카페 북킹 </p></a></div></div>',
+						37.579711, 126.991043 ],
+				//30번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_30.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=30" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" > 롯데호텔 서울 페닌슐라 라운지 /바</p></a></div></div>',
+						37.5652962,126.9788531 ],
+				//20번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_20.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=20" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >더 파크 뷰  </p></a></div></div>',
+						37.5554698,127.0033856 ],
+				//25번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_25.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=25" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" > 스카이 라운지 </p></a></div></div>',
+						37.579711, 126.991043 ],
+				//10번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_10.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=10" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >랭 스터디 카페 대학로점 </p></a></div></div>',
+						37.5822206,127.0005696 ],
+						
+				//15번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_15.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=15" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >엘 올리브 </p></a></div></div>',
+						37.5047005,127.0253226 ],
+				//26번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_26.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=26" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >쉐라톤 서울 디큐브 시티 호텔 </p></a></div></div>',	
+					37.508807,126.8875999 ],
+				//19번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_19.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=19" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >밀레폴리에 </p></a></div></div>',
+					37.6622976,126.7846428],
+				//22번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_22.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=22" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >신라 호텔 라운지 제주  </p></a></div></div>',
+					33.2473942,126.4058431 ],
+				//21번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_21.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=21" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >시그니엘 서울 </p></a></div></div>',
+					37.5127973,127.1004395 ],
+				
+				//11번
+				[ 
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_11.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=11" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" > Monday Blues </p></a></div></div>',
+					37.5049534,127.0959039	],
+				// 12번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_12.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=12" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;"> 압구정 미연 </p></a></div></div>',
+					37.5269553,127.0372125 ],
+				// 23번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_23.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=23" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" >리바 | Re:Bar</p></a></div></div>',
+						37.577624, 126.976020 ],
+				// 28번
+				[
+					'<div class="wrap"><div class="text-box"><div class="img-box"><img src="/resources/image/img/lg_28.jpg" style="width:100%;height:150px;"></div><hr style="margin : 10px 0;"><a target="_blank" href="placeDetail.do?pId=28" style="text-decoration:none;font-weight:bold"><p style="color : black; text-align:center;" > 라운지 </p></a></div></div>',
+						37.472611,127.038996 ],
 			]
 
 			//마커 이미지

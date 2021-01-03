@@ -16,8 +16,7 @@ public class ReservationServiceImpl implements ReservationService{
 
 	@Override
 	public ArrayList<Reservation> resertvationList() {
-		// TODO Auto-generated method stub
-		return null;
+		return rStore.resertvationList();
 	}
 
 	@Override
@@ -27,8 +26,7 @@ public class ReservationServiceImpl implements ReservationService{
 
 	@Override
 	public int deleteReservation(int rId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return rStore.deleteReservation(rId);
 	}
 
 }

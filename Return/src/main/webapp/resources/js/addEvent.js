@@ -8,7 +8,7 @@ var editEnd = $('#edit-end');
 var editType = $('#edit-type');
 var editColor = $('#edit-color');
 var editDesc = $('#edit-desc'); 
-var editId = $('#edit-id');
+var editUser = $('#edit-username');
 
 var addBtnContainer = $('.modalBtnContainer-addEvent');
 var modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
@@ -46,7 +46,7 @@ var newEvent = function (start, end, eventType) {
             end: editEnd.val(),
             description: editDesc.val(),
             type: editType.val(),
-            username: 'admin',
+            username: editUser.val(),
             backgroundColor: editColor.val(),
             textColor: '#333',
             allDay: editAllDay.val()

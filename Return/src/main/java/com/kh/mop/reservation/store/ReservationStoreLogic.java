@@ -18,8 +18,7 @@ public class ReservationStoreLogic implements ReservationStore{
 	
 	@Override
 	public ArrayList<Reservation> resertvationList() {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList)sqlSession.selectList("ReservationMapper.selectReservation");
 	}
 
 	@Override
@@ -29,8 +28,7 @@ public class ReservationStoreLogic implements ReservationStore{
 
 	@Override
 	public int deleteReservation(int rId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("ReservationMapper.deleteReservation", rId);
 	}
 
 }

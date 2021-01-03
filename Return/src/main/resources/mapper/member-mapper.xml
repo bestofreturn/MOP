@@ -29,7 +29,7 @@
    </insert>
    <update id="updateMember">
       UPDATE MEMBER
-      SET (#{addr},#{memberPwd},#{phone},#{email},#{accountNumber})
+      SET ADDR = #{addr}, MEMBERPWD = #{memberPwd}, PHONE = #{phone}, EMAIL = #{email}, ACCOUNTNUMBER = #{accountNumber}
       WHERE MEMBERID = #{memberId}
    </update>
    <delete id="deleteMember">
@@ -40,8 +40,8 @@
       SELECT COUNT(*) FROM MEMBER WHERE MEMBERID = #{memberId}
    </select>
    <update id="reservationMember">
-   UPDATE MEMBER
-   SET WON = WON + #{won}, RESERVATION= 'Y'
-   WHERE MEMBERID = #{memberId}
+      UPDATE MEMBER
+      SET WON = WON + #{won}, RESERVATION= 'Y'
+      WHERE MEMBERID = #{memberId}
    </update>
 </mapper>

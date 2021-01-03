@@ -7,6 +7,7 @@ public class Reservation {
 
 	private int rId;
 	private String rMemberId;
+	private String rMemberName;
 	private String rDate;
 	private String rPlace;
 	private int rPrice;
@@ -29,6 +30,14 @@ public class Reservation {
 
 	public void setrMemberId(String rMemberId) {
 		this.rMemberId = rMemberId;
+	}
+
+	public String getrMemberName() {
+		return rMemberName;
+	}
+
+	public void setrMemberName(String rMemberName) {
+		this.rMemberName = rMemberName;
 	}
 
 	public String getrDate() {
@@ -71,10 +80,12 @@ public class Reservation {
 		this.rPeople = rPeople;
 	}
 
-	public Reservation(int rId, String rMemberId, String rDate, String rPlace, int rPrice, String rPhone, int rPeople) {
+	public Reservation(int rId, String rMemberId, String rMemberName, String rDate, String rPlace, int rPrice,
+			String rPhone, int rPeople) {
 		super();
 		this.rId = rId;
 		this.rMemberId = rMemberId;
+		this.rMemberName = rMemberName;
 		this.rDate = rDate;
 		this.rPlace = rPlace;
 		this.rPrice = rPrice;
@@ -84,11 +95,8 @@ public class Reservation {
 
 	@Override
 	public String toString() {
-		return "Reservation [rId=" + rId + ", rMemberId=" + rMemberId + ", rDate=" + rDate + ", rPlace=" + rPlace
-				+ ", rPrice=" + rPrice + ", rPhone=" + rPhone + ", rPeople=" + rPeople + "]";
+		return "Reservation [rId=" + rId + ", rMemberId=" + rMemberId + ", rMemberName=" + rMemberName + ", rDate="
+				+ rDate + ", rPlace=" + rPlace + ", rPrice=" + rPrice + ", rPhone=" + rPhone + ", rPeople=" + rPeople
+				+ "]";
 	}
-
-	
-	
-	
 }

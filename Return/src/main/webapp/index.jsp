@@ -2,133 +2,30 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<title>MoP</title>
 <meta charset="UTF-8">
-<title>Re:turn</title>
-</head>
+<link rel="shortcut icon" type="image⁄x-icon" href="/resources/image/calendar-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-	*{
-		box-sizing:board-box;
-	}
-	 
-	 .video-film {
-		box-shadow: rgba(0, 7, 15, 0.7) 0 0 0 9999px;
-		z-index: 100;
-	}
-	
-	.video-background {
-		background: #000;
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		z-index: -99;
-	}
-	
-	.video-foreground, .video-background iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-	}
-
-	@media ( min-aspect-ratio : 16/9) {
-		.video-foreground {
-			height: 300%;
-			top: -100%;
-		}
-	}
-	
-	@media ( max-aspect-ratio : 16/9) {
-		.video-foreground {
-			width: 300%;
-			left: -100%;
-		}
-	}
-	
-	h1 {
-		color: white;
-	}
-	
-	#visual-btn {
-		z-index: 50;
-		color: #fff;
-		font-size: 20px;
-		border: 2px solid #fff;
-		padding: 12px 24px;
-		border-radius: 5px;
-		cursor: pointer;
-		background-color: rgba(0, 0, 0, 0);
-	}
-	
-	#visual-btn:hover {
-		color: black;
-		background-color : white; 
-		font-size: 20px;
-		border: 2px solid white;
-		padding: 12px 24px;
-		border-radius: 5px;
-		cursor: pointer;
-	}
-	
-	#indexBtn {
-		position: fixed;
-		text-align: center
-	}
-	
-	.center {
-		position: absolute;
-		top: 60%;
-		left: 47%;
-		margin: -50px 0 0 -50px;
-	}
+body,h1,h5 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('/resources/image/background.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
 </style>
 <body>
-	<div id="indexBtn" class="center">
-		<!-- url 요청을 *.kh로 받도록 web.xml에서 설정을 해주어야 함. -->
-		<button id="visual-btn" onclick="location.href='home.do';">MoP</button>
-	</div>
-	
-	<div class="video-background">
-		<div class="video-background">
-			<div id="muteYouTubeVideoPlayer"></div>
-		</div>
-	</div>
-	
-	<div class="video-film"></div>
-	
-	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script async src="https://www.youtube.com/iframe_api"></script>
-	<script type="text/javascript">
-		var player;
-		function onYouTubePlayerAPIReady(){
-			player = new YT.Player('muteYouTubeVideoPlayer', {
-				videoId : 'g7c0W-8rNmw',
-				playerVars : {
-					autoplay : 1, 		// Auto-play the video on load
-					controls : 0, 		// Show pause/play buttons in player
-					rel : 0,
-					start : 30,
-					end : 80,
-					showinfo : 0, 		// Hide the video title
-					modestbranding : 1, // Hide the Youtube Logo
-					loop : 1, 			// Run the video in a loop
-					fs : 1, 			// Hide the full screen button
-					cc_load_policy : 1, // Hide closed captions
-					iv_load_policy : 3, // Hide the Video Annotations
-					autohide : 1		// Hide video controls when playing
-				},
-				events:{
-					onReady:function(e){
-						e.target.mute();
-					}
-				}
-			});
-		}
-	</script>
-	
+
+<div class="bgimg w3-display-container w3-text-white">
+  <div class="w3-display-middle w3-jumbo">
+    <p style="color:black;">
+    <a href="loginView.do" style="text-decoration:none;">MoP</a></p>
+  </div>
+</div>
 </body>
 </html>
+
