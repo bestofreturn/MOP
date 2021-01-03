@@ -14,6 +14,7 @@
 <body>
 <form id="insert" action="insertReservation.do" method="post">
 <input type="hidden" name="rMemberId" value="${reservation.rMemberId }">
+<input type="hidden" name="rMemberName" value="${reservation.rMemberName }">
 <input type="hidden" name="rDate" value="${reservation.rDate }">
 <input type="hidden" name="rPlace" value="${reservation.rPlace }">
 <input type="hidden" name="rPrice" value="${reservation.rPrice }">
@@ -21,7 +22,6 @@
 <input type="hidden" name="rPeople" value="${reservation.rPeople }">
 <input type="hidden" name="rPoint" value="${rPoint}">
 <input type="hidden" name="memberId" value="${loginMember.memberId }">
-
 </form>
 
     <script>

@@ -23,11 +23,10 @@ public class HomeController {
 
 
 	
-	  @RequestMapping(value = "/home.do", method = RequestMethod.GET)
-		  public String home(Locale locale, Model model) { 
-			  // HomeController는 메인페이지로 돌아가는 기능을 함
-		  return "common/main"; 
-	  }
+	  @RequestMapping(value = "/home.do", method = RequestMethod.GET) public String
+	  home(Locale locale, Model model) { // HomeController는 메인페이지로 돌아가는 기능을 함
+	  return "common/main"; }
+	 
 	 
 
 	/*

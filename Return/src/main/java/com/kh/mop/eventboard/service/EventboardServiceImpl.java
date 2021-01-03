@@ -37,8 +37,8 @@ public class EventboardServiceImpl implements EventboardService{
 	}
 
 	@Override
-	public int updateEvnetboard(Eventboard freeBoard) {
-		return eStore.updateEvnetboard(freeBoard);
+	public int updateEvnetboard(Eventboard eventboard) {
+		return eStore.updateEvnetboard(eventboard);
 	}
 
 	@Override

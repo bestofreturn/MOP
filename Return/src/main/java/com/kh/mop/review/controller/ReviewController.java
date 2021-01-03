@@ -104,12 +104,17 @@ public class ReviewController {
 	
 	// 리뷰게시판 리스트
 	@RequestMapping(value="reviewList.do", method = RequestMethod.GET)
-	public ModelAndView reviewList(ModelAndView mv, @RequestParam(value="page", required = false) Integer page, String vNo) {
+	public ModelAndView reviewList(HttpSession session, ModelAndView mv, @RequestParam(value="page", required = false) Integer page, String vNo) {
 		int currentPage = (page != null) ? page : 1;
 		int listCount = vService.getListCount();
 		ReviewPageInfo pi = Review_Pagination.getReviewPageInfo(currentPage, listCount);
 		int reviewNo = Integer.parseInt(vNo);
 		ArrayList<Review> vList = vService.selectList(pi, reviewNo);
+		
+Member member = (Member)session.getAttribute("loginMember");
+		
+		System.out.println(member.getReservation());
+
 		// 댓글 리스트
 		for (Review rvOne : vList) {
 			ArrayList<RvReply> rvReplyList = vService.selectRvReplyList(rvOne.getvId());

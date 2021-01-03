@@ -10,7 +10,7 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="shortcut icon" type="image⁄x-icon" href="/resources/image/calendar-icon.png">
 <title>장소 상세</title>
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -130,7 +130,7 @@ img {
 }
 
 .checked, .price span {
-	color: gray;
+	color: white;
 }
 
 .product-title, .rating, .product-description, .price, .vote, .sizes {
@@ -171,6 +171,7 @@ img {
 	color: black;
 	-webkit-transition: background .3s ease;
 	transition: background .3s ease;
+	width: 200px;
 }
 
 .add-to-cart:hover, .like:hover {
@@ -256,27 +257,13 @@ scale(
 }
 }
 
-/*# sourceMappingURL=style.css.map */
-.container {
-	position: relative;
-	left: 100px;
-	top: -70px;
-}
-
-header {
-	height: 100px;
-}
 </style>
-<body>
+<body class="w3-black" style="background-color : black;">
 	<jsp:include page="../common/sidenav.jsp"></jsp:include>
-	<header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-		<img src="/resources/image/logo.png"
-			style="width: 185px; margin-top: -75px;">
-	</header>
 	<!--  상세 페이지 불러오는 곳  -->
 	<div class="container">
 		<div class="card">
-			<div class="container-fliud">
+			<div class="container-fliud" style="position: relative; top: 50px;">
 				<div class="wrapper row">
 					<div class="preview col-md-6">
 						<div class="preview-pic tab-content">
@@ -296,21 +283,9 @@ header {
 								<img src="http://placekitten.com/400/252" />
 							</div>
 						</div>
-						<ul class="preview-thumbnail nav nav-tabs">
-							<li class="active"><a data-target="#pic-1" data-toggle="tab"><img
-									src="http://placekitten.com/200/126" /></a></li>
-							<li><a data-target="#pic-2" data-toggle="tab"><img
-									src="http://placekitten.com/200/126" /></a></li>
-							<li><a data-target="#pic-3" data-toggle="tab"><img
-									src="http://placekitten.com/200/126" /></a></li>
-							<li><a data-target="#pic-4" data-toggle="tab"><img
-									src="http://placekitten.com/200/126" /></a></li>
-							<li><a data-target="#pic-5" data-toggle="tab"><img
-									src="http://placekitten.com/200/126" /></a></li>
-						</ul>
 
 					</div>
-					<div class="details col-md-6">
+					<div class="details col-md-6" style="color:white;">
 						<h3 class="product-title">${place.pName }</h3>
 						<div class="rating">
 							<div class="stars">

@@ -13,23 +13,15 @@ public class Scheduler {
 	private String username;
 	private String backgroundColor;
 	private String textColor;
-	private boolean allDay;
+	private String allDay;
 	
 	public Scheduler() {}
 
-	public Scheduler(int sId, String title, String description, String start, String end, String type, String username,
-			String backgroundColor, String textColor, boolean allDay) {
-		super();
-		this.sId = sId;
-		this.title = title;
-		this.description = description;
-		this.start = start;
-		this.end = end;
-		this.type = type;
-		this.username = username;
-		this.backgroundColor = backgroundColor;
-		this.textColor = textColor;
-		this.allDay = allDay;
+	@Override
+	public String toString() {
+		return "Scheduler [sId=" + sId + ", title=" + title + ", description=" + description + ", start=" + start
+				+ ", end=" + end + ", type=" + type + ", username=" + username + ", backgroundColor=" + backgroundColor
+				+ ", textColor=" + textColor + ", allDay=" + allDay + "]";
 	}
 
 	public int getsId() {
@@ -104,24 +96,28 @@ public class Scheduler {
 		this.textColor = textColor;
 	}
 
-	public boolean isAllDay() {
+	public String getAllDay() {
 		return allDay;
 	}
 
-	public void setAllDay(boolean allDay) {
+	public void setAllDay(String allDay) {
 		this.allDay = allDay;
 	}
 
-	@Override
-	public String toString() {
-		return "Scheduler [sId=" + sId + ", title=" + title + ", description=" + description + ", start=" + start
-				+ ", end=" + end + ", type=" + type + ", username=" + username + ", backgroundColor=" + backgroundColor
-				+ ", textColor=" + textColor + ", allDay=" + allDay + "]";
+	public Scheduler(int sId, String title, String description, String start, String end, String type, String username,
+			String backgroundColor, String textColor, String allDay) {
+		super();
+		this.sId = sId;
+		this.title = title;
+		this.description = description;
+		this.start = start;
+		this.end = end;
+		this.type = type;
+		this.username = username;
+		this.backgroundColor = backgroundColor;
+		this.textColor = textColor;
+		this.allDay = allDay;
 	}
 
-	
-
-	
-	
 	
 }
